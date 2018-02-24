@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ddup.iml" filepath="$PROJECT_DIR$/ddup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client.iml" group="ddup-ek-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client_main.iml" group="ddup-ek-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client_test.iml" group="ddup-ek-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server.iml" group="ddup-ek-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server_main.iml" group="ddup-ek-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server_test.iml" group="ddup-ek-server" />
+    </modules>
+  </component>
+</project>

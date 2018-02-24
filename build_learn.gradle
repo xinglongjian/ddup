@@ -1,0 +1,154 @@
+task hello << {
+	println 'hello world gradle'
+}
+
+tasks.create("hello2") <<{
+	println 'hello world gradle2'
+}
+
+
+//自定义wrapper
+task wrapper(type: Wrapper) {
+	gradleVersion = '2.4'
+}
+task printString << {
+	def name = '张三'
+	println '单引号的变量计算:${name}'
+	println "双引号的变量计算:${name}"
+}	
+
+task printList << {
+	def numList = [1,2,3,4,5] // 创建一个List
+	println numList.getClass().name
+	
+	println numList[1] 
+	println numList[-1] // 从右侧开始
+	println numList[1..3] // 通过两个. 表示一个切片
+	
+	numList.each {
+		println it //正在迭代的元素
+	}
+}
+
+task printMap << {
+	def map1 = ['width':1024,'height':768] // 创建一个map
+	println map1.getClass().name
+	
+	println map1['width'] // 访问map，两种方式
+	println map1.height
+	
+	// 迭代
+	map1.each {
+		println "Key:${it.key}, Value:${it.value}"
+	}
+}
+
+// 定义调用方法的task
+task invokeMethod << {
+	method1(1,2)
+	method1 3, 4
+}
+
+// 定义方法
+def method1(int a,int b) {
+	println a+b
+}
+
+//定义javabean
+class Person{
+	private String name
+
+	int getAge() {
+		22
+	}
+}
+
+task helloPerson << {
+	Person p = new Person()
+	
+	println "名字是:${p.name}"
+	p.name= 'zhangsan'
+	println "名字是:${p.name}"
+	println "年龄是:${p.age}"
+}
+
+
+task helloClosure << {
+	// 使用我们自定义的闭包
+	customEach {
+		println it
+	}
+}
+
+def customEach(closure) {
+	// 模拟一个有10个元素的集合，进行迭代
+	for(int i in 1..10) {
+		closure(i)
+	}
+}
+
+task testClosureMutiParams << {
+	eachMap {
+		k,v -> println "${k} is ${v}"
+	}
+}
+
+def eachMap(closure) {
+	def map1 = ['name':'zhangsan','age':'18']
+	map1.each {
+		closure(it.key, it.value)
+	}
+}
+
+task helloDelegate << {
+	new Delegate().test {
+		println "thisObject:${thisObject.getClass()}"
+		println "owner:${owner.getClass()}"
+		println "delegate:${delegate.getClass()}"
+		method1()
+		it.method1()
+	}
+}
+
+def method1() {
+	println "Context this : ${this.getClass()} in root"
+	println "method1 in root"
+}
+
+class Delegate {
+	def method1(){
+		println "Delegate this : ${this.getClass()} in Delegate"
+		println "method1 in Delegate"
+	}
+	
+	def test(Closure<Delegate> closure) {
+		closure(this)
+	}
+}
+
+task configClosure << {
+	person {
+		name='zhangsan'
+		age=22
+		dumpPerson()
+	}
+}
+
+class Person1 {
+	String name
+	int age
+	
+	def dumpPerson() {
+		println "name is ${name}, age is ${age}"
+	}
+}
+
+def person(Closure<Person> closure) {
+	Person1 p=new Person1()
+	closure.delegate = p
+	// 委托模式优先
+	closure.setResolveStrategy(Closure.DELEGATE_FIRST)
+	closure(p)
+}
+
+
