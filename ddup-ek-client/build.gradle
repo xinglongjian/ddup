@@ -14,7 +14,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.5.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springGradleVersion}")
     }
 
 }
@@ -24,7 +24,7 @@ buildscript {
 archivesBaseName = 'ddup-ek-client'
 
 ext{
-    springBootVersion = '1.4.5.RELEASE'
+//    springBootVersion = '1.4.5.RELEASE'
 }
 
 build{}
@@ -32,7 +32,7 @@ build{}
 dependencies{
     // SPRING BOOT
 //    compile "org.springframework.boot:spring-boot-starter-web:$springBootVersion"
-    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
+//    testCompile "org.springframework.boot:spring-boot-starter-test:$springBootVersion"
 }
 
 configurations {}

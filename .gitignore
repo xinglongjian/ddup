@@ -1,0 +1,21 @@
+# Generated files
+*/bin/
+*/gen/
+*/out/
+*/build/
+
+# Gradle files
+.gradle/
+.idea/
+build/
+
+# Java class files
+*.class
+
+# Log Files
+*.log
+
+# Intellij
+*.iml
+*/*.iml
+local.properties
