@@ -9,9 +9,10 @@
 
 rootProject.name = 'ddup'
 
-include ':ddup-ek-client'
+include 'ddup-ek-client'
 //project(':ddup-ek-client').projectDir = new File(rootDir, 'ddup-ek-client')
-include ':ddup-ek-server'
+include 'ddup-ek-server'
 //project(':ddup-ek-server').projectDir = new File(rootDir, 'ddup-ek-server')
-
+include 'ddup-account'
+include 'ddup-common'
 
