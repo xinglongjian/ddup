@@ -1,0 +1,27 @@
+buildscript {
+    dependencies {
+        classpath "io.spring.gradle:dependency-management-plugin:${springGradleVersion}"
+    }
+    repositories {
+        // 优先级
+        mavenLocal()
+        maven {
+            url "http://maven.aliyun.com/nexus/content/groups/public"
+        }
+        mavenCentral()
+        jcenter()
+    }
+
+}
+apply plugin: "io.spring.dependency-management"
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-netflix:${springNetflixVersion}'
+    }
+}
+dependencies {
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka-server:1.4.3.RELEASE'
+}
+archivesBaseName = 'xingtan-ek-server'
+

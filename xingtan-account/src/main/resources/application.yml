@@ -1,0 +1,22 @@
+server:
+  port: 8762
+spring:
+  application:
+    name: xingtan-account
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+mybatis:
+  configLocation: classpath:mybatis/mybatis-config.xml
+  mapperLocation: classpath:mybatis/mapper/*.xml
+  typeAliasesPackage: com.xingtan
+
+spring:
+  datasource:
+    driverClassName: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8
+    user: root
+    password:
