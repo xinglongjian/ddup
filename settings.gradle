@@ -7,12 +7,10 @@
  * in the user guide at https://docs.gradle.org/4.5.1/userguide/multi_project_builds.html
  */
 
-rootProject.name = 'ddup'
+rootProject.name = 'xingtan'
 
-include 'ddup-ek-client'
-//project(':ddup-ek-client').projectDir = new File(rootDir, 'ddup-ek-client')
-include 'ddup-ek-server'
-//project(':ddup-ek-server').projectDir = new File(rootDir, 'ddup-ek-server')
-include 'ddup-account'
-include 'ddup-common'
+include 'xingtan-ek-client'
+include 'xingtan-ek-server'
+include 'xingtan-account'
+include 'xingtan-common'
 

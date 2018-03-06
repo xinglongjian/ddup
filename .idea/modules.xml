@@ -2,13 +2,19 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ddup.iml" filepath="$PROJECT_DIR$/ddup.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client.iml" group="ddup-ek-client" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client_main.iml" group="ddup-ek-client" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-client/ddup-ek-client_test.iml" group="ddup-ek-client" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server.iml" group="ddup-ek-server" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server_main.iml" group="ddup-ek-server" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/ddup-ek-server/ddup-ek-server_test.iml" group="ddup-ek-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account.iml" group="xingtan-account" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account_main.iml" group="xingtan-account" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account_test.iml" group="xingtan-account" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common.iml" group="xingtan-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common_main.iml" group="xingtan-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common_test.iml" group="xingtan-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-ek-client/xingtan-ek-client.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-ek-client/xingtan-ek-client.iml" group="xingtan-ek-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-ek-client/xingtan-ek-client_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-ek-client/xingtan-ek-client_main.iml" group="xingtan-ek-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-ek-client/xingtan-ek-client_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-ek-client/xingtan-ek-client_test.iml" group="xingtan-ek-client" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server.iml" group="xingtan-ek-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server_main.iml" group="xingtan-ek-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server_test.iml" group="xingtan-ek-server" />
     </modules>
   </component>
 </project>
