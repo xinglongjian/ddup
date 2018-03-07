@@ -2,14 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="ddup-account_main" target="1.8" />
-      <module name="ddup-account_test" target="1.8" />
-      <module name="ddup-common_main" target="1.8" />
-      <module name="ddup-common_test" target="1.8" />
-      <module name="ddup-ek-client_main" target="1.8" />
-      <module name="ddup-ek-client_test" target="1.8" />
-      <module name="ddup-ek-server_main" target="1.8" />
-      <module name="ddup-ek-server_test" target="1.8" />
       <module name="xingtan-account_main" target="1.8" />
       <module name="xingtan-account_test" target="1.8" />
       <module name="xingtan-common_main" target="1.8" />
