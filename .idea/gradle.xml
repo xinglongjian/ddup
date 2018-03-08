@@ -11,6 +11,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/xingtan-account" />
+            <option value="$PROJECT_DIR$/xingtan-account-api" />
             <option value="$PROJECT_DIR$/xingtan-common" />
             <option value="$PROJECT_DIR$/xingtan-ek-client" />
             <option value="$PROJECT_DIR$/xingtan-ek-server" />

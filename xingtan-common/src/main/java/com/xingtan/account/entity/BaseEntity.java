@@ -16,11 +16,11 @@ public class BaseEntity implements Serializable{
     /**
      * 创建时间
      */
-    private Date gmt_create;
+    private Date gmtCreate;
 
     /**
      * 最后修改时间
      */
-    private Date gmt_modified;
+    private Date gmtModified;
 
 }

@@ -6,10 +6,10 @@
  */
 buildscript {
     ext {
-        springBootVersion = '1.5.10.RELEASE'
-        springCloudVersion = 'Dalston.SR5'
-        springGradleVersion = '1.0.2.RELEASE'
-        springNetflixVersion = '1.4.3.RELEASE'
+        springBootVersion = '2.0.0.RELEASE'
+        springCloudVersion = 'Finchley.M7'
+        springGradleVersion = '1.0.4.RELEASE'
+        springNetflixVersion = '2.0.0.M7'
     }
     repositories {
         // 优先级
@@ -46,8 +46,9 @@ subprojects {
 
     dependencyManagement {
         imports {
-            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Dalston.SR5'
-            mavenBom 'org.springframework.cloud:spring-cloud-netflix:1.4.3.RELEASE'
+            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.M7'
+            mavenBom 'org.springframework.cloud:spring-cloud-netflix:2.0.0.M7'
+            mavenBom 'org.springframework.boot:spring-boot-starter-parent:2.0.0.RELEASE'
         }
     }
     repositories {
@@ -67,10 +68,10 @@ subprojects {
     dependencies {
         testCompile 'junit:junit:4.12'
         compile 'com.squareup.okhttp3:okhttp:3.4.1'
-        compile 'org.springframework.boot:spring-boot-autoconfigure:1.5.9.RELEASE'
-        compile 'org.springframework.boot:spring-boot-starter-web:1.5.9.RELEASE'
-        compile 'org.springframework.boot:spring-boot-starter-jetty:1.5.9.RELEASE'
-        compile 'org.springframework.boot:spring-boot-devtools:1.5.9.RELEASE'
+        compile 'org.springframework.boot:spring-boot-autoconfigure:2.0.0.RC1'
+        compile 'org.springframework.boot:spring-boot-starter-web:2.0.0.RC1'
+        compile 'org.springframework.boot:spring-boot-starter-jetty:2.0.0.RELEASE'
+        compile 'org.springframework.boot:spring-boot-devtools:2.0.0.RELEASE'
     }
 
     jar {

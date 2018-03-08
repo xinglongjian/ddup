@@ -21,7 +21,7 @@ dependencyManagement {
     }
 }
 dependencies {
-    compile 'org.springframework.cloud:spring-cloud-starter-eureka'
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka:1.4.3.RELEASE'
 }
 archivesBaseName = 'xingtan-ek-client'
 

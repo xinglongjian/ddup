@@ -10,13 +10,12 @@ eureka:
       defaultZone: http://localhost:8761/eureka/
 
 mybatis:
+  mapperLocations: classpath:mybatis/mapper/*.xml
   configLocation: classpath:mybatis/mybatis-config.xml
-  mapperLocation: classpath:mybatis/mapper/*.xml
-  typeAliasesPackage: com.xingtan
 
 spring:
   datasource:
-    driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/test1?useUnicode=true&characterEncoding=utf-8
-    user: root
-    password:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xingtan?useUnicode=true&characterEncoding=utf-8&&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: root
+    password: root123

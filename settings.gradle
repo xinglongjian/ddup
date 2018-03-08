@@ -13,4 +13,5 @@ include 'xingtan-ek-client'
 include 'xingtan-ek-server'
 include 'xingtan-account'
 include 'xingtan-common'
+include 'xingtan-account-api'
 
