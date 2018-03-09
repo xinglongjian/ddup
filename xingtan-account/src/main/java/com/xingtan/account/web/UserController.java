@@ -43,7 +43,7 @@ public class UserController {
     @ApiImplicitParam(name = "userName",value = "用户名", required = true, dataType = "String", paramType = "path")
     public BaseResponse getUserByUserName(@PathVariable("userName") String userName) {
         User user= userService.getUserByUserName(userName);
-        return new BaseResponse(HttpStatus.OK, user);
+        return new BaseResponse<User>(HttpStatus.OK, user);
     }
 
 

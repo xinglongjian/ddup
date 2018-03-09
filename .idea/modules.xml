@@ -4,9 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account.iml" group="xingtan-account" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-account-api.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-account-api.iml" group="xingtan-account-api" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-account-api/xingtan-account-api_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-account-api/xingtan-account-api_main.iml" group="xingtan-account-api" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-account-api/xingtan-account-api_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-account-api/xingtan-account-api_test.iml" group="xingtan-account-api" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account_main.iml" group="xingtan-account" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-account/xingtan-account_test.iml" group="xingtan-account" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-admin.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-admin.iml" group="xingtan-admin" />

@@ -1,4 +1,4 @@
-package com.xingtan.account.web;
+package com.xingtan.service.client.web;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestMapping;
