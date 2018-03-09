@@ -9,8 +9,8 @@
 
 rootProject.name = 'xingtan'
 
-include 'xingtan-ek-client'
-include 'xingtan-ek-server'
+include 'xingtan-service-client'
+include 'xingtan-service-server'
 include 'xingtan-account'
 include 'xingtan-common'
 include 'xingtan-account-api'

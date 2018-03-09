@@ -2,7 +2,7 @@ server:
   port: 8762
 spring:
   application:
-    name: ek-client
+    name: service-client
 
 eureka:
   client:

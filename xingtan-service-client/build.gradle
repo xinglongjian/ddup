@@ -1,0 +1,12 @@
+apply plugin: "io.spring.dependency-management"
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.springframework.cloud:spring-cloud-netflix:${springNetflixVersion}'
+    }
+}
+dependencies {
+    compile 'org.springframework.cloud:spring-cloud-starter-eureka:1.4.3.RELEASE'
+}
+archivesBaseName = 'xingtan-service-client'
+
