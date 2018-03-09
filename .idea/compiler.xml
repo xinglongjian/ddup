@@ -9,12 +9,16 @@
       <module name="xingtan-account-api_test" target="1.8" />
       <module name="xingtan-account_main" target="1.8" />
       <module name="xingtan-account_test" target="1.8" />
+      <module name="xingtan-admin_main" target="1.8" />
+      <module name="xingtan-admin_test" target="1.8" />
       <module name="xingtan-common_main" target="1.8" />
       <module name="xingtan-common_test" target="1.8" />
       <module name="xingtan-ek-client_main" target="1.8" />
       <module name="xingtan-ek-client_test" target="1.8" />
       <module name="xingtan-ek-server_main" target="1.8" />
       <module name="xingtan-ek-server_test" target="1.8" />
+      <module name="xingtan-monitor_main" target="1.8" />
+      <module name="xingtan-monitor_test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

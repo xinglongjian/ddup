@@ -1,0 +1,8 @@
+server:
+  port: 8701
+spring:
+  application:
+    name: xingtan-monitor
+monitor:
+  profix:
+    name: com.xingtan.monitor
