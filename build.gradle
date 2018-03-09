@@ -7,9 +7,6 @@
 buildscript {
     ext {
         springBootVersion = '2.0.0.RELEASE'
-        springCloudVersion = 'Finchley.M7'
-        springGradleVersion = '1.0.4.RELEASE'
-        springNetflixVersion = '2.0.0.M7'
     }
     repositories {
         // 优先级
@@ -22,21 +19,37 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
-        classpath("io.spring.gradle:dependency-management-plugin:${springGradleVersion}")
+//        classpath("io.spring.gradle:dependency-management-plugin:${springGradleVersion}")
     }
 
 }
-//所有子项目的通用配置
-subprojects {
+allprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
+    group = 'com.xingtan'
+    version = '1.0.0'
+}
+
+//所有子项目的通用配置
+subprojects {
+
     //apply plugin: 'maven'
     apply plugin: 'org.springframework.boot'
     apply plugin: 'io.spring.dependency-management'
 
-    version = '1.0.0'
+    ext {
+        springCloudVersion = 'Finchley.M7'
+        springGradleVersion = '1.0.4.RELEASE'
+        springNetflixVersion = '2.0.0.M7'
 
+        junitVersion = '4.12'
+        okhttpVersion = '3.4.1'
+        swaggerVersion = '2.8.0'
+        mybatisSpringVersion = '1.3.1'
+        lombokVersion = '1.16.20'
+        mysqlDriverVersion = '6.0.6'
+    }
     // JVM 版本号
     sourceCompatibility = 1.8
     targetCompatibility = 1.8
@@ -46,9 +59,9 @@ subprojects {
 
     dependencyManagement {
         imports {
-            mavenBom 'org.springframework.cloud:spring-cloud-dependencies:Finchley.M7'
-            mavenBom 'org.springframework.cloud:spring-cloud-netflix:2.0.0.M7'
-            mavenBom 'org.springframework.boot:spring-boot-starter-parent:2.0.0.RELEASE'
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+            mavenBom "org.springframework.cloud:spring-cloud-netflix:${springNetflixVersion}"
+            mavenBom "org.springframework.boot:spring-boot-starter-parent:${springBootVersion}"
         }
     }
     repositories {
@@ -66,12 +79,14 @@ subprojects {
     }
 
     dependencies {
-        testCompile 'junit:junit:4.12'
-        compile 'com.squareup.okhttp3:okhttp:3.4.1'
+        testCompile "junit:junit:${junitVersion}"
+        compile "com.squareup.okhttp3:okhttp:${okhttpVersion}"
         compile 'org.springframework.boot:spring-boot-autoconfigure:2.0.0.RC1'
         compile 'org.springframework.boot:spring-boot-starter-web:2.0.0.RC1'
-        compile 'org.springframework.boot:spring-boot-starter-jetty:2.0.0.RELEASE'
-        compile 'org.springframework.boot:spring-boot-devtools:2.0.0.RELEASE'
+        compile "org.springframework.boot:spring-boot-starter-jetty:${springBootVersion}"
+        compile "org.springframework.boot:spring-boot-devtools:${springBootVersion}"
+        compile "io.springfox:springfox-swagger2:${swaggerVersion}"
+        compile "io.springfox:springfox-swagger-ui:${swaggerVersion}"
     }
 
     jar {

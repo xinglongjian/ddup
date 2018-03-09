@@ -21,10 +21,14 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server.iml" group="xingtan-ek-server" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server_main.iml" group="xingtan-ek-server" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-ek-server/xingtan-ek-server_test.iml" group="xingtan-ek-server" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-message.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-message.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-message.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-message.iml" group="xingtan-message" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-message/xingtan-message_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-message/xingtan-message_main.iml" group="xingtan-message" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-message/xingtan-message_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-message/xingtan-message_test.iml" group="xingtan-message" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-monitor.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-monitor.iml" group="xingtan-monitor" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-monitor/xingtan-monitor_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-monitor/xingtan-monitor_main.iml" group="xingtan-monitor" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-monitor/xingtan-monitor_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-monitor/xingtan-monitor_test.iml" group="xingtan-monitor" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan_main.iml" group="xingtan" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan_test.iml" group="xingtan" />
     </modules>
   </component>
 </project>
