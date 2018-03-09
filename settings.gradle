@@ -9,11 +9,12 @@
 
 rootProject.name = 'xingtan'
 
-include 'xingtan-service-client'
-include 'xingtan-service-server'
-include 'xingtan-account'
+include 'xingtan-service-client'//7999
+include 'xingtan-service-server'//8000-8005
+include 'xingtan-account' //8011-8015
 include 'xingtan-common'
 include 'xingtan-monitor'
 include 'xingtan-admin'
 include 'xingtan-message'
+include 'xingtan-protal' //8006-8010
 

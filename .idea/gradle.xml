@@ -15,6 +15,7 @@
             <option value="$PROJECT_DIR$/xingtan-common" />
             <option value="$PROJECT_DIR$/xingtan-message" />
             <option value="$PROJECT_DIR$/xingtan-monitor" />
+            <option value="$PROJECT_DIR$/xingtan-protal" />
             <option value="$PROJECT_DIR$/xingtan-service-client" />
             <option value="$PROJECT_DIR$/xingtan-service-server" />
           </set>

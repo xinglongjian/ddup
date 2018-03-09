@@ -18,6 +18,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-monitor.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-monitor.iml" group="xingtan-monitor" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-monitor/xingtan-monitor_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-monitor/xingtan-monitor_main.iml" group="xingtan-monitor" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-monitor/xingtan-monitor_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-monitor/xingtan-monitor_test.iml" group="xingtan-monitor" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-protal.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-protal.iml" group="xingtan-protal" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-protal/xingtan-protal_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-protal/xingtan-protal_main.iml" group="xingtan-protal" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-protal/xingtan-protal_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-protal/xingtan-protal_test.iml" group="xingtan-protal" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-service-client/xingtan-service-client.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-service-client/xingtan-service-client.iml" group="xingtan-service-client" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-service-client/xingtan-service-client_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-service-client/xingtan-service-client_main.iml" group="xingtan-service-client" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-service-client/xingtan-service-client_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-service-client/xingtan-service-client_test.iml" group="xingtan-service-client" />

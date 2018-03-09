@@ -41,6 +41,7 @@ subprojects {
         springCloudVersion = 'Finchley.M7'
         springGradleVersion = '1.0.4.RELEASE'
         springNetflixVersion = '2.0.0.M7'
+        springStarterFeign = '2.0.0.M2'
 
         junitVersion = '4.12'
         okhttpVersion = '3.4.1'

@@ -1,0 +1,14 @@
+//apply plugin: "io.spring.dependency-management"
+//
+//dependencyManagement {
+//    imports {
+//        mavenBom "org.springframework.cloud:spring-cloud-netflix:${springNetflixVersion}"
+//    }
+//}
+dependencies {
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${springNetflixVersion}"
+    compile "org.springframework.cloud:spring-cloud-starter-feign:${springStarterFeign}"
+    compile project(':xingtan-common')
+}
+mainClassName = 'com.xingtan.protal.web.ProtalApplication'
+archivesBaseName = 'xingtan-protal'

@@ -1,5 +1,5 @@
 server:
-  port: 8763
+  port: 8011
 spring:
   application:
     name: xingtan-account
@@ -7,7 +7,7 @@ spring:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+      defaultZone: http://localhost:8000/eureka/
 
 mybatis:
   mapperLocations: classpath:mybatis/mapper/*.xml
