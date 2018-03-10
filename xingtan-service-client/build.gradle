@@ -1,2 +1,5 @@
+dependencies {
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${springNetflixVersion}"
+}
 archivesBaseName = 'xingtan-service-client'
 mainClassName = 'com.xingtan.service.client.ServiceClientApplication'

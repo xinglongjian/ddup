@@ -7,8 +7,9 @@
 //}
 dependencies {
     compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${springNetflixVersion}"
-    compile "org.springframework.cloud:spring-cloud-starter-feign:${springStarterFeign}"
+    compile "org.springframework.cloud:spring-cloud-starter-feign:${springFeignVersion}"
+    compile "org.springframework.cloud:spring-cloud-starter-zuul:${springZuulVersion}"
     compile project(':xingtan-common')
 }
-mainClassName = 'com.xingtan.protal.web.ProtalApplication'
+mainClassName = 'com.xingtan.protal.ProtalApplication'
 archivesBaseName = 'xingtan-protal'

@@ -1,8 +1,9 @@
 server:
   port: 8011
+
 spring:
   application:
-    name: xingtan-account
+    name:xingtan-account
 
 eureka:
   client:

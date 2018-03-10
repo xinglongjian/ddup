@@ -1,7 +1,7 @@
 package com.xingtan.account.service.impl;
 
-import com.xingtan.account.mapper.UserMapper;
 import com.xingtan.account.entity.User;
+import com.xingtan.account.mapper.UserMapper;
 import com.xingtan.account.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

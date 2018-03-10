@@ -1,13 +1,6 @@
-version 'unspecified'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
-
-repositories {
-    mavenCentral()
-}
-
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${springNetflixVersion}"
+//    compile "de.codecentric:spring-boot-admin-client:1.5.7"
+//    compile "de.codecentric:spring-boot-admin-server-ui:1.5.7"
 }
+archivesBaseName = 'xingtan-admin'
