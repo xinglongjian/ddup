@@ -3,7 +3,12 @@ server:
 
 spring:
   application:
-    name:xingtan-account
+    name: xingtan-account
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/xingtan?useUnicode=true&characterEncoding=utf-8&&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
+    username: root
+    password: root123
 
 eureka:
   client:
@@ -14,9 +19,3 @@ mybatis:
   mapperLocations: classpath:mybatis/mapper/*.xml
   configLocation: classpath:mybatis/mybatis-config.xml
 
-spring:
-  datasource:
-    driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/xingtan?useUnicode=true&characterEncoding=utf-8&&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC&useSSL=false
-    username: root
-    password: root123
