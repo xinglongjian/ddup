@@ -3,14 +3,12 @@ package com.xingtan.account.entity;
 import com.xingtan.common.entity.BaseEntity;
 import com.xingtan.common.entity.IDCardType;
 import com.xingtan.common.entity.UserSexEnum;
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 import java.util.Date;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@ToString
 @EqualsAndHashCode(callSuper = false)
 public class BaseAccount extends BaseEntity {
     /**

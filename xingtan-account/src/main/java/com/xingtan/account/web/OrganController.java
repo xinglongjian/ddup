@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RequestMapping(value = "/student", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/organ", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class OrganController {
 
     @Autowired
