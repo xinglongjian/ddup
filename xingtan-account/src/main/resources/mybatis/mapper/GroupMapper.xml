@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xingtan.account.mapper.OrganMapper" >
-    <resultMap id="OrganMap" type="com.xingtan.account.entity.Organ" >
+<mapper namespace="com.xingtan.account.mapper.GroupMapper" >
+    <resultMap id="GroupMap" type="com.xingtan.account.entity.Group" >
         <id column="id" property="id"/>
         <result column="userName" property="user_name"/>
         <result column="realName" property="real_name"/>
@@ -25,7 +25,6 @@
         <result column="organCode" property="organ_code" />
         <result column="buildYear" property="build_year" />
         <result column="customerTelephone" property="customer_telephone" />
-        <result column="groupId" property="group_id" />
         <result column="gmtCreate" property="gmt_create"/>
         <result column="gmtModified" property="gmt_modified"/>
     </resultMap>
@@ -40,37 +39,37 @@
     gmt_create, gmt_modified]]>
     </sql>
 
-    <select id="getOrganById" parameterType="java.lang.Long" resultMap="OrganMap" >
+    <select id="getGroupById" parameterType="java.lang.Long" resultMap="GroupMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `organ`
         WHERE id = #{id}
     </select>
-    <select id="getOrganByUserName" parameterType="java.lang.String" resultMap="OrganMap" >
+    <select id="getGroupByUserName" parameterType="java.lang.String" resultMap="GroupMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `organ`
         WHERE user_name = #{userName}
     </select>
-    <select id="getOrganByPhone" parameterType="java.lang.String" resultMap="OrganMap" >
+    <select id="getGroupByPhone" parameterType="java.lang.String" resultMap="GroupMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `organ`
         WHERE `telephone` = #{telephone}
     </select>
-    <select id="getOrganByEmail" parameterType="java.lang.String" resultMap="OrganMap" >
+    <select id="getGroupByEmail" parameterType="java.lang.String" resultMap="GroupMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `organ`
         WHERE email = #{email}
     </select>
-    <select id="getOrganByIdCardNo" parameterType="java.lang.String" resultMap="OrganMap" >
+    <select id="getGroupByIdCardNo" parameterType="java.lang.String" resultMap="GroupMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `organ`
         WHERE id_card_no = #{idCardNo}
     </select>
-    <insert id="insertOrgan" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.Organ" >
+    <insert id="insertGroup" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.Group" >
         INSERT INTO
         `organ`
         (user_name, real_name, en_name, sex, birthday, telephone, email, `password`, head_image, id_card_type,
@@ -82,7 +81,7 @@
         #{customerTelephone}, NOW(), NOW())
     </insert>
 
-    <update id="updateOrgan" parameterType="com.xingtan.account.entity.Organ" >
+    <update id="updateGroup" parameterType="com.xingtan.account.entity.Group" >
         UPDATE
         `organ`
         SET
@@ -108,13 +107,12 @@
         <if test="organCode != null">organ_code = #{organCode},</if>
         <if test="buildYear != null">build_year = #{buildYear},</if>
         <if test="customerTelephone != null">customer_telephone = #{customerTelephone},</if>
-        <if test="groupId != null">group_id = #{groupId},</if>
         gmt_modified = now()
         WHERE
         id = #{id}
     </update>
 
-    <delete id="deleteOrgan" parameterType="java.lang.Long" >
+    <delete id="deleteGroup" parameterType="java.lang.Long" >
         DELETE FROM
             `organ`
         WHERE

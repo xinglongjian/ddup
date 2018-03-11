@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingtan.course.mapper.CourseMapper" >
+    <resultMap id="CourseMap" type="com.xingtan.course.entity.Course" >
+        <id column="id" property="id"/>
+        <result column="name" property="name" />
+        <result column="code" property="code" />
+        <result column="courseTypeId" property="course_type_id" />
+        <result column="introduce" property="introduce" />
+        <result column="organId" property="organ_id" />
+        <result column="gmtCreate" property="gmt_create"/>
+        <result column="gmtModified" property="gmt_modified"/>
+    </resultMap>
+
+    <sql id="BASE_COLUMNS" >
+        <![CDATA[id, name, code, course_type_id, introduce, organ_id ]]>
+    </sql>
+    <sql id="ALL_COLUMNS" >
+        <![CDATA[id, name, code, course_type_id, introduce, organ_id, gmt_create, gmt_modified]]>
+    </sql>
+
+    <select id="getCourseById" parameterType="java.lang.Long" resultMap="CourseMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `course`
+        WHERE id = #{id}
+    </select>
+    <select id="getCourseByOrganId" parameterType="java.lang.Long" resultMap="CourseMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `course`
+        WHERE organ_id = #{organ_id}
+    </select>
+
+    <insert id="insertCourse" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.course.entity.Course" >
+        INSERT INTO
+        `course`
+        (name, code, course_type_id, introduce, organ_id, gmt_create, gmt_modified)
+        VALUES
+        (#{name}, #{code}, #{courseTypeId}, #{introduce}, #{organId}, NOW(), NOW())
+    </insert>
+
+    <update id="updateCourse" parameterType="com.xingtan.course.entity.Course" >
+        UPDATE
+        `course`
+        SET
+        <if test="name != null">name = #{name},</if>
+        <if test="code != null">code = #{code},</if>
+        <if test="courseTypeId != null">course_type_id = #{courseTypeId},</if>
+        <if test="introduce != null">introduce = #{introduce},</if>
+        <if test="organId != null">organ_id = #{organId},</if>
+        gmt_modified = now()
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="deleteCourse" parameterType="java.lang.Long" >
+        DELETE FROM
+            `course`
+        WHERE
+            id =#{id}
+    </delete>
+
+</mapper>

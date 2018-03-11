@@ -2,13 +2,15 @@ package com.xingtan.account.entity;
 
 import lombok.*;
 
+/**
+ * 集团
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class Organ extends BaseAccount {
-
+public class Group extends BaseAccount {
     /**
      * 企业/组织名称
      */
@@ -28,10 +30,4 @@ public class Organ extends BaseAccount {
      * 客服电话
      */
     private String customerTelephone;
-
-    /**
-     * 所属集团
-     */
-    private long groupId;
-
 }
