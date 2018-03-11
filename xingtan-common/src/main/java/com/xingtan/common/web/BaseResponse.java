@@ -1,4 +1,4 @@
-package com.xingtan.web;
+package com.xingtan.common.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,6 +7,10 @@ import lombok.ToString;
 
 import java.io.Serializable;
 
+/**
+ *
+ * @param <T>
+ */
 @Data
 @ToString
 @AllArgsConstructor

@@ -1,4 +1,4 @@
-package com.xingtan.web;
+package com.xingtan.common.web;
 
 public enum HttpStatus {
     CONTINUE(100, "Continue"),

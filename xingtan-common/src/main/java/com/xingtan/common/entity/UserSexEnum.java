@@ -1,4 +1,4 @@
-package com.xingtan.account.entity;
+package com.xingtan.common.entity;
 
 public enum UserSexEnum {
     /**
