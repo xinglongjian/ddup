@@ -15,7 +15,7 @@ public interface TeacherMapper {
      * @param id
      * @return
      */
-    Teacher getTeacherById(@Param("id") Long id);
+    Teacher getTeacherById(@Param("id") long id);
 
     /**
      * 通过用户名获取
@@ -68,5 +68,5 @@ public interface TeacherMapper {
      *
      * @param id
      */
-    void deleteTeacher(@Param("id") Long id);
+    void deleteTeacher(@Param("id") long id);
 }

@@ -18,5 +18,5 @@ include 'xingtan-admin'
 include 'xingtan-message'
 include 'xingtan-protal' //8006-8010
 include 'xingtan-material' // 8025-8030
-include 'xingtan-course' //8020-8025
+include 'xingtan-choose' //8020-8025
 

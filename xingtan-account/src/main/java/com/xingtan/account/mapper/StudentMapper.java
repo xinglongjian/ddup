@@ -15,7 +15,7 @@ public interface StudentMapper {
      * @param id
      * @return
      */
-    Student getStudentById(@Param("id") Long id);
+    Student getStudentById(@Param("id") long id);
 
     /**
      * 通过用户名获取
@@ -69,5 +69,5 @@ public interface StudentMapper {
      *
      * @param id
      */
-    void deleteStudent(@Param("id") Long id);
+    void deleteStudent(@Param("id") long id);
 }

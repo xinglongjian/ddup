@@ -11,8 +11,8 @@
       <module name="xingtan-admin_test" target="1.8" />
       <module name="xingtan-common_main" target="1.8" />
       <module name="xingtan-common_test" target="1.8" />
-      <module name="xingtan-course_main" target="1.8" />
-      <module name="xingtan-course_test" target="1.8" />
+      <module name="xingtan-choose_main" target="1.8" />
+      <module name="xingtan-choose_test" target="1.8" />
       <module name="xingtan-material_main" target="1.8" />
       <module name="xingtan-material_test" target="1.8" />
       <module name="xingtan-message_main" target="1.8" />

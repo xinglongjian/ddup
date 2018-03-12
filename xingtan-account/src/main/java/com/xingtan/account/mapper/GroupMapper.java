@@ -15,7 +15,7 @@ public interface GroupMapper {
      * @param id
      * @return
      */
-    Group getGroupById(@Param("id") Long id);
+    Group getGroupById(@Param("id") long id);
 
     /**
      * 通过用户名获取
@@ -68,5 +68,5 @@ public interface GroupMapper {
      *
      * @param id
      */
-    void deleteGroup(@Param("id") Long id);
+    void deleteGroup(@Param("id") long id);
 }

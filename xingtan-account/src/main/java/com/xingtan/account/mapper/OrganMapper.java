@@ -15,7 +15,7 @@ public interface OrganMapper {
      * @param id
      * @return
      */
-    Organ getOrganById(@Param("id") Long id);
+    Organ getOrganById(@Param("id") long id);
 
     /**
      * 通过用户名获取
@@ -68,5 +68,5 @@ public interface OrganMapper {
      *
      * @param id
      */
-    void deleteOrgan(@Param("id") Long id);
+    void deleteOrgan(@Param("id") long id);
 }
