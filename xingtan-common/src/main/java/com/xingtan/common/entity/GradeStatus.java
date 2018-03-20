@@ -3,22 +3,33 @@ package com.xingtan.common.entity;
 /**
  * 班级状态
  */
-public enum ClassesStatus {
+public enum GradeStatus {
 
     /**
      * 未开始报名
      */
-    NOT_START,
+    INITIALIZATION,
     /**
      * 报名进行中
      */
-    START,
+    ENROLL_START,
     /**
      * 已满额（结束时间未到，但已满额）
      */
-    FULL,
+    ENROLL_FULL,
     /**
      * 已结束（结束时间已到，不一定满额）
      */
-    END
+    ENROLL_END,
+
+    /**
+     * 课程进行中
+     */
+    GRADE_START,
+
+    /**
+     * 结束
+     */
+    GRADE_END
+
 }

@@ -1,7 +1,7 @@
 package com.xingtan.choose.entity;
 
 import com.xingtan.common.entity.BaseEntity;
-import com.xingtan.common.entity.ClassesStatus;
+import com.xingtan.common.entity.GradeStatus;
 import lombok.*;
 
 import java.util.Date;
@@ -33,7 +33,7 @@ public class Classes extends BaseEntity {
     /**
      * 班级状态
      */
-    private ClassesStatus status = ClassesStatus.NOT_START;
+    private GradeStatus status = GradeStatus.NOT_START;
 
     /**
      * 学年

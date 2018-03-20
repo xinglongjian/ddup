@@ -56,13 +56,26 @@ CREATE TABLE IF NOT EXISTS `organ` (
   KEY `idx_province_city_district`(`province`,`city`,`district`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '学校表';
 
-CREATE TABLE IF NOT EXISTS `teacher_organ_relation` (
+CREATE TABLE IF NOT EXISTS `teacher_school_relation` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `teacher_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '教师ID',
-  `organ_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '机构ID',
+  `school_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '学校ID',
+  `type` VARCHAR(255) NOT NULL DEFAULT 'OTHER' COMMENT '管理员类型',
   `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
   KEY `idx_teacher_id`(`teacher_id`) USING BTREE,
-  KEY `idx_organ_id`(`organ_id`) USING BTREE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '老师机构关系表';
+  KEY `idx_school_id`(`school_id`) USING BTREE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '老师学校关系表';
+
+CREATE TABLE IF NOT EXISTS `student_parent_relation` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `student_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '学生ID',
+  `parent_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '家长ID',
+  `relation` VARCHAR(255) NOT NULL DEFAULT 'MOTHER' COMMENT '关系类型',
+  `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
+  `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_student_id`(`student_id`) USING BTREE,
+  KEY `idx_parent_id`(`parent_id`) USING BTREE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '学生家长关系表';
