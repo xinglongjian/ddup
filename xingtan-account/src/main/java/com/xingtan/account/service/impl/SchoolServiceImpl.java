@@ -1,7 +1,9 @@
 package com.xingtan.account.service.impl;
 
 import com.xingtan.account.entity.School;
+import com.xingtan.account.entity.TeacherSchoolRelation;
 import com.xingtan.account.mapper.SchoolMapper;
+import com.xingtan.account.mapper.TeacherSchoolRelationMapper;
 import com.xingtan.account.service.SchoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class SchoolServiceImpl implements SchoolService {
 
     @Autowired
     private SchoolMapper schoolMapper;
+
+    @Autowired
+    private TeacherSchoolRelationMapper teacherSchoolRelationMapper;
 
     @Override
     public School getSchoolById(long id) {
@@ -38,5 +43,21 @@ public class SchoolServiceImpl implements SchoolService {
     @Override
     public void deleteSchool(long id) {
         schoolMapper.deleteSchool(id);
+    }
+
+    @Override
+    public long insertTeacherSchoolRelation(TeacherSchoolRelation relation) {
+        teacherSchoolRelationMapper.insertRelation(relation);
+        return relation.getId();
+    }
+
+    @Override
+    public void updateTeacherSchoolRelation(TeacherSchoolRelation relation) {
+        teacherSchoolRelationMapper.updateRelation(relation);
+    }
+
+    @Override
+    public void deleteTeacherSchoolRelation(long id) {
+        teacherSchoolRelationMapper.deleteRelation(id);
     }
 }

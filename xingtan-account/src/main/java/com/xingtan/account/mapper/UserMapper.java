@@ -4,6 +4,8 @@ import com.xingtan.account.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.List;
+
 /**
  *
  */
@@ -16,6 +18,13 @@ public interface UserMapper {
      * @return
      */
     User getUserById(@Param("id") long id);
+
+    /**
+     * 批量获取
+     * @param ids
+     * @return
+     */
+    User getUsersByIds(@Param("ids") List<Long> ids);
 
     /**
      * 通过用户名获取

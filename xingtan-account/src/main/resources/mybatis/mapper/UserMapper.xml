@@ -40,6 +40,15 @@
         FROM `user`
         WHERE id = #{id}
     </select>
+    <select id="getUsersByIds" parameterType="java.lang.Long" resultMap="UserMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `user`
+        WHERE id in
+        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
     <select id="getStudentByUserName" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />

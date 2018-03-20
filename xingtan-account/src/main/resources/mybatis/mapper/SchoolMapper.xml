@@ -44,7 +44,7 @@
         FROM `school`
         WHERE name like #{name}
     </select>
-    <insert id="insertOrgan" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.Organ" >
+    <insert id="insertSchool" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.School" >
         INSERT INTO
         `school`
         (id, `name`, en_name, `code`, build_year, head_image, telephone, parent_id, created_user_id, province, city, district,
@@ -54,7 +54,7 @@
         #{district}, #{address}, #{zipCode}, #{type}, #{introduce},#{enabled}, NOW(), NOW())
     </insert>
 
-    <update id="updateOrgan" parameterType="com.xingtan.account.entity.Organ" >
+    <update id="updateSchool" parameterType="com.xingtan.account.entity.School" >
         UPDATE
         `school`
         SET

@@ -1,6 +1,7 @@
 package com.xingtan.account.service;
 
 import com.xingtan.account.entity.School;
+import com.xingtan.account.entity.TeacherSchoolRelation;
 
 import java.util.List;
 
@@ -10,4 +11,5 @@ public interface SchoolService {
     long insertSchool(School school);
     void updateSchool(School school);
     void deleteSchool(long id);
+
 }

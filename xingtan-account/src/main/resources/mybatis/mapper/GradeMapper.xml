@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingtan.account.mapper.GradeMapper" >
+    <resultMap id="GradeMap" type="com.xingtan.account.entity.Grade" >
+        <id column="id" property="id"/>
+        <result column="schoolId" property="school_id"/>
+        <result column="name" property="name"/>
+        <result column="year" property="year"/>
+        <result column="createdUserId" property="created_user_id" />
+        <result column="status" property="status" />
+        <result column="gmtCreate" property="gmt_create"/>
+        <result column="gmtModified" property="gmt_modified"/>
+    </resultMap>
+
+    <sql id="BASE_COLUMNS" >
+        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`]]>
+    </sql>
+    <sql id="ALL_COLUMNS" >
+        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`, gmt_create, gmt_modified]]>
+    </sql>
+
+    <select id="getGradeById" parameterType="java.lang.Long" resultMap="GradeMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `grade`
+        WHERE id = #{id}
+    </select>
+    <select id="getGradesBySchoolId" parameterType="java.lang.Long" resultMap="GradeMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `grade`
+        WHERE school_id = #{schoolId}
+    </select>
+    <select id="getGradeByName" parameterType="java.lang.String" resultMap="GradeMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `grade`
+        WHERE name like #{name}
+    </select>
+    <insert id="insertGrade" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.Grade" >
+        INSERT INTO
+        `grade`
+        (school_id, `name`, `year`, created_user_id, `status`, gmt_create, gmt_modified)
+        VALUES
+        (#{schoolId}, #{name}, #{year}, #{createdUserId}, #{status}, NOW(), NOW())
+    </insert>
+
+    <update id="updateGrade" parameterType="com.xingtan.account.entity.Grade" >
+        UPDATE
+        `grade`
+        SET
+        <if test="schoolId != null">school_id = #{schoolId},</if>
+        <if test="name != null">name = #{name},</if>
+        <if test="year != null">year = #{year},</if>
+        <if test="createdUserId != null">created_user_id = #{createdUserId},</if>
+        <if test="status != null">status = #{status},</if>
+        gmt_modified = now()
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="deleteGrade" parameterType="java.lang.Long" >
+        DELETE FROM
+            `grade`
+        WHERE
+            id =#{id}
+    </delete>
+
+</mapper>
