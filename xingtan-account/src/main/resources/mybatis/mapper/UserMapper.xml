@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xingtan.account.mapper.StudentMapper" >
-    <resultMap id="StudentMap" type="com.xingtan.account.entity.Student" >
+<mapper namespace="com.xingtan.account.mapper.UserMapper" >
+    <resultMap id="UserMap" type="com.xingtan.account.entity.User" >
         <id column="id" property="id"/>
         <result column="userName" property="user_name"/>
         <result column="realName" property="real_name"/>
@@ -34,39 +34,39 @@
     id_card_no, province, city, district, address, zip_code, introduce, enabled, gmt_create, gmt_modified]]>
     </sql>
 
-    <select id="getStudentById" parameterType="java.lang.Long" resultMap="StudentMap" >
+    <select id="getUserById" parameterType="java.lang.Long" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
-        FROM `student`
+        FROM `user`
         WHERE id = #{id}
     </select>
-    <select id="getStudentByUserName" parameterType="java.lang.String" resultMap="StudentMap" >
+    <select id="getStudentByUserName" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
-        FROM `student`
+        FROM `user`
         WHERE user_name = #{userName}
     </select>
-    <select id="getStudentByPhone" parameterType="java.lang.String" resultMap="StudentMap" >
+    <select id="getStudentByPhone" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
-        FROM `student`
+        FROM `user`
         WHERE `telephone` = #{telephone}
     </select>
-    <select id="getStudentByEmail" parameterType="java.lang.String" resultMap="StudentMap" >
+    <select id="getStudentByEmail" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
-        FROM `student`
+        FROM `user`
         WHERE email = #{email}
     </select>
-    <select id="getStudentByIdCardNo" parameterType="java.lang.String" resultMap="StudentMap" >
+    <select id="getStudentByIdCardNo" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
-        FROM `student`
+        FROM `user`
         WHERE id_card_no = #{idCardNo}
     </select>
-    <insert id="insertStudent" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.Student" >
+    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.User" >
         INSERT INTO
-        `student`
+        `user`
         (user_name, real_name, en_name, sex, birthday, telephone, email, `password`, head_image, id_card_type,
          id_card_no, province, city, district, address, zip_code, introduce, gmt_create, gmt_modified)
         VALUES
@@ -74,9 +74,9 @@
         #{idCardNo}, #{province}, #{city}, #{district}, #{address}, #{zipCode}, #{introduce}, NOW(), NOW())
     </insert>
 
-    <update id="updateStudent" parameterType="com.xingtan.account.entity.Student" >
+    <update id="updateUser" parameterType="com.xingtan.account.entity.User" >
         UPDATE
-        `student`
+        `user`
         SET
         <if test="userName != null">user_name = #{userName},</if>
         <if test="realName != null">real_name = #{realName},</if>
@@ -101,9 +101,9 @@
         id = #{id}
     </update>
 
-    <delete id="deleteStudent" parameterType="java.lang.Long" >
+    <delete id="deleteUser" parameterType="java.lang.Long" >
         DELETE FROM
-        `student`
+        `user`
         WHERE
         id =#{id}
     </delete>

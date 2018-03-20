@@ -1,7 +1,7 @@
 package com.xingtan.account.web;
 
-import com.xingtan.account.entity.Student;
-import com.xingtan.account.service.StudentService;
+import com.xingtan.account.entity.User;
+import com.xingtan.account.service.UserService;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import io.swagger.annotations.*;
@@ -13,10 +13,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @Slf4j
 @RequestMapping(value = "/student", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class StudentController {
+public class UserController {
 
     @Autowired
-    private StudentService studentService;
+    private UserService userService;
 
     @GetMapping("/{userName}")
     @ApiOperation(value = "通过用户名获取学生", notes = "通过用户名获取学生", httpMethod = "GET")
@@ -24,37 +24,37 @@ public class StudentController {
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse getStudentByUserName(@PathVariable("userName") String userName) {
-        Student student = null;
+    public BaseResponse getUserByUserName(@PathVariable("userName") String userName) {
+        User student = null;
         try {
-            student = studentService.getStudentByUserName(userName);
+            student = userService.getUserByUserName(userName);
         } catch (Exception e) {
-            return new BaseResponse<Student>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
-        return new BaseResponse<Student>(HttpStatus.OK, student);
+        return new BaseResponse<User>(HttpStatus.OK, student);
     }
 
     @PostMapping("/add")
-    @ApiOperation(value = "添加学生", notes = "添加学生", httpMethod = "POST")
+    @ApiOperation(value = "添加用户", notes = "添加用户", httpMethod = "POST")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user", value = "用户", required = true, dataType = "Student", paramType = "body")
+            @ApiImplicitParam(name = "user", value = "用户", required = true, dataType = "User", paramType = "body")
     })
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_BAD_REQUEST, message = "参数不全"),
             @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse addStudent(@RequestBody Student student) {
+    public BaseResponse addUser(@RequestBody User student) {
         if (student.getEmail() == null && student.getTelephone() == null && student.getUserName() == null) {
-            return new BaseResponse<Student>(HttpStatus.BAD_REQUEST, "用户名、手机号、邮箱至少有一个",
+            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "用户名、手机号、邮箱至少有一个",
                     null);
         }
         try {
-            studentService.insertStudent(student);
+            userService.insertUser(student);
         } catch (Exception e) {
-            return new BaseResponse<Student>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
-        return new BaseResponse<Student>(HttpStatus.OK, student);
+        return new BaseResponse<User>(HttpStatus.OK, student);
     }
 
 

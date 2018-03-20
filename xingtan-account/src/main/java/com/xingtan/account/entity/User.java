@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
-public class BaseAccount extends BaseEntity {
+public class User extends BaseEntity {
     /**
      * 用户名
      */

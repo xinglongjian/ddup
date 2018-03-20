@@ -1,6 +1,6 @@
 package com.xingtan.account.mapper;
 
-import com.xingtan.account.entity.Group;
+import com.xingtan.account.entity.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -8,14 +8,14 @@ import org.apache.ibatis.annotations.Param;
  *
  */
 @Mapper
-public interface GroupMapper {
+public interface UserMapper {
     /**
      * 通过ID获取
      *
      * @param id
      * @return
      */
-    Group getGroupById(@Param("id") long id);
+    User getUserById(@Param("id") long id);
 
     /**
      * 通过用户名获取
@@ -23,7 +23,7 @@ public interface GroupMapper {
      * @param userName
      * @return
      */
-    Group getGroupByUserName(@Param("userName") String userName);
+    User getUserByUserName(@Param("userName") String userName);
 
     /**
      * 通过telephone获取
@@ -31,7 +31,7 @@ public interface GroupMapper {
      * @param telephone
      * @return
      */
-    Group getGroupByPhone(@Param("telephone") String telephone);
+    User getUserByPhone(@Param("telephone") String telephone);
 
     /**
      * 通过email获取
@@ -39,7 +39,7 @@ public interface GroupMapper {
      * @param email
      * @return
      */
-    Group getGroupByEmail(@Param("email") String email);
+    User getUserByEmail(@Param("email") String email);
 
     /**
      * 通过idCardNo获取
@@ -47,26 +47,27 @@ public interface GroupMapper {
      * @param idCardNo
      * @return
      */
-    Group getGroupByIdCardNo(@Param("idCardNo") String idCardNo);
+    User getUserByIdCardNo(@Param("idCardNo") String idCardNo);
 
     /**
      * 插入
      *
-     * @param group
+     * @param student
+     * @return new Id
      */
-    void insertGroup(Group group);
+    long insertUser(User student);
 
     /**
      * 修改
      *
-     * @param group
+     * @param student
      */
-    void updateGroup(Group group);
+    void updateUser(User student);
 
     /**
      * 删除
      *
      * @param id
      */
-    void deleteGroup(@Param("id") long id);
+    void deleteUser(@Param("id") long id);
 }
