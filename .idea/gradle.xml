@@ -12,14 +12,15 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/xingtan-account" />
             <option value="$PROJECT_DIR$/xingtan-admin" />
-            <option value="$PROJECT_DIR$/xingtan-common" />
             <option value="$PROJECT_DIR$/xingtan-choose" />
+            <option value="$PROJECT_DIR$/xingtan-common" />
             <option value="$PROJECT_DIR$/xingtan-material" />
             <option value="$PROJECT_DIR$/xingtan-message" />
             <option value="$PROJECT_DIR$/xingtan-monitor" />
             <option value="$PROJECT_DIR$/xingtan-protal" />
             <option value="$PROJECT_DIR$/xingtan-service-client" />
             <option value="$PROJECT_DIR$/xingtan-service-server" />
+            <option value="$PROJECT_DIR$/xingtan-task" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />

@@ -1,0 +1,9 @@
+dependencies {
+    compile "org.springframework.cloud:spring-cloud-starter-netflix-eureka-client:${springNetflixVersion}"
+    compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisSpringVersion}"
+    compile "org.projectlombok:lombok:${lombokVersion}"
+    compile "mysql:mysql-connector-java:${mysqlDriverVersion}"
+    compile project(':xingtan-common')
+}
+mainClassName = 'com.xingtan.task.TaskApplication'
+archivesBaseName = 'xingtan-task'

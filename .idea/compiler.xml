@@ -9,10 +9,10 @@
       <module name="xingtan-account_test" target="1.8" />
       <module name="xingtan-admin_main" target="1.8" />
       <module name="xingtan-admin_test" target="1.8" />
-      <module name="xingtan-common_main" target="1.8" />
-      <module name="xingtan-common_test" target="1.8" />
       <module name="xingtan-choose_main" target="1.8" />
       <module name="xingtan-choose_test" target="1.8" />
+      <module name="xingtan-common_main" target="1.8" />
+      <module name="xingtan-common_test" target="1.8" />
       <module name="xingtan-material_main" target="1.8" />
       <module name="xingtan-material_test" target="1.8" />
       <module name="xingtan-message_main" target="1.8" />
@@ -25,6 +25,8 @@
       <module name="xingtan-service-client_test" target="1.8" />
       <module name="xingtan-service-server_main" target="1.8" />
       <module name="xingtan-service-server_test" target="1.8" />
+      <module name="xingtan-task_main" target="1.8" />
+      <module name="xingtan-task_test" target="1.8" />
       <module name="xingtan_main" target="1.8" />
       <module name="xingtan_test" target="1.8" />
     </bytecodeTargetLevel>

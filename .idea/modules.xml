@@ -34,6 +34,9 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-service-server/xingtan-service-server.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-service-server/xingtan-service-server.iml" group="xingtan-service-server" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-service-server/xingtan-service-server_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-service-server/xingtan-service-server_main.iml" group="xingtan-service-server" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-service-server/xingtan-service-server_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-service-server/xingtan-service-server_test.iml" group="xingtan-service-server" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-task.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-task.iml" group="xingtan-task" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-task/xingtan-task_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-task/xingtan-task_main.iml" group="xingtan-task" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-task/xingtan-task_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-task/xingtan-task_test.iml" group="xingtan-task" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan_main.iml" group="xingtan" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan_test.iml" group="xingtan" />
     </modules>

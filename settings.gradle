@@ -17,6 +17,7 @@ include 'xingtan-monitor'
 include 'xingtan-admin'
 include 'xingtan-message'
 include 'xingtan-protal' //8006-8010
-include 'xingtan-material' // 8025-8030
-include 'xingtan-choose' //8020-8025
+include 'xingtan-material' // 8026-8030
+include 'xingtan-choose' //8021-8025
+include 'xingtan-task'  //8031-8035
 
