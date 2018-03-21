@@ -29,6 +29,8 @@
       <module name="xingtan-service-client_test" target="1.8" />
       <module name="xingtan-service-server_main" target="1.8" />
       <module name="xingtan-service-server_test" target="1.8" />
+      <module name="xingtan-survey_main" target="1.8" />
+      <module name="xingtan-survey_test" target="1.8" />
       <module name="xingtan-task_main" target="1.8" />
       <module name="xingtan-task_test" target="1.8" />
       <module name="xingtan_main" target="1.8" />
