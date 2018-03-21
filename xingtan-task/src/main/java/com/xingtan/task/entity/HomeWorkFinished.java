@@ -19,6 +19,4 @@ public class HomeWorkFinished extends BaseEntity {
      */
     private long submitUserId;
 
-    
-
 }

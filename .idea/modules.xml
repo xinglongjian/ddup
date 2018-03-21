@@ -11,11 +11,20 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-admin/xingtan-admin_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-admin/xingtan-admin_test.iml" group="xingtan-admin" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose.iml" group="xingtan-choose" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-choose.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-choose.iml" group="xingtan-choose" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose.iml" group="xingtan-choose" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose_main.iml" group="xingtan-choose" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose_main.iml" group="xingtan-choose" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose_test.iml" group="xingtan-choose" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-choose/xingtan-choose_test.iml" group="xingtan-choose" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common.iml" group="xingtan-common" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common_main.iml" group="xingtan-common" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-common/xingtan-common_test.iml" group="xingtan-common" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-customer.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-customer.iml" group="xingtan-customer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-customer/xingtan-customer_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-customer/xingtan-customer_main.iml" group="xingtan-customer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-customer/xingtan-customer_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-customer/xingtan-customer_test.iml" group="xingtan-customer" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-habit.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-habit.iml" group="xingtan-habit" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-habit/xingtan-habit_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-habit/xingtan-habit_main.iml" group="xingtan-habit" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-habit/xingtan-habit_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-habit/xingtan-habit_test.iml" group="xingtan-habit" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-material.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-material.iml" group="xingtan-material" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-material/xingtan-material_main.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-material/xingtan-material_main.iml" group="xingtan-material" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/xingtan-material/xingtan-material_test.iml" filepath="$PROJECT_DIR$/.idea/modules/xingtan-material/xingtan-material_test.iml" group="xingtan-material" />
