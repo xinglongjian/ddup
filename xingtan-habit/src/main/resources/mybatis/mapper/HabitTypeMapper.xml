@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingtan.habit.mapper.HabitTypeMapper" >
+    <resultMap id="HabitTypeMap" type="com.xingtan.habit.entity.HabitType" >
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="description" property="description" />
+        <result column="gmtCreate" property="gmt_create"/>
+        <result column="gmtModified" property="gmt_modified"/>
+    </resultMap>
+
+    <sql id="BASE_COLUMNS" >
+        <![CDATA[id, `name`, `code`, description]]>
+    </sql>
+    <sql id="ALL_COLUMNS" >
+        <![CDATA[id, `name`, `code`, description, gmt_create, gmt_modified]]>
+    </sql>
+
+    <select id="getAll" resultMap="HabitTypeMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `habit_type`
+    </select>
+
+    <select id="getHabitTypeById" parameterType="java.lang.Long" resultMap="HabitTypeMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `habit_type`
+        WHERE id = #{id}
+    </select>
+    <insert id="insertHabitType" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.HabitType" >
+        INSERT INTO
+        `habit_type`
+        (`name`, `code`, `description`, gmt_create, gmt_modified)
+        VALUES
+        (#{name}, #{code}, #{description}, NOW(), NOW())
+    </insert>
+
+    <update id="updateHabitType" parameterType="com.xingtan.habit.entity.HabitType" >
+        UPDATE
+        `habit_type`
+        SET
+        <if test="name != null">name = #{name},</if>
+        <if test="code != null">code = #{code},</if>
+        <if test="description != null">description = #{description},</if>
+        gmt_modified = now()
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="deleteHabitType" parameterType="java.lang.Long" >
+        DELETE FROM
+            `habit_type`
+        WHERE
+            id =#{id}
+    </delete>
+
+</mapper>

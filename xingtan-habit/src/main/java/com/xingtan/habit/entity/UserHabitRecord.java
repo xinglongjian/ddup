@@ -11,11 +11,11 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class StudentHabitRecord extends BaseEntity {
+public class UserHabitRecord extends BaseEntity {
     /**
-     * 学生ID
+     * 用户ID（）
      */
-    private long studentId;
+    private long userId;
     /**
      * 习惯ID
      */

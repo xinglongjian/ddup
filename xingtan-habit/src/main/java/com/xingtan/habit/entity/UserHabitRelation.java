@@ -11,15 +11,20 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
-public class StudentHabitRelation extends BaseEntity {
+public class UserHabitRelation extends BaseEntity {
 
     /**
-     * 学生ID
+     * 用户ID
      */
-    private long studentId;
+    private long userId;
 
     /**
      * 习惯ID
      */
     private long habitId;
+
+    /**
+     * 谁添加的
+     */
+    private long createdUserId;
 }

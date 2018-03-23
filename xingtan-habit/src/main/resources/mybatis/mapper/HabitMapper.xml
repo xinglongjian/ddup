@@ -1,67 +1,66 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xingtan.habit.mapper.GradeMapper" >
-    <resultMap id="GradeMap" type="com.xingtan.account.entity.Grade" >
+<mapper namespace="com.xingtan.habit.mapper.HabitMapper" >
+    <resultMap id="HabitMap" type="com.xingtan.habit.entity.Habit" >
         <id column="id" property="id"/>
-        <result column="schoolId" property="school_id"/>
         <result column="name" property="name"/>
-        <result column="year" property="year"/>
-        <result column="createdUserId" property="created_user_id" />
-        <result column="status" property="status" />
+        <result column="code" property="code"/>
+        <result column="habitTypeId" property="habit_type_id" />
+        <result column="description" property="description" />
         <result column="gmtCreate" property="gmt_create"/>
         <result column="gmtModified" property="gmt_modified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`]]>
+        <![CDATA[id, `name`, `code`, habit_type_id, description]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`, gmt_create, gmt_modified]]>
+        <![CDATA[id, `name`, `code`, habit_type_id, description, gmt_create, gmt_modified]]>
     </sql>
 
-    <select id="getGradeById" parameterType="java.lang.Long" resultMap="GradeMap" >
+    <select id="getAll" resultMap="HabitMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
-        FROM `grade`
+        FROM `habit`
+    </select>
+
+    <select id="getHabitById" parameterType="java.lang.Long" resultMap="HabitMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `habit`
         WHERE id = #{id}
     </select>
-    <select id="getGradesBySchoolId" parameterType="java.lang.Long" resultMap="GradeMap" >
+    <select id="getHabitByTypeId" parameterType="java.lang.Long" resultMap="HabitMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
-        FROM `grade`
-        WHERE school_id = #{schoolId}
+        FROM `habit`
+        WHERE habit_type_id = #{habitTypeId}
     </select>
-    <select id="getGradeByName" parameterType="java.lang.String" resultMap="GradeMap" >
-        SELECT
-        <include refid="ALL_COLUMNS" />
-        FROM `grade`
-        WHERE name like #{name}
-    </select>
-    <insert id="insertGrade" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.Grade" >
+
+    <insert id="insertHabit" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.Habit" >
         INSERT INTO
-        `grade`
-        (school_id, `name`, `year`, created_user_id, `status`, gmt_create, gmt_modified)
+        `habit`
+        (`name`, `code`, habit_type_id, `description`, gmt_create, gmt_modified)
         VALUES
-        (#{schoolId}, #{name}, #{year}, #{createdUserId}, #{status}, NOW(), NOW())
+        (#{name}, #{code}, #{habitTypeId}, #{description}, NOW(), NOW())
     </insert>
 
-    <update id="updateGrade" parameterType="com.xingtan.account.entity.Grade" >
+    <update id="updateHabit" parameterType="com.xingtan.habit.entity.Habit" >
         UPDATE
-        `grade`
+        `habit`
         SET
-        <if test="schoolId != null">school_id = #{schoolId},</if>
         <if test="name != null">name = #{name},</if>
-        <if test="year != null">year = #{year},</if>
-        <if test="createdUserId != null">created_user_id = #{createdUserId},</if>
-        <if test="status != null">status = #{status},</if>
+        <if test="code != null">code = #{code},</if>
+        <if test="habitTypeId != null">habit_type_id = #{habitTypeId},</if>
+        <if test="description != null">description = #{description},</if>
         gmt_modified = now()
         WHERE
         id = #{id}
     </update>
 
-    <delete id="deleteGrade" parameterType="java.lang.Long" >
+    <delete id="deleteHabit" parameterType="java.lang.Long" >
         DELETE FROM
-            `grade`
+            `habit`
         WHERE
             id =#{id}
     </delete>
