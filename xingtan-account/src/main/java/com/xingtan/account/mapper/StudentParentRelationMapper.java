@@ -1,10 +1,12 @@
 package com.xingtan.account.mapper;
 
 import com.xingtan.account.entity.StudentParentRelation;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
+@Mapper
 public interface StudentParentRelationMapper {
     
     StudentParentRelation getRelationById(@Param("id") long id);

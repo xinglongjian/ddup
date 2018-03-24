@@ -24,7 +24,7 @@ public interface UserMapper {
      * @param ids
      * @return
      */
-    User getUsersByIds(@Param("ids") List<Long> ids);
+    List<User> getUsersByIds(@Param("ids") List<Long> ids);
 
     /**
      * 通过用户名获取

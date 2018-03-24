@@ -20,7 +20,7 @@ include 'xingtan-protal' //8006-8010
 include 'xingtan-material' // 8026-8030
 include 'xingtan-choose' //8021-8025
 include 'xingtan-task'  //8031-8035
-include 'xingtan-habit'
+include 'xingtan-habit' //8036-8040
 include 'xingtan-customer'
 include 'xingtan-survey'
 

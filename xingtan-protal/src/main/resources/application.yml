@@ -14,15 +14,12 @@ zuul:
     account:
       path: /account/**
       serviceId: xingtan-account
-    admin:
-      path: /admin/**
-      serviceId: xingtan-admin
-    account:
+    customer:
       path: /customer/**
       serviceId: xingtan-customer
-    account:
+    habit:
       path: /habit/**
       serviceId: xingtan-habit
-    account:
+    survey:
       path: /survey/**
       serviceId: xingtan-survey

@@ -6,6 +6,8 @@ import com.xingtan.account.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -15,6 +17,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(long id) {
         return userMapper.getUserById(id);
+    }
+
+    @Override
+    public List<User> getUsersByIds(List<Long> ids) {
+        return userMapper.getUsersByIds(ids);
     }
 
     @Override

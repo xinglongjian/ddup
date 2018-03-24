@@ -6,13 +6,14 @@ import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RequestMapping(value = "/student", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/user", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UserController {
 
     @Autowired
@@ -25,13 +26,19 @@ public class UserController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
     public BaseResponse getUserByUserName(@PathVariable("userName") String userName) {
-        User student = null;
+        if(StringUtils.isEmpty(userName)) {
+            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "userName is not exist", null);
+        }
+        User user = null;
         try {
-            student = userService.getUserByUserName(userName);
+            user = userService.getUserByUserName(userName);
         } catch (Exception e) {
             return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
-        return new BaseResponse<User>(HttpStatus.OK, student);
+        if(user == null) {
+            return new BaseResponse<User>(HttpStatus.OK, "no data", user);
+        }
+        return new BaseResponse<User>(HttpStatus.OK, user);
     }
 
     @PostMapping("/add")
@@ -44,17 +51,17 @@ public class UserController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse addUser(@RequestBody User student) {
-        if (student.getEmail() == null && student.getTelephone() == null && student.getUserName() == null) {
+    public BaseResponse addUser(@RequestBody User user) {
+        if (user.getEmail() == null && user.getTelephone() == null && user.getUserName() == null) {
             return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "用户名、手机号、邮箱至少有一个",
                     null);
         }
         try {
-            userService.insertUser(student);
+            userService.insertUser(user);
         } catch (Exception e) {
             return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
-        return new BaseResponse<User>(HttpStatus.OK, student);
+        return new BaseResponse<User>(HttpStatus.OK, user);
     }
 
 

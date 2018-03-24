@@ -43,6 +43,7 @@ subprojects {
         springNetflixVersion = '2.0.0.M7'
         springFeignVersion = '2.0.0.M2'
         springZuulVersion = '2.0.0.M2'
+        springSleuthVersion = '2.0.0.M7'
 
         junitVersion = '4.12'
         okhttpVersion = '3.4.1'

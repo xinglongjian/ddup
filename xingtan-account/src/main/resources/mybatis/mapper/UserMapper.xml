@@ -49,25 +49,25 @@
             #{item}
         </foreach>
     </select>
-    <select id="getStudentByUserName" parameterType="java.lang.String" resultMap="UserMap" >
+    <select id="getUserByUserName" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `user`
         WHERE user_name = #{userName}
     </select>
-    <select id="getStudentByPhone" parameterType="java.lang.String" resultMap="UserMap" >
+    <select id="getUserByPhone" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `user`
         WHERE `telephone` = #{telephone}
     </select>
-    <select id="getStudentByEmail" parameterType="java.lang.String" resultMap="UserMap" >
+    <select id="getUserByEmail" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `user`
         WHERE email = #{email}
     </select>
-    <select id="getStudentByIdCardNo" parameterType="java.lang.String" resultMap="UserMap" >
+    <select id="getUserByIdCardNo" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `user`
