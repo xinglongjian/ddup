@@ -4,3 +4,17 @@ dependencies {
 archivesBaseName = 'xingtan-service-server'
 mainClassName = 'com.xingtan.service.ServiceServerApplication'
 
+jar {
+    manifest {
+        attributes(
+                "Manifest-Version": 1.0,
+                'Main-Class': 'com.xingtan.service.ServiceServerApplication'
+        )
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    into('assets') {
+        from 'assets'
+    }
+}

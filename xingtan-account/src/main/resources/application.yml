@@ -18,4 +18,5 @@ eureka:
 mybatis:
   mapperLocations: classpath:mybatis/mapper/*.xml
   configLocation: classpath:mybatis/mybatis-config.xml
-
+logging:
+  config: classpath:loggback.xml

@@ -23,3 +23,5 @@ zuul:
     survey:
       path: /survey/**
       serviceId: xingtan-survey
+logging:
+  config: classpath:loggback.xml

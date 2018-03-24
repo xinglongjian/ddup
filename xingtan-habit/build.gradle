@@ -7,3 +7,18 @@ dependencies {
 }
 mainClassName = 'com.xingtan.habit.HabitApplication'
 archivesBaseName = 'xingtan-habit'
+
+jar {
+    manifest {
+        attributes(
+                "Manifest-Version": 1.0,
+                'Main-Class': 'com.xingtan.habit.HabitApplication'
+        )
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    into('assets') {
+        from 'assets'
+    }
+}

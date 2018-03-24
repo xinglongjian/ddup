@@ -33,7 +33,7 @@ public class Classes extends BaseEntity {
     /**
      * 班级状态
      */
-    private GradeStatus status = GradeStatus.NOT_START;
+    private GradeStatus status = GradeStatus.INITIALIZATION;
 
     /**
      * 学年

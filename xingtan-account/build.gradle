@@ -7,3 +7,18 @@ dependencies {
 }
 mainClassName = 'com.xingtan.account.AccountApplication'
 archivesBaseName = 'xingtan-account'
+
+jar {
+    manifest {
+        attributes(
+                "Manifest-Version": 1.0,
+                'Main-Class': 'com.xingtan.account.AccountApplication'
+        )
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    into('assets') {
+        from 'assets'
+    }
+}
