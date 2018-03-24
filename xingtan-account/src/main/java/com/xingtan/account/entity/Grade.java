@@ -37,6 +37,6 @@ public class Grade extends BaseEntity {
     /**
      * 班级状态
      */
-    private GradeStatus status;
+    private GradeStatus status = GradeStatus.INITIALIZATION;
 
 }
