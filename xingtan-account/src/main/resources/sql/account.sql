@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS `teacher_grade_relation` (
   `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
-  KEY `idx_student_id`(`student_id`) USING BTREE,
+  KEY `idx_teacher_id`(`teacher_id`) USING BTREE,
   KEY `idx_grade_id`(`grade_id`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '老师班级关系表';
 
