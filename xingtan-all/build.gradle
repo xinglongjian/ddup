@@ -1,0 +1,24 @@
+dependencies {
+    compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisSpringVersion}"
+    compile "org.projectlombok:lombok:${lombokVersion}"
+    compile "mysql:mysql-connector-java:${mysqlDriverVersion}"
+    compile "org.apache.commons:commons-lang3:3.7"
+    compile "org.apache.httpcomponents:httpcore:4.4.9"
+}
+mainClassName = 'com.xingtan.XingtanApplication'
+archivesBaseName = 'xingtan-all'
+
+jar {
+    manifest {
+        attributes(
+                "Manifest-Version": 1.0,
+                'Main-Class': 'com.xingtan.XingtanApplication'
+        )
+    }
+    from {
+        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    into('assets') {
+        from 'assets'
+    }
+}

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingtan.account.mapper.StudentGradeRelationMapper" >
+    <resultMap id="StudentGradeRelationMap" type="com.xingtan.account.entity.StudentGradeRelation" >
+        <id column="id" property="id"/>
+        <result column="studentId" property="student_id" />
+        <result column="gradeId" property="grade_id" />
+        <result column="duty" property="duty" />
+        <result column="gmtCreate" property="gmt_create"/>
+        <result column="gmtModified" property="gmt_modified"/>
+    </resultMap>
+
+    <sql id="BASE_COLUMNS" >
+        <![CDATA[id, student_id, grade_id, duty ]]>
+    </sql>
+    <sql id="ALL_COLUMNS" >
+        <![CDATA[id, student_id, grade_id, duty, gmt_create, gmt_modified]]>
+    </sql>
+
+    <select id="getRelationById" parameterType="java.lang.Long" resultMap="StudentGradeRelationMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `student_grade_relation`
+        WHERE id = #{id}
+    </select>
+    <select id="getRelationsByStudentId" parameterType="java.lang.Long" resultMap="StudentGradeRelationMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `student_grade_relation`
+        WHERE  student_id= #{studentId}
+    </select>
+    <select id="getRelationsByGradeId" parameterType="java.lang.Long" resultMap="StudentGradeRelationMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `student_grade_relation`
+        WHERE grade_id = #{gradeId}
+    </select>
+    <insert id="insertRelation" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.StudentGradeRelation" >
+        INSERT INTO
+        `student_grade_relation`
+        (student_id, grade_id, duty, gmt_create, gmt_modified)
+        VALUES
+        (#{studentId}, #{gradeId}, #{duty}, NOW(), NOW())
+    </insert>
+    <update id="updateRelation" parameterType="com.xingtan.account.entity.StudentGradeRelation" >
+        UPDATE
+        `student_grade_relation`
+        SET
+        <if test="studentId != null">student_id = #{studentId},</if>
+        <if test="gradeId != null">grade_id = #{gradeId},</if>
+        <if test="duty != null">duty = #{duty},</if>
+        gmt_modified = now()
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="deleteRelation" parameterType="java.lang.Long" >
+        DELETE FROM
+            `student_grade_relation`
+        WHERE
+            id =#{id}
+    </delete>
+
+</mapper>

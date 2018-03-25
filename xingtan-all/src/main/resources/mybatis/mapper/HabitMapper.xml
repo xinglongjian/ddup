@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingtan.habit.mapper.HabitMapper" >
+    <resultMap id="HabitMap" type="com.xingtan.habit.entity.Habit" >
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="code" property="code"/>
+        <result column="habitTypeId" property="habit_type_id" />
+        <result column="description" property="description" />
+        <result column="gmtCreate" property="gmt_create"/>
+        <result column="gmtModified" property="gmt_modified"/>
+    </resultMap>
+
+    <sql id="BASE_COLUMNS" >
+        <![CDATA[id, `name`, `code`, habit_type_id, description]]>
+    </sql>
+    <sql id="ALL_COLUMNS" >
+        <![CDATA[id, `name`, `code`, habit_type_id, description, gmt_create, gmt_modified]]>
+    </sql>
+
+    <select id="getAll" resultMap="HabitMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `habit`
+    </select>
+
+    <select id="getHabitById" parameterType="java.lang.Long" resultMap="HabitMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `habit`
+        WHERE id = #{id}
+    </select>
+    <select id="getHabitByTypeId" parameterType="java.lang.Long" resultMap="HabitMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `habit`
+        WHERE habit_type_id = #{habitTypeId}
+    </select>
+
+    <insert id="insertHabit" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.Habit" >
+        INSERT INTO
+        `habit`
+        (`name`, `code`, habit_type_id, `description`, gmt_create, gmt_modified)
+        VALUES
+        (#{name}, #{code}, #{habitTypeId}, #{description}, NOW(), NOW())
+    </insert>
+
+    <update id="updateHabit" parameterType="com.xingtan.habit.entity.Habit" >
+        UPDATE
+        `habit`
+        SET
+        <if test="name != null">name = #{name},</if>
+        <if test="code != null">code = #{code},</if>
+        <if test="habitTypeId != null">habit_type_id = #{habitTypeId},</if>
+        <if test="description != null">description = #{description},</if>
+        gmt_modified = now()
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="deleteHabit" parameterType="java.lang.Long" >
+        DELETE FROM
+            `habit`
+        WHERE
+            id =#{id}
+    </delete>
+
+</mapper>

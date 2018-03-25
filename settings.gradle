@@ -23,4 +23,5 @@ include 'xingtan-task'  //8031-8035
 include 'xingtan-habit' //8036-8040
 include 'xingtan-customer'
 include 'xingtan-survey'
+include 'xingtan-all'
 

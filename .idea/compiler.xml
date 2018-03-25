@@ -9,6 +9,8 @@
       <module name="xingtan-account_test" target="1.8" />
       <module name="xingtan-admin_main" target="1.8" />
       <module name="xingtan-admin_test" target="1.8" />
+      <module name="xingtan-all_main" target="1.8" />
+      <module name="xingtan-all_test" target="1.8" />
       <module name="xingtan-choose_main" target="1.8" />
       <module name="xingtan-choose_test" target="1.8" />
       <module name="xingtan-common_main" target="1.8" />

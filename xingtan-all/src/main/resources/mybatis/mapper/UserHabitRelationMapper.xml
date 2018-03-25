@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingtan.habit.mapper.UserHabitRelationMapper" >
+    <resultMap id="UserHabitRelationMap" type="com.xingtan.habit.entity.UserHabitRelation" >
+        <id column="id" property="id"/>
+        <result column="userId" property="user_id"/>
+        <result column="habitId" property="habit_id"/>
+        <result column="createdUserId" property="created_user_id" />
+        <result column="gmtCreate" property="gmt_create"/>
+        <result column="gmtModified" property="gmt_modified"/>
+    </resultMap>
+
+    <sql id="BASE_COLUMNS" >
+        <![CDATA[id, user_id, habit_id, created_user_id]]>
+    </sql>
+    <sql id="ALL_COLUMNS" >
+        <![CDATA[id, user_id, habit_id, created_user_id, gmt_create, gmt_modified]]>
+    </sql>
+
+    <select id="getRelationById" parameterType="java.lang.Long" resultMap="UserHabitRelationMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `user_habit_relation`
+        WHERE id = #{id}
+    </select>
+
+    <select id="getRecordsByUserId" parameterType="java.lang.Long" resultMap="UserHabitRelationMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `user_habit_relation`
+        WHERE user_id = #{id}
+    </select>
+    <insert id="insertRelation" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.UserHabitRelation" >
+        INSERT INTO
+        `user_habit_relation`
+        (user_id, habit_id, created_user_id, gmt_create, gmt_modified)
+        VALUES
+        (#{userId}, #{habitId}, #{createdUserId},NOW(), NOW())
+    </insert>
+
+    <update id="updateRecord" parameterType="com.xingtan.habit.entity.UserHabitRelation" >
+        UPDATE
+        `user_habit_relation`
+        SET
+        <if test="userId != null">user_id = #{userId},</if>
+        <if test="habitId != null">habit_id = #{habitId},</if>
+        <if test="createdUserId != null">created_user_id = #{createdUserId},</if>
+        gmt_modified = now()
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="deleteRecord" parameterType="java.lang.Long" >
+        DELETE FROM
+            `user_habit_relation`
+        WHERE
+            id =#{id}
+    </delete>
+
+</mapper>
