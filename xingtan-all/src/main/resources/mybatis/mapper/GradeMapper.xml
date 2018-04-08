@@ -8,15 +8,16 @@
         <result column="year" property="year"/>
         <result column="created_user_id" property="createdUserId" />
         <result column="status" property="status" />
+        <result column="is_need_validate" property="isNeedValidate"/>
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`]]>
+        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`, is_need_validate]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`, gmt_create, gmt_modified]]>
+        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`, is_need_validate, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getGradeById" parameterType="java.lang.Long" resultMap="GradeMap" >
@@ -40,9 +41,9 @@
     <insert id="insertGrade" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.Grade" >
         INSERT INTO
         `grade`
-        (school_id, `name`, `year`, created_user_id, `status`, gmt_create, gmt_modified)
+        (school_id, `name`, `year`, created_user_id, `status`, is_need_validate, gmt_create, gmt_modified)
         VALUES
-        (#{schoolId}, #{name}, #{year}, #{createdUserId}, #{status}, NOW(), NOW())
+        (#{schoolId}, #{name}, #{year}, #{createdUserId}, #{status}, #{isNeedValidate}, NOW(), NOW())
     </insert>
 
     <update id="updateGrade" parameterType="com.xingtan.account.entity.Grade" >
@@ -54,6 +55,7 @@
         <if test="year != null">year = #{year},</if>
         <if test="createdUserId != null">created_user_id = #{createdUserId},</if>
         <if test="status != null">status = #{status},</if>
+        <if test="isNeedValidate != null">is_need_validate = #{isNeedValidate},</if>
         gmt_modified = now()
         WHERE
         id = #{id}

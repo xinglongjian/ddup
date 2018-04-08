@@ -39,4 +39,9 @@ public class Grade extends BaseEntity {
      */
     private GradeStatus status = GradeStatus.INITIALIZATION;
 
+    /**
+     * 是否需要验证
+     */
+    private boolean isNeedValidate;
+
 }

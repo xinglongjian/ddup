@@ -57,6 +57,31 @@ public class StudentController {
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
+    public BaseResponse addStudentToGrade(@PathVariable("userId") Long userId) {
+        if(userId == null) {
+            return new BaseResponse<List<User>>(HttpStatus.BAD_REQUEST,
+                    "params is not exist", null);
+        }
+        try {
+            List<StudentParentRelation> studentParentRelations =
+                    studentParentRelationService.getRelationsByParentId(userId);
+            List<Long> studentIds = new ArrayList<>();
+            for(StudentParentRelation relation : studentParentRelations) {
+                studentIds.add(relation.getStudentId());
+            }
+            List<User> users = userService.getUsersByIds(studentIds);
+            return new BaseResponse<List<User>>(HttpStatus.OK, users);
+        } catch (Exception e) {
+            return new BaseResponse<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR,
+                    e.getMessage(), null);
+        }
+    }
+
+    @PostMapping("/relations/{userId}")
+    @ApiOperation(value = "通过家长ID获取学生", notes = "通过家长ID获取学生", httpMethod = "GET")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
     public BaseResponse getStudentParents(@PathVariable("userId") Long userId) {
         if(userId == null) {
             return new BaseResponse<List<User>>(HttpStatus.BAD_REQUEST,
@@ -75,6 +100,5 @@ public class StudentController {
             return new BaseResponse<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR,
                     e.getMessage(), null);
         }
-
     }
 }

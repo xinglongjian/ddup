@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f16c6fa6-851a-40e3-a5ae-f49b40e6066f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/User.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/User.java" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/StudentParentRelationService.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/StudentParentRelationService.java" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/impl/StudentParentRelationServiceImpl.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/impl/StudentParentRelationServiceImpl.java" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/UserController.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/UserController.java" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/FamilyRelation.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/FamilyRelation.java" />
+      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/Grade.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/Grade.java" />
+      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/GradeController.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/GradeController.java" />
+      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/SchoolController.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/SchoolController.java" />
+      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/StudentController.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/StudentController.java" />
       <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/HabitMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/HabitMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/HabitTypeMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/HabitTypeMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/QuestionMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/QuestionMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/QuestionTypeMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/QuestionTypeMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/SchoolMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/SchoolMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/StudentGradeRelationMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/StudentGradeRelationMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/StudentParentRelationMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/StudentParentRelationMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/TeacherGradeRelationMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/TeacherGradeRelationMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/TeacherSchoolRelationMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/TeacherSchoolRelationMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserHabitRecordMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserHabitRecordMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserHabitRelationMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserHabitRelationMapper.xml" />
-      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserMapper.xml" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserMapper.xml" />
       <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/resources/sql/xingtan.sql" afterPath="$PROJECT_DIR$/xingtan-all/src/main/resources/sql/xingtan.sql" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -180,11 +166,48 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/StudentController.java">
+      <file leaf-file-name="Grade.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/Grade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="184">
-              <caret line="61" column="45" lean-forward="false" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
+            <state relative-caret-position="528">
+              <caret line="44" column="34" lean-forward="false" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="34" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GradeMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeMapper.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="57" column="58" lean-forward="false" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="58" />
+              <folding>
+                <marker date="1523199508917" expanded="true" signature="1194:1286" ph="SELECT FROM grade" />
+                <marker date="1523199508917" expanded="true" signature="1400:1505" ph="SELECT FROM grade" />
+                <marker date="1523199508917" expanded="true" signature="1616:1715" ph="SELECT FROM grade" />
+                <marker date="1523199508917" expanded="true" signature="1859:2110" ph="INSERT INTO grade" />
+                <marker date="1523199508917" expanded="true" signature="2214:2708" ph="UPDATE `grad... grade" />
+                <marker date="1523199508917" expanded="true" signature="2794:2861" ph="DELETE FROM grade" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="xingtan.sql" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/sql/xingtan.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="477">
+              <caret line="140" column="57" lean-forward="false" selection-start-line="140" selection-start-column="57" selection-end-line="140" selection-end-column="57" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ValidateMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/ValidateMessage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="203">
+              <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -192,31 +215,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StudentParentRelation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/StudentParentRelation.java">
+      <file leaf-file-name="GradeValidateMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/GradeValidateMessage.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="29" column="45" lean-forward="false" selection-start-line="29" selection-start-column="45" selection-end-line="29" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="FamilyRelation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/FamilyRelation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="475">
-              <caret line="19" column="0" lean-forward="false" selection-start-line="19" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/User.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="15" column="7" lean-forward="false" selection-start-line="15" selection-start-column="7" selection-end-line="15" selection-end-column="7" />
+            <state relative-caret-position="325">
+              <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -224,51 +227,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserMapper.xml">
+      <file leaf-file-name="GradeValidateMessageMapper.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeValidateMessageMapper.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="67" column="19" lean-forward="true" selection-start-line="67" selection-start-column="19" selection-end-line="67" selection-end-column="19" />
+            <state relative-caret-position="150">
+              <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="31" />
               <folding>
-                <marker date="1522854541271" expanded="true" signature="2489:2583" ph="SELECT FROM user" />
-                <marker date="1522854541271" expanded="true" signature="2688:2779" ph="SELECT FROM user" />
-                <marker date="1522854541271" expanded="true" signature="3218:3322" ph="SELECT FROM user" />
-                <marker date="1522854541271" expanded="true" signature="3432:3539" ph="SELECT FROM user" />
-                <marker date="1522854541271" expanded="true" signature="3649:3746" ph="SELECT FROM user" />
-                <marker date="1522854541271" expanded="true" signature="3859:3964" ph="SELECT FROM user" />
-                <marker date="1522854541271" expanded="true" signature="4106:4691" ph="INSERT INTO user" />
-                <marker date="1522854541271" expanded="true" signature="4793:6278" ph="UPDATE `user... user" />
-                <marker date="1522854541271" expanded="true" signature="6363:6421" ph="DELETE FROM user" />
+                <marker date="1523198013385" expanded="true" signature="1188:1315" ph="SELECT FROM grade" />
+                <marker date="1523198013385" expanded="true" signature="1451:1586" ph="SELECT FROM grade" />
+                <marker date="1523198013385" expanded="true" signature="1710:1819" ph="SELECT FROM grade_validate_message" />
+                <marker date="1523198013385" expanded="true" signature="1980:2225" ph="INSERT INTO grade" />
+                <marker date="1523198013385" expanded="true" signature="2346:2801" ph="UPDATE `grad... grade" />
+                <marker date="1523198013385" expanded="true" signature="2889:2973" ph="DELETE FROM grade" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StudentGradeRelation.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/StudentGradeRelation.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="236">
-              <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StudentParentRelationMapper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/mapper/StudentParentRelationMapper.java">
+      <file leaf-file-name="ValidateResult.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/ValidateResult.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="275">
-              <caret line="15" column="89" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="15" selection-end-column="89" />
+              <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StudentParentRelationService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/StudentParentRelationService.java">
+      <file leaf-file-name="GradeValidateMessageMapper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/mapper/GradeValidateMessageMapper.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="100">
-              <caret line="6" column="47" lean-forward="false" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
+            <state relative-caret-position="250">
+              <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="15" selection-end-column="45" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -276,28 +266,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StudentParentRelationServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/impl/StudentParentRelationServiceImpl.java">
+      <file leaf-file-name="GradeValidateMessageService.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/GradeValidateMessageService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="21" column="13" lean-forward="false" selection-start-line="21" selection-start-column="13" selection-end-line="21" selection-end-column="13" />
-              <folding />
+            <state relative-caret-position="175">
+              <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="StudentParentRelationMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/StudentParentRelationMapper.xml">
+      <file leaf-file-name="GradeValidateMessageServiceImpl.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/impl/GradeValidateMessageServiceImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="625">
-              <caret line="25" column="39" lean-forward="false" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="39" />
+            <state relative-caret-position="525">
+              <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
               <folding>
-                <marker date="1522849432264" expanded="true" signature="1014:1124" ph="SELECT FROM student_parent_relation" />
-                <marker date="1522849432264" expanded="true" signature="1258:1383" ph="SELECT FROM student_parent_relation" />
-                <marker date="1522849432264" expanded="true" signature="1516:1639" ph="SELECT FROM student_parent_relation" />
-                <marker date="1522849432264" expanded="true" signature="1802:1993" ph="INSERT INTO student_parent_relation" />
-                <marker date="1522849432264" expanded="true" signature="2115:2429" ph="UPDATE `stud... student_parent_relation" />
-                <marker date="1522849432264" expanded="true" signature="2518:2603" ph="DELETE FROM student_parent_relation" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#983#984#0" expanded="true" />
+                <element signature="e#1051#1052#0" expanded="true" />
+                <element signature="e#1302#1303#0" expanded="true" />
+                <element signature="e#1367#1368#0" expanded="true" />
+                <element signature="e#1423#1424#0" expanded="true" />
+                <element signature="e#1483#1484#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -309,9 +302,9 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Gradle Kotlin DSL Build Script" />
-        <option value="Interface" />
         <option value="spring-beans.schema" />
         <option value="Enum" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -4924,16 +4917,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/settings.gradle" />
-        <option value="$PROJECT_DIR$/xingtan-admin/build.gradle" />
-        <option value="$PROJECT_DIR$/xingtan-account/src/main/resources/mybatis/mapper/UserMapper.xml" />
-        <option value="$PROJECT_DIR$/xingtan-account/src/main/java/com/xingtan/account/web/UserController.java" />
-        <option value="$PROJECT_DIR$/xingtan-service-server/build.gradle" />
-        <option value="$PROJECT_DIR$/xingtan-admin/src/main/java/com/xingtan/admin/web/AccountController.java" />
-        <option value="$PROJECT_DIR$/xingtan-choose/src/main/java/com/xingtan/choose/entity/Classes.java" />
-        <option value="$PROJECT_DIR$/xingtan-account/build.gradle" />
-        <option value="$PROJECT_DIR$/xingtan-habit/build.gradle" />
-        <option value="$PROJECT_DIR$/xingtan-protal/build.gradle" />
         <option value="$PROJECT_DIR$/xingtan-protal/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/xingtan-habit/src/main/resources/application.yml" />
         <option value="$PROJECT_DIR$/xingtan-account/src/main/resources/application.yml" />
@@ -4954,7 +4937,6 @@
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/OperationStatus.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/bean/LoginType.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/LoginController.java" />
-        <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeMapper.xml" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/HabitMapper.xml" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/HabitTypeMapper.xml" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/QuestionTypeMapper.xml" />
@@ -4968,13 +4950,24 @@
         <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserHabitRelationMapper.xml" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/FromSource.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/UserController.java" />
-        <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/sql/xingtan.sql" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/FamilyRelation.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/StudentParentRelationService.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/impl/StudentParentRelationServiceImpl.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/User.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserMapper.xml" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/GradeController.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/SchoolController.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/StudentController.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/Grade.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/GradeValidateMessage.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/ValidateResult.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/ValidateMessage.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeValidateMessageMapper.xml" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/mapper/GradeValidateMessageMapper.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/GradeValidateMessageService.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/impl/GradeValidateMessageServiceImpl.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeMapper.xml" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/sql/xingtan.sql" />
       </list>
     </option>
   </component>
@@ -4993,10 +4986,10 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="61" />
+    <option name="y" value="22" />
+    <option name="width" value="1604" />
     <option name="height" value="876" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
@@ -5101,48 +5094,7 @@
               <item name="xingtan-all" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xingtan" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xingtan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xingtan" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="xingtan-all" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xingtan" type="462c0819:PsiDirectoryNode" />
-              <item name="account" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xingtan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xingtan" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="xingtan-all" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xingtan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xingtan" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="xingtan-all" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="xingtan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xingtan" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="xingtan-all" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="mybatis" type="462c0819:PsiDirectoryNode" />
-              <item name="mapper" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="xingtan" type="b2602c69:ProjectViewProjectNode" />
@@ -5220,19 +5172,17 @@
     <property name="dynamic.classpath" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-account\src\main\resources\sql" />
+      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-account\src\main\resources\mybatis" />
+      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-account\src\main\resources\mybatis\" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.xingtan.customer" />
       <recent name="com.xingtan.habit" />
       <recent name="com.xingtan.account" />
       <recent name="com.xingtan.monitor" />
       <recent name="com.xingtan.monitor.jmx" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\resources\mybatis\mapper" />
-      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\java\com\xingtan\common" />
-      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\resources" />
-      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\java\com\xingtan\habit\service" />
-      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\java\com\xingtan\habit\mapper" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.xingtan.config" />
@@ -5241,10 +5191,12 @@
       <recent name="com.xingtan.account.mapper" />
       <recent name="com.xingtan.choose.web" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-account\src\main\resources\sql" />
-      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-account\src\main\resources\mybatis" />
-      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-account\src\main\resources\mybatis\" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\resources\mybatis\mapper" />
+      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\java\com\xingtan\common" />
+      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\resources" />
+      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\java\com\xingtan\habit\service" />
+      <recent name="D:\1zwl_project\javaspace\xingtan\xingtan-all\src\main\java\com\xingtan\habit\mapper" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -5628,19 +5580,19 @@
       <workItem from="1522076168446" duration="656000" />
       <workItem from="1522504526619" duration="681000" />
       <workItem from="1522848374315" duration="6785000" />
-      <workItem from="1523194349748" duration="654000" />
+      <workItem from="1523194349748" duration="5471000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="234837000" />
+    <option name="totallyTimeSpent" value="239654000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
+    <frame x="61" y="22" width="1604" height="876" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.037859008" sideWeight="0.13875" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11096606" sideWeight="0.32934508" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -5657,11 +5609,11 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24020888" sideWeight="0.86125" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52088773" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3772846" sideWeight="0.67375" order="12" side_tool="false" content_ui="tabs" x="291" y="439" width="740" height="280" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.289375" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11096606" sideWeight="0.6706549" order="12" side_tool="false" content_ui="tabs" x="291" y="439" width="740" height="280" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26700252" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05625" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.05667506" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -5703,70 +5655,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/loggback.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="14" column="40" lean-forward="false" selection-start-line="14" selection-start-column="40" selection-end-line="14" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/UserType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/UserSexEnum.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/IDCardType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/TeacherType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/web/BaseResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/web/HttpStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/AdminType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/SchoolType.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/BaseEntity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -5778,6 +5666,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="118">
           <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -5792,13 +5681,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2100">
           <caret line="84" column="49" lean-forward="false" selection-start-line="84" selection-start-column="49" selection-end-line="84" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/GradeController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="25" column="13" lean-forward="false" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
         </state>
       </provider>
     </entry>
@@ -5869,21 +5751,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="22" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="11" column="59" lean-forward="false" selection-start-line="11" selection-start-column="59" selection-end-line="11" selection-end-column="59" />
-          <folding>
-            <marker date="1522849057836" expanded="true" signature="1088:1180" ph="SELECT FROM grade" />
-            <marker date="1522849057836" expanded="true" signature="1294:1399" ph="SELECT FROM grade" />
-            <marker date="1522849057836" expanded="true" signature="1510:1609" ph="SELECT FROM grade" />
-            <marker date="1522849057836" expanded="true" signature="1753:1967" ph="INSERT INTO grade" />
-            <marker date="1522849057836" expanded="true" signature="2071:2480" ph="UPDATE `grad... grade" />
-            <marker date="1522849057836" expanded="true" signature="2566:2633" ph="DELETE FROM grade" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -6040,14 +5907,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/SchoolController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="534">
-          <caret line="56" column="0" lean-forward="true" selection-start-line="56" selection-start-column="0" selection-end-line="56" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/RegisterController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
@@ -6060,13 +5919,6 @@
         <state relative-caret-position="425">
           <caret line="32" column="24" lean-forward="true" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/sql/xingtan.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="22" column="58" lean-forward="false" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -6171,13 +6023,147 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/SchoolController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="53" column="47" lean-forward="true" selection-start-line="53" selection-start-column="47" selection-end-line="53" selection-end-column="47" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/GradeController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-100">
+          <caret line="32" column="12" lean-forward="true" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/StudentController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="61" column="45" lean-forward="false" selection-start-line="61" selection-start-column="45" selection-end-line="61" selection-end-column="45" />
+        <state relative-caret-position="328">
+          <caret line="59" column="41" lean-forward="false" selection-start-line="59" selection-start-column="41" selection-end-line="59" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/mapper/GradeMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/GradeValidateMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="13" column="24" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/ValidateResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="11" column="9" lean-forward="false" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/ValidateMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="203">
+          <caret line="12" column="19" lean-forward="true" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/mapper/GradeValidateMessageMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="10" column="3" lean-forward="true" selection-start-line="10" selection-start-column="3" selection-end-line="15" selection-end-column="45" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/GradeValidateMessageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="7" column="24" lean-forward="false" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/service/impl/GradeValidateMessageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="45" column="5" lean-forward="true" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#983#984#0" expanded="true" />
+            <element signature="e#1051#1052#0" expanded="true" />
+            <element signature="e#1302#1303#0" expanded="true" />
+            <element signature="e#1367#1368#0" expanded="true" />
+            <element signature="e#1423#1424#0" expanded="true" />
+            <element signature="e#1483#1484#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/Grade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="44" column="34" lean-forward="false" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="34" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="453">
+          <caret line="57" column="58" lean-forward="false" selection-start-line="57" selection-start-column="42" selection-end-line="57" selection-end-column="58" />
+          <folding>
+            <marker date="1523199508917" expanded="true" signature="1194:1286" ph="SELECT FROM grade" />
+            <marker date="1523199508917" expanded="true" signature="1400:1505" ph="SELECT FROM grade" />
+            <marker date="1523199508917" expanded="true" signature="1616:1715" ph="SELECT FROM grade" />
+            <marker date="1523199508917" expanded="true" signature="1859:2110" ph="INSERT INTO grade" />
+            <marker date="1523199508917" expanded="true" signature="2214:2708" ph="UPDATE `grad... grade" />
+            <marker date="1523199508917" expanded="true" signature="2794:2861" ph="DELETE FROM grade" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeValidateMessageMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="6" column="31" lean-forward="false" selection-start-line="6" selection-start-column="24" selection-end-line="6" selection-end-column="31" />
+          <folding>
+            <marker date="1523198013385" expanded="true" signature="1188:1315" ph="SELECT FROM grade" />
+            <marker date="1523198013385" expanded="true" signature="1451:1586" ph="SELECT FROM grade" />
+            <marker date="1523198013385" expanded="true" signature="1710:1819" ph="SELECT FROM grade_validate_message" />
+            <marker date="1523198013385" expanded="true" signature="1980:2225" ph="INSERT INTO grade" />
+            <marker date="1523198013385" expanded="true" signature="2346:2801" ph="UPDATE `grad... grade" />
+            <marker date="1523198013385" expanded="true" signature="2889:2973" ph="DELETE FROM grade" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/sql/xingtan.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="477">
+          <caret line="140" column="57" lean-forward="false" selection-start-line="140" selection-start-column="57" selection-end-line="140" selection-end-column="57" />
+          <folding />
         </state>
       </provider>
     </entry>

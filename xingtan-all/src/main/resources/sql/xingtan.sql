@@ -115,6 +115,7 @@ CREATE TABLE IF NOT EXISTS `grade` (
   `year` INT NOT NULL DEFAULT 0 COMMENT '哪年级',
   `created_user_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '创建者',
   `status` VARCHAR(255) NOT NULL DEFAULT 'INITIALIZATION' COMMENT '初始化',
+  `is_need_validate` TINYINT NOT NULL DEFAULT 1 COMMENT '是否需要验证',
   `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
@@ -122,6 +123,22 @@ CREATE TABLE IF NOT EXISTS `grade` (
   KEY `idx_created_user_id`(`created_user_id`) USING BTREE,
   KEY `idx_year`(`year`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '班级表';
+
+CREATE TABLE IF NOT EXISTS `grade_validate_message` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `send_user_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '发送消息UserID',
+  `message` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '消息',
+  `validate_user_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '验证消息UserID',
+  `grade_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '班级ID',
+  `result` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '验证结果',
+  `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
+  `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_send_user_id`(`send_user_id`) USING BTREE ,
+  KEY `idx_validate_user_id`(`validate_user_id`) USING BTREE,
+  KEY `idx_grade_id`(`grade_id`) USING BTREE,
+  KEY `idx_result`(`result`) USING BTREE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '班级验证消息表';
 
 CREATE TABLE IF NOT EXISTS `habit` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,

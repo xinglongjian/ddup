@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * 学校
+ */
 @RestController
 @Slf4j
 @RequestMapping(value = "/school", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
