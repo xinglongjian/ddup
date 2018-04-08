@@ -4,6 +4,7 @@
     <resultMap id="GradeValidateMessageMap" type="com.xingtan.account.entity.GradeValidateMessage" >
         <id column="id" property="id"/>
         <result column="send_user_id" property="sendUserId"/>
+        <result column="student_id" property="studentId"/>
         <result column="message" property="message"/>
         <result column="validate_user_id" property="validateUserId"/>
         <result column="grade_id" property="gradeId" />
@@ -13,10 +14,10 @@
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, send_user_id, message, validate_user_id, grade_id, result]]>
+        <![CDATA[id, send_user_id, student_id, message, validate_user_id, grade_id, result]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, send_user_id, message, validate_user_id, grade_id, result, gmt_create, gmt_modified]]>
+        <![CDATA[id, send_user_id, student_id, message, validate_user_id, grade_id, result, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getMessageBySendUserId" parameterType="java.lang.Long" resultMap="GradeValidateMessageMap" >
@@ -40,9 +41,9 @@
     <insert id="insertMessage" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.GradeValidateMessage" >
         INSERT INTO
         `grade_validate_message`
-        (send_user_id, message, validate_user_id, grade_id, result, gmt_create, gmt_modified)
+        (send_user_id, student_id, message, validate_user_id, grade_id, result, gmt_create, gmt_modified)
         VALUES
-        (#{sendUserId}, #{message}, #{validateUserId}, #{gradeId}, #{result}, NOW(), NOW())
+        (#{sendUserId}, #{studentId}, #{message}, #{validateUserId}, #{gradeId}, #{result}, NOW(), NOW())
     </insert>
 
     <update id="updateMessage" parameterType="com.xingtan.account.entity.GradeValidateMessage" >
@@ -50,6 +51,7 @@
         `grade_validate_message`
         SET
         <if test="sendUserId != null">send_user_id = #{sendUserId},</if>
+        <if test="studentId != null">student_id = #{studentId},</if>
         <if test="message != null">message = #{message},</if>
         <if test="validateUserId != null">validate_user_id = #{validateUserId},</if>
         <if test="gradeId != null">grade_id = #{gradeId},</if>

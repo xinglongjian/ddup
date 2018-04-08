@@ -1,7 +1,11 @@
 package com.xingtan.account.web;
 
+import com.xingtan.account.entity.GradeValidateMessage;
+import com.xingtan.account.entity.StudentGradeRelation;
 import com.xingtan.account.entity.StudentParentRelation;
 import com.xingtan.account.entity.User;
+import com.xingtan.account.service.GradeValidateMessageService;
+import com.xingtan.account.service.StudentGradeRelationService;
 import com.xingtan.account.service.StudentParentRelationService;
 import com.xingtan.account.service.UserService;
 import com.xingtan.common.entity.FamilyRelation;
@@ -27,8 +31,12 @@ public class StudentController {
     private UserService userService;
     @Autowired
     private StudentParentRelationService studentParentRelationService;
+    @Autowired
+    private GradeValidateMessageService gradeValidateMessageService;
+    @Autowired
+    private StudentGradeRelationService studentGradeRelationService;
 
-    @PostMapping("/add")
+    @PostMapping("/addByParent")
     @ApiOperation(value = "通过家长添加学生", notes = "通过家长添加学生", httpMethod = "POST")
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
@@ -52,25 +60,25 @@ public class StudentController {
         return new BaseResponse<StudentParentRelation>(HttpStatus.OK, studentParentRelation);
     }
 
-    @GetMapping("/relations/{userId}")
-    @ApiOperation(value = "通过家长ID获取学生", notes = "通过家长ID获取学生", httpMethod = "GET")
+    @PostMapping("/addToGrade")
+    @ApiOperation(value = "学生添加到班级", notes = "学生添加到班级", httpMethod = "POST")
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse addStudentToGrade(@PathVariable("userId") Long userId) {
-        if(userId == null) {
-            return new BaseResponse<List<User>>(HttpStatus.BAD_REQUEST,
+    public BaseResponse addStudentToGrade(@RequestParam("isNeedValidate") boolean isNeedValidate,
+                                           @RequestBody GradeValidateMessage message) {
+        if(message == null) {
+            return new BaseResponse<>(HttpStatus.BAD_REQUEST,
                     "params is not exist", null);
         }
         try {
-            List<StudentParentRelation> studentParentRelations =
-                    studentParentRelationService.getRelationsByParentId(userId);
-            List<Long> studentIds = new ArrayList<>();
-            for(StudentParentRelation relation : studentParentRelations) {
-                studentIds.add(relation.getStudentId());
+            if(isNeedValidate) {
+                gradeValidateMessageService.insertMessage(message);
+            } else  {
+                StudentGradeRelation relation = new StudentGradeRelation(message.getStudentId(), message.getGradeId());
+                studentGradeRelationService.insertRelation(relation);
             }
-            List<User> users = userService.getUsersByIds(studentIds);
-            return new BaseResponse<List<User>>(HttpStatus.OK, users);
+            return new BaseResponse<>(HttpStatus.OK, null);
         } catch (Exception e) {
             return new BaseResponse<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR,
                     e.getMessage(), null);

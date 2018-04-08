@@ -12,4 +12,6 @@ import lombok.ToString;
 public class GradeValidateMessage extends ValidateMessage {
 
     private long gradeId;
+
+    private long studentId;
 }

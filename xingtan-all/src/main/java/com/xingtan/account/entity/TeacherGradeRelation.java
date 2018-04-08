@@ -28,4 +28,9 @@ public class TeacherGradeRelation extends BaseEntity {
      * 类型
      */
     private TeacherType type = TeacherType.MAIM;
+
+    /**
+     * 别名
+     */
+    private String alias;
 }

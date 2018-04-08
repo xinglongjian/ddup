@@ -27,5 +27,14 @@ public class StudentGradeRelation extends BaseEntity {
     /**
      * 职务
      */
-    private StudentDuty duty;
+    private StudentDuty duty = StudentDuty.NONE;
+
+    /**
+     * 别名
+     */
+    private String alias;
+
+    public StudentGradeRelation(long studentId, long gradeId) {
+
+    }
 }

@@ -28,4 +28,9 @@ public class TeacherSchoolRelation extends BaseEntity {
      */
     private AdminType type = AdminType.OTHER;
 
+    /**
+     * 别名
+     */
+    private String alias;
+
 }

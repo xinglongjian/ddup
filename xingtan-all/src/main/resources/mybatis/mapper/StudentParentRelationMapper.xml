@@ -6,15 +6,16 @@
         <result column="student_id" property="studentId" />
         <result column="parent_id" property="parentId" />
         <result column="relation" property="relation" />
+        <result column="alias" property="alias" />
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, student_id, parent_id, relation ]]>
+        <![CDATA[id, student_id, parent_id, relation, alias ]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, student_id, parent_id, relation, gmt_create, gmt_modified]]>
+        <![CDATA[id, student_id, parent_id, relation, alias, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getRelationById" parameterType="java.lang.Long" resultMap="StudentParentRelationMap" >
@@ -38,9 +39,9 @@
     <insert id="insertRelation" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.StudentParentRelation" >
         INSERT INTO
         `student_parent_relation`
-        (student_id, parent_id, relation, gmt_create, gmt_modified)
+        (student_id, parent_id, relation, alias, gmt_create, gmt_modified)
         VALUES
-        (#{studentId}, #{parentId}, #{relation}, NOW(), NOW())
+        (#{studentId}, #{parentId}, #{relation}, #{alias},NOW(), NOW())
     </insert>
     <update id="updateRelation" parameterType="com.xingtan.account.entity.StudentParentRelation" >
         UPDATE
@@ -49,6 +50,7 @@
         <if test="studentId != null">student_id = #{studentId},</if>
         <if test="parentId != null">parent_id = #{parentId},</if>
         <if test="relation != null">relation = #{relation},</if>
+        <if test="alias != null">alias = #{alias},</if>
         gmt_modified = now()
         WHERE
         id = #{id}
