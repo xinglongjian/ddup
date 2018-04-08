@@ -16,6 +16,6 @@ public enum FamilyRelation {
     /**
      * 其他
      */
-    OTHER
+    OTHER;
 
 }

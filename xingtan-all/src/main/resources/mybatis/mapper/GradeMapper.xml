@@ -3,13 +3,13 @@
 <mapper namespace="com.xingtan.account.mapper.GradeMapper" >
     <resultMap id="GradeMap" type="com.xingtan.account.entity.Grade" >
         <id column="id" property="id"/>
-        <result column="schoolId" property="school_id"/>
+        <result column="school_id" property="schoolId"/>
         <result column="name" property="name"/>
         <result column="year" property="year"/>
-        <result column="createdUserId" property="created_user_id" />
+        <result column="created_user_id" property="createdUserId" />
         <result column="status" property="status" />
-        <result column="gmtCreate" property="gmt_create"/>
-        <result column="gmtModified" property="gmt_modified"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >

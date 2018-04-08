@@ -1,5 +1,6 @@
 package com.xingtan.account.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.xingtan.common.entity.BaseEntity;
 import com.xingtan.common.entity.IDCardType;
 import com.xingtan.common.entity.UserSexEnum;
@@ -10,6 +11,7 @@ import java.util.Date;
 
 @Data
 @EqualsAndHashCode(callSuper = false)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class User extends BaseEntity {
     /**
      * 用户名
@@ -90,6 +92,23 @@ public class User extends BaseEntity {
      * 个人介绍
      */
     private String introduce;
+
+    /**
+     * 注册来源
+     */
+    private String fromSource;
+    /**
+     * 微信号
+     */
+    private String weixin;
+    /**
+     * qq号
+     */
+    private String qq;
+    /**
+     * 由谁创建
+     */
+    private long createdBy;
 
     /**
      * 是否可用

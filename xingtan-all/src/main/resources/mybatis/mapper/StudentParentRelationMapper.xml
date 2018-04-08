@@ -3,11 +3,11 @@
 <mapper namespace="com.xingtan.account.mapper.StudentParentRelationMapper" >
     <resultMap id="StudentParentRelationMap" type="com.xingtan.account.entity.StudentParentRelation" >
         <id column="id" property="id"/>
-        <result column="studentId" property="student_id" />
-        <result column="parentId" property="parent_id" />
+        <result column="student_id" property="studentId" />
+        <result column="parent_id" property="parentId" />
         <result column="relation" property="relation" />
-        <result column="gmtCreate" property="gmt_create"/>
-        <result column="gmtModified" property="gmt_modified"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >

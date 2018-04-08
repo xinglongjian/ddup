@@ -4,23 +4,23 @@
     <resultMap id="SchoolMap" type="com.xingtan.account.entity.School" >
         <id column="id" property="id"/>
         <result column="name" property="name"/>
-        <result column="enName" property="en_name"/>
+        <result column="en_name" property="enName"/>
         <result column="code" property="code"/>
-        <result column="buildYear" property="build_year" />
-        <result column="headImage" property="head_image" />
+        <result column="build_year" property="buildYear" />
+        <result column="head_image" property="headImage" />
         <result column="Telephone" property="telephone" />
-        <result column="parentId" property="parent_id" />
-        <result column="createdUserId" property="created_user_id" />
+        <result column="parent_id" property="parentId" />
+        <result column="created_user_id" property="createdUserId" />
         <result column="province" property="province" />
         <result column="city" property="city" />
         <result column="district" property="district" />
         <result column="address" property="address" />
-        <result column="zipCode" property="zip_code" />
+        <result column="zip_code" property="zipCode" />
         <result column="type" property="type" />
         <result column="introduce" property="introduce" />
         <result column="enabled" property="enabled" />
-        <result column="gmtCreate" property="gmt_create"/>
-        <result column="gmtModified" property="gmt_modified"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >

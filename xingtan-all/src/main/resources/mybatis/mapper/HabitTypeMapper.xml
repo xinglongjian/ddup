@@ -6,8 +6,8 @@
         <result column="name" property="name"/>
         <result column="code" property="code"/>
         <result column="description" property="description" />
-        <result column="gmtCreate" property="gmt_create"/>
-        <result column="gmtModified" property="gmt_modified"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >

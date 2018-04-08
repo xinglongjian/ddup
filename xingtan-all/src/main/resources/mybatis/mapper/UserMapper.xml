@@ -3,37 +3,50 @@
 <mapper namespace="com.xingtan.account.mapper.UserMapper" >
     <resultMap id="UserMap" type="com.xingtan.account.entity.User" >
         <id column="id" property="id"/>
-        <result column="userName" property="user_name"/>
-        <result column="realName" property="real_name"/>
-        <result column="enName" property="en_name"/>
+        <result column="user_name" property="userName"/>
+        <result column="real_name" property="realName"/>
+        <result column="en_name" property="enName"/>
         <result column="sex" property="sex"/>
         <result column="birthday" property="birthday"/>
         <result column="telephone" property="telephone"/>
         <result column="email" property="email"/>
         <result column="password" property="password"/>
-        <result column="headImage" property="head_image"/>
-        <result column="idCardType" property="id_card_type" />
-        <result column="idCardNo" property="id_card_no" />
+        <result column="head_image" property="headImage"/>
+        <result column="id_card_type" property="idCardType" />
+        <result column="id_card_no" property="idCardNo" />
         <result column="province" property="province" />
         <result column="city" property="city" />
         <result column="district" property="district" />
         <result column="address" property="address" />
-        <result column="zipCode" property="zip_code" />
+        <result column="zip_code" property="zipCode" />
         <result column="introduce" property="introduce" />
+        <result column="from_source" property="fromSource" />
+        <result column="weixin" property="weixin" />
+        <result column="qq" property="qq" />
+        <result column="created_by" property="createdBy" />
         <result column="enabled" property="enabled" />
-        <result column="gmtCreate" property="gmt_create"/>
-        <result column="gmtModified" property="gmt_modified"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
+    <sql id="SIMPLE_COLUMNS" >
+        <![CDATA[id, user_name, real_name, en_name, sex, birthday, head_image]]>
+    </sql>
     <sql id="BASE_COLUMNS" >
         <![CDATA[id, user_name, real_name, en_name, sex, birthday, telephone, email, `password`, head_image, id_card_type,
-    id_card_no, province, city, district, address, zip_code, introduce, enabled ]]>
+    id_card_no, province, city, district, address, zip_code, introduce, from_source, weixin, qq, enabled,created_by ]]>
     </sql>
     <sql id="ALL_COLUMNS" >
         <![CDATA[id, user_name, real_name, en_name, sex, birthday, telephone, email, `password`, head_image, id_card_type,
-    id_card_no, province, city, district, address, zip_code, introduce, enabled, gmt_create, gmt_modified]]>
+    id_card_no, province, city, district, address, zip_code, introduce, from_source, weixin, qq,enabled, created_by,gmt_create, gmt_modified]]>
     </sql>
 
+    <select id="getSimpleUserById" parameterType="java.lang.Long" resultMap="UserMap" >
+        SELECT
+        <include refid="SIMPLE_COLUMNS" />
+        FROM `user`
+        WHERE id = #{id}
+    </select>
     <select id="getUserById" parameterType="java.lang.Long" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
@@ -77,10 +90,11 @@
         INSERT INTO
         `user`
         (user_name, real_name, en_name, sex, birthday, telephone, email, `password`, head_image, id_card_type,
-         id_card_no, province, city, district, address, zip_code, introduce, gmt_create, gmt_modified)
+         id_card_no, province, city, district, address, zip_code, introduce, from_source, weixin, qq, created_by, gmt_create, gmt_modified)
         VALUES
         (#{userName}, #{realName},#{enName}, #{sex}, #{birthday}, #{telephone}, #{email}, #{password}, #{headImage}, #{idCardType},
-        #{idCardNo}, #{province}, #{city}, #{district}, #{address}, #{zipCode}, #{introduce}, NOW(), NOW())
+        #{idCardNo}, #{province}, #{city}, #{district}, #{address}, #{zipCode}, #{introduce}, #{fromSource}, #{weixin},
+        #{qq},#{createdBy},NOW(), NOW())
     </insert>
 
     <update id="updateUser" parameterType="com.xingtan.account.entity.User" >
@@ -105,6 +119,10 @@
         <if test="zipCode != null">zip_code = #{zipCode},</if>
         <if test="introduce != null">introduce = #{introduce},</if>
         <if test="enabled != null">enabled = #{enabled},</if>
+        <if test="fromSource != null">from_source = #{fromSource},</if>
+        <if test="weixin != null">weixin = #{weixin},</if>
+        <if test="qq != null">qq = #{qq},</if>
+        <if test="createdBy != null">created_by = #{createdBy},</if>
         gmt_modified = now()
         WHERE
         id = #{id}

@@ -3,12 +3,12 @@
 <mapper namespace="com.xingtan.habit.mapper.UserHabitRecordMapper" >
     <resultMap id="UserHabitRecordMap" type="com.xingtan.habit.entity.UserHabitRecord" >
         <id column="id" property="id"/>
-        <result column="userId" property="user_id"/>
-        <result column="habitId" property="habit_id"/>
+        <result column="user_id" property="userId"/>
+        <result column="habit_id" property="habitId"/>
         <result column="score" property="score" />
-        <result column="createdUserId" property="created_user_id" />
-        <result column="gmtCreate" property="gmt_create"/>
-        <result column="gmtModified" property="gmt_modified"/>
+        <result column="created_user_id" property="createdUserId" />
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >

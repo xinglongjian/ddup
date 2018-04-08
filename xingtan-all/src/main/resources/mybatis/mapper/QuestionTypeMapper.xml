@@ -4,8 +4,8 @@
     <resultMap id="QuestionTypeMap" type="com.xingtan.customer.entity.QuestionType" >
         <id column="id" property="id"/>
         <result column="name" property="name"/>
-        <result column="gmtCreate" property="gmt_create"/>
-        <result column="gmtModified" property="gmt_modified"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >

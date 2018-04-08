@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @Slf4j
-@RequestMapping(value = "/user", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/api/user", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class UserController {
 
     @Autowired
@@ -64,5 +64,27 @@ public class UserController {
         return new BaseResponse<User>(HttpStatus.OK, user);
     }
 
+    @PostMapping("/delete/{id}")
+    @ApiOperation(value = "删除用户", notes = "删除用户", httpMethod = "DELETE")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "ID", required = true, dataType = "Long", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_BAD_REQUEST, message = "参数不全"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse deleteUser(@PathVariable("id") Long id) {
+        if (id == null) {
+            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "ID is empty",
+                    null);
+        }
+        try {
+            userService.deleteUser(id);
+        } catch (Exception e) {
+            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<Long>(HttpStatus.OK, "SUCCESS", id);
+    }
 
 }
