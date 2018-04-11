@@ -6,15 +6,16 @@
         <result column="content" property="content"/>
         <result column="type_id" property="typeId"/>
         <result column="created_user_id" property="createdUserId" />
+        <result column="status" property="status" />
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, content, type_id, created_user_id]]>
+        <![CDATA[id, content, type_id, `status`, created_user_id]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, content, type_id, created_user_id, gmt_create, gmt_modified]]>
+        <![CDATA[id, content, type_id, created_user_id, `status`, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getQuestionById" parameterType="java.lang.Long" resultMap="QuestionMap" >
@@ -38,9 +39,9 @@
     <insert id="insertQuestion" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.customer.entity.Question" >
         INSERT INTO
         `question`
-        (content, type_id, created_user_id, gmt_create, gmt_modified)
+        (content, type_id, created_user_id, `status`, gmt_create, gmt_modified)
         VALUES
-        (#{content}, #{typeId}, #{createdUserId}, NOW(), NOW())
+        (#{content}, #{typeId}, #{createdUserId}, `status`, NOW(), NOW())
     </insert>
 
     <update id="updateQuestion" parameterType="com.xingtan.customer.entity.Question" >
@@ -50,6 +51,7 @@
         <if test="content != null">content = #{content},</if>
         <if test="typeId != null">type_id = #{typeId},</if>
         <if test="createdUserId != null">created_user_id = #{createdUserId},</if>
+        <if test="status != null">`status` = #{status},</if>
         gmt_modified = now()
         WHERE
         id = #{id}

@@ -1,6 +1,7 @@
 package com.xingtan.customer.entity;
 
 import com.xingtan.common.entity.BaseEntity;
+import com.xingtan.common.entity.QuestionStatus;
 import lombok.*;
 
 /**
@@ -27,5 +28,10 @@ public class Question extends BaseEntity {
      * 创建用户ID
      */
     private long createdUserId;
+
+    /**
+     * 问题状态
+     */
+    private QuestionStatus status = QuestionStatus.NEW;
 
 }
