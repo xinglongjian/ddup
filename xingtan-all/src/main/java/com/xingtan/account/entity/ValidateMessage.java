@@ -4,6 +4,7 @@ import com.xingtan.common.entity.BaseEntity;
 import com.xingtan.common.entity.ValidateResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 /**
@@ -12,6 +13,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
 public class ValidateMessage extends BaseEntity {
 
     private long sendUserId;

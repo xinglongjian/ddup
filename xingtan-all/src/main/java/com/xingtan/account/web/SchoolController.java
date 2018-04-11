@@ -17,7 +17,7 @@ import java.util.List;
  */
 @RestController
 @Slf4j
-@RequestMapping(value = "/school", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/api/school", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class SchoolController {
 
     @Autowired

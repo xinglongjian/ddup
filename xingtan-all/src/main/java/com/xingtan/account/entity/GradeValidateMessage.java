@@ -1,14 +1,12 @@
 package com.xingtan.account.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@EqualsAndHashCode(callSuper=false)
 public class GradeValidateMessage extends ValidateMessage {
 
     private long gradeId;

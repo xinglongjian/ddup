@@ -211,3 +211,12 @@ CREATE TABLE IF NOT EXISTS `question` (
   UNIQUE KEY `idx_type_id`(`type_id`) USING BTREE ,
   UNIQUE KEY `idx_created_user_id`(`created_user_id`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '问题表';
+
+CREATE TABLE IF NOT EXISTS `region` (
+  `id` varchar(12) NOT NULL COMMENT '主键（代码）',
+  `name` varchar(100) NOT NULL COMMENT '名称',
+  `parentID` varchar(12) DEFAULT NULL COMMENT '父ID',
+  `level` int(11) DEFAULT NULL COMMENT '级别',
+  `namePath` varchar(150) DEFAULT NULL COMMENT '名称路径',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='行政区划表';

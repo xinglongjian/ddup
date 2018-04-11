@@ -8,7 +8,7 @@
         <result column="code" property="code"/>
         <result column="build_year" property="buildYear" />
         <result column="head_image" property="headImage" />
-        <result column="Telephone" property="telephone" />
+        <result column="telephone" property="telephone" />
         <result column="parent_id" property="parentId" />
         <result column="created_user_id" property="createdUserId" />
         <result column="province" property="province" />
