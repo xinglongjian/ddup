@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xingtan.account.mapper.GradeMapper" >
-    <resultMap id="GradeMap" type="com.xingtan.account.entity.Grade" >
+<mapper namespace="com.xingtan.school.mapper.GradeMapper" >
+    <resultMap id="GradeMap" type="com.xingtan.school.entity.Grade" >
         <id column="id" property="id"/>
         <result column="school_id" property="schoolId"/>
         <result column="name" property="name"/>
@@ -38,7 +38,7 @@
         FROM `grade`
         WHERE name like #{name}
     </select>
-    <insert id="insertGrade" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.Grade" >
+    <insert id="insertGrade" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.Grade" >
         INSERT INTO
         `grade`
         (school_id, `name`, `year`, created_user_id, `status`, is_need_validate, gmt_create, gmt_modified)
@@ -46,7 +46,7 @@
         (#{schoolId}, #{name}, #{year}, #{createdUserId}, #{status}, #{isNeedValidate}, NOW(), NOW())
     </insert>
 
-    <update id="updateGrade" parameterType="com.xingtan.account.entity.Grade" >
+    <update id="updateGrade" parameterType="com.xingtan.school.entity.Grade" >
         UPDATE
         `grade`
         SET

@@ -1,5 +1,6 @@
-package com.xingtan.account.entity;
+package com.xingtan.school.entity;
 
+import com.xingtan.common.entity.ValidateMessage;
 import lombok.*;
 
 @Data

@@ -1,11 +1,11 @@
-package com.xingtan.account.web;
+package com.xingtan.school.web;
 
-import com.xingtan.account.entity.GradeValidateMessage;
-import com.xingtan.account.entity.StudentGradeRelation;
+import com.xingtan.school.entity.GradeValidateMessage;
+import com.xingtan.school.entity.StudentGradeRelation;
 import com.xingtan.account.entity.StudentParentRelation;
 import com.xingtan.account.entity.User;
-import com.xingtan.account.service.GradeValidateMessageService;
-import com.xingtan.account.service.StudentGradeRelationService;
+import com.xingtan.school.service.GradeValidateMessageService;
+import com.xingtan.school.service.StudentGradeRelationService;
 import com.xingtan.account.service.StudentParentRelationService;
 import com.xingtan.account.service.UserService;
 import com.xingtan.common.entity.FamilyRelation;

@@ -1,13 +1,13 @@
-package com.xingtan.account.web;
+package com.xingtan.school.web;
 
 import com.google.common.collect.Lists;
-import com.xingtan.account.entity.Grade;
-import com.xingtan.account.entity.StudentGradeRelation;
-import com.xingtan.account.entity.TeacherGradeRelation;
+import com.xingtan.school.entity.Grade;
+import com.xingtan.school.entity.StudentGradeRelation;
+import com.xingtan.school.entity.TeacherGradeRelation;
 import com.xingtan.account.entity.User;
-import com.xingtan.account.service.GradeService;
-import com.xingtan.account.service.StudentGradeRelationService;
-import com.xingtan.account.service.TeacherGradeRelationService;
+import com.xingtan.school.service.GradeService;
+import com.xingtan.school.service.StudentGradeRelationService;
+import com.xingtan.school.service.TeacherGradeRelationService;
 import com.xingtan.account.service.UserService;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;

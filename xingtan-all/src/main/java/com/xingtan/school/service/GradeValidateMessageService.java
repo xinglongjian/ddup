@@ -1,6 +1,6 @@
-package com.xingtan.account.service;
+package com.xingtan.school.service;
 
-import com.xingtan.account.entity.GradeValidateMessage;
+import com.xingtan.school.entity.GradeValidateMessage;
 
 import java.util.List;
 

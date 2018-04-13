@@ -1,7 +1,7 @@
-package com.xingtan.account.web;
+package com.xingtan.school.web;
 
-import com.xingtan.account.entity.School;
-import com.xingtan.account.service.SchoolService;
+import com.xingtan.school.entity.School;
+import com.xingtan.school.service.SchoolService;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import io.swagger.annotations.*;

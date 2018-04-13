@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xingtan.account.mapper.StudentGradeRelationMapper" >
-    <resultMap id="StudentGradeRelationMap" type="com.xingtan.account.entity.StudentGradeRelation" >
+<mapper namespace="com.xingtan.school.mapper.StudentGradeRelationMapper" >
+    <resultMap id="StudentGradeRelationMap" type="com.xingtan.school.entity.StudentGradeRelation" >
         <id column="id" property="id"/>
         <result column="student_id" property="studentId" />
         <result column="grade_id" property="gradeId" />
@@ -36,14 +36,14 @@
         FROM `student_grade_relation`
         WHERE grade_id = #{gradeId}
     </select>
-    <insert id="insertRelation" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.StudentGradeRelation" >
+    <insert id="insertRelation" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.StudentGradeRelation" >
         INSERT INTO
         `student_grade_relation`
         (student_id, grade_id, duty, alias, gmt_create, gmt_modified)
         VALUES
         (#{studentId}, #{gradeId}, #{duty}, #{alias}, NOW(), NOW())
     </insert>
-    <update id="updateRelation" parameterType="com.xingtan.account.entity.StudentGradeRelation" >
+    <update id="updateRelation" parameterType="com.xingtan.school.entity.StudentGradeRelation" >
         UPDATE
         `student_grade_relation`
         SET

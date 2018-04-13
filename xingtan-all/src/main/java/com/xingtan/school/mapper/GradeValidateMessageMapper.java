@@ -1,6 +1,6 @@
-package com.xingtan.account.mapper;
+package com.xingtan.school.mapper;
 
-import com.xingtan.account.entity.GradeValidateMessage;
+import com.xingtan.school.entity.GradeValidateMessage;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

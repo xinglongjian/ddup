@@ -1,6 +1,6 @@
-package com.xingtan.account.service;
+package com.xingtan.school.service;
 
-import com.xingtan.account.entity.School;
+import com.xingtan.school.entity.School;
 
 import java.util.List;
 

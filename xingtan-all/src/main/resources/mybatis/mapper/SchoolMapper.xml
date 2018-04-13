@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xingtan.account.mapper.SchoolMapper" >
-    <resultMap id="SchoolMap" type="com.xingtan.account.entity.School" >
+<mapper namespace="com.xingtan.school.mapper.SchoolMapper" >
+    <resultMap id="SchoolMap" type="com.xingtan.school.entity.School" >
         <id column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="en_name" property="enName"/>
@@ -44,7 +44,7 @@
         FROM `school`
         WHERE name like #{name}
     </select>
-    <insert id="insertSchool" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.School" >
+    <insert id="insertSchool" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.School" >
         INSERT INTO
         `school`
         (id, `name`, en_name, `code`, build_year, head_image, telephone, parent_id, created_user_id, province, city, district,
@@ -54,7 +54,7 @@
         #{district}, #{address}, #{zipCode}, #{type}, #{introduce},#{enabled}, NOW(), NOW())
     </insert>
 
-    <update id="updateSchool" parameterType="com.xingtan.account.entity.School" >
+    <update id="updateSchool" parameterType="com.xingtan.school.entity.School" >
         UPDATE
         `school`
         SET

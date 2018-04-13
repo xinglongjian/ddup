@@ -1,6 +1,6 @@
-package com.xingtan.account.service;
+package com.xingtan.school.service;
 
-import com.xingtan.account.entity.TeacherSchoolRelation;
+import com.xingtan.school.entity.TeacherSchoolRelation;
 
 public interface TeacherSchoolRelationService {
 

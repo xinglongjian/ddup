@@ -1,6 +1,6 @@
-package com.xingtan.account.service;
+package com.xingtan.school.service;
 
-import com.xingtan.account.entity.TeacherGradeRelation;
+import com.xingtan.school.entity.TeacherGradeRelation;
 
 import java.util.List;
 

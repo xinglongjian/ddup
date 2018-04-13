@@ -1,4 +1,4 @@
-package com.xingtan.account.entity;
+package com.xingtan.school.entity;
 
 import com.xingtan.common.entity.BaseEntity;
 import com.xingtan.common.entity.StudentDuty;

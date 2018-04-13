@@ -1,8 +1,8 @@
-package com.xingtan.account.service.impl;
+package com.xingtan.school.service.impl;
 
-import com.xingtan.account.entity.TeacherSchoolRelation;
-import com.xingtan.account.mapper.TeacherSchoolRelationMapper;
-import com.xingtan.account.service.TeacherSchoolRelationService;
+import com.xingtan.school.entity.TeacherSchoolRelation;
+import com.xingtan.school.mapper.TeacherSchoolRelationMapper;
+import com.xingtan.school.service.TeacherSchoolRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

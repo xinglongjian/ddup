@@ -1,7 +1,5 @@
-package com.xingtan.account.entity;
+package com.xingtan.common.entity;
 
-import com.xingtan.common.entity.BaseEntity;
-import com.xingtan.common.entity.ValidateResult;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

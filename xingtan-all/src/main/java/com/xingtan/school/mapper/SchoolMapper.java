@@ -1,6 +1,6 @@
-package com.xingtan.account.mapper;
+package com.xingtan.school.mapper;
 
-import com.xingtan.account.entity.School;
+import com.xingtan.school.entity.School;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 

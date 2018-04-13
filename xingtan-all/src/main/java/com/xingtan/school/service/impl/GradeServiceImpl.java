@@ -1,8 +1,8 @@
-package com.xingtan.account.service.impl;
+package com.xingtan.school.service.impl;
 
-import com.xingtan.account.entity.Grade;
-import com.xingtan.account.mapper.GradeMapper;
-import com.xingtan.account.service.GradeService;
+import com.xingtan.school.entity.Grade;
+import com.xingtan.school.mapper.GradeMapper;
+import com.xingtan.school.service.GradeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
