@@ -31,6 +31,11 @@ public class UserHabitRelationServiceImpl implements UserHabitRelationService {
     }
 
     @Override
+    public void insertBatchRelations(List<UserHabitRelation> list) {
+        userHabitRelationMapper.insertBatchRelations(list);
+    }
+
+    @Override
     public void updateRecord(UserHabitRelation userHabitRelation) {
         userHabitRelationMapper.updateRecord(userHabitRelation);
     }
@@ -38,5 +43,10 @@ public class UserHabitRelationServiceImpl implements UserHabitRelationService {
     @Override
     public void deleteRecord(long id) {
         userHabitRelationMapper.deleteRecord(id);
+    }
+
+    @Override
+    public void deleteBatchRecord(List<Long> ids) {
+        userHabitRelationMapper.deleteBatchRecord(ids);
     }
 }
