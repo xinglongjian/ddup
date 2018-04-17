@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f16c6fa6-851a-40e3-a5ae-f49b40e6066f" name="Default" comment="">
+    <list default="true" id="9bffc13b-cb0b-4cae-ae24-360aed7454af" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Notification.java" afterPath="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Notification.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -152,104 +155,13 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file leaf-file-name="GradeController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/web/GradeController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="32" column="11" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+            <state relative-caret-position="1080">
+              <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Notification.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Notification.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="3" column="7" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GradeMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="573">
-              <caret line="51" column="11" lean-forward="false" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
-              <folding>
-                <marker date="1523660403468" expanded="true" signature="1192:1284" ph="SELECT FROM grade" />
-                <marker date="1523660403468" expanded="true" signature="1398:1503" ph="SELECT FROM grade" />
-                <marker date="1523660403468" expanded="true" signature="1614:1713" ph="SELECT FROM grade" />
-                <marker date="1523660403468" expanded="true" signature="1856:2107" ph="INSERT INTO grade" />
-                <marker date="1523660403468" expanded="true" signature="2210:2704" ph="UPDATE `grad... grade" />
-                <marker date="1523660403468" expanded="true" signature="2790:2857" ph="DELETE FROM grade" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GradeValidateMessageMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/GradeValidateMessageMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1600">
-              <caret line="64" column="19" lean-forward="false" selection-start-line="64" selection-start-column="19" selection-end-line="64" selection-end-column="19" />
-              <folding>
-                <marker date="1523660404503" expanded="true" signature="1269:1396" ph="SELECT FROM grade_validate_message" />
-                <marker date="1523660404503" expanded="true" signature="1532:1667" ph="SELECT FROM grade_validate_message" />
-                <marker date="1523660404503" expanded="true" signature="1791:1900" ph="SELECT FROM grade_validate_message" />
-                <marker date="1523660404503" expanded="true" signature="2060:2331" ph="INSERT INTO grade_validate_message" />
-                <marker date="1523660404503" expanded="true" signature="2451:2975" ph="UPDATE `grad... grade_validate_message" />
-                <marker date="1523660404503" expanded="true" signature="3063:3147" ph="DELETE FROM grade_validate_message" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SchoolMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/SchoolMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="32" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StudentGradeRelationMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/StudentGradeRelationMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="350">
-              <caret line="14" column="54" lean-forward="false" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="54" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherGradeRelationMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/TeacherGradeRelationMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TeacherSchoolRelationMapper.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/TeacherSchoolRelationMapper.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="975">
-              <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-              <folding>
-                <marker date="1523663284573" expanded="true" signature="1061:1171" ph="SELECT FROM teacher_school_relation" />
-                <marker date="1523663284573" expanded="true" signature="1305:1430" ph="SELECT FROM teacher_school_relation" />
-                <marker date="1523663284573" expanded="true" signature="1562:1685" ph="SELECT FROM teacher_school_relation" />
-                <marker date="1523663284573" expanded="true" signature="1847:2047" ph="INSERT INTO teacher_school_relation" />
-                <marker date="1523663284573" expanded="true" signature="2168:2526" ph="UPDATE `teac... teacher_school_relation" />
-                <marker date="1523663284573" expanded="true" signature="2615:2700" ph="DELETE FROM teacher_school_relation" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -257,8 +169,82 @@
       <file leaf-file-name="SchoolController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/web/SchoolController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="19" column="29" lean-forward="false" selection-start-line="19" selection-start-column="29" selection-end-line="19" selection-end-column="29" />
+            <state relative-caret-position="351">
+              <caret line="23" column="40" lean-forward="false" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Notification.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Notification.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Course.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Course.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseLabel.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/BaseLabel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CourseLabel.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/CourseLabel.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="216">
+              <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TeacherCourseRelation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/TeacherCourseRelation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="StudentCourseRelation.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/StudentCourseRelation.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="15" column="48" lean-forward="false" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TeacherType.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/TeacherType.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -267,8 +253,8 @@
       <file leaf-file-name="StudentController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/web/StudentController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="26" column="37" lean-forward="false" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="37" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -342,12 +328,12 @@
   <component name="GradleLocalSettings">
     <option name="myGradleHomes">
       <map>
-        <entry key="$PROJECT_DIR$" value="D:\1zwl_project\software\gradle-4.5.1" />
+        <entry key="$PROJECT_DIR$" value="D:\software\gradle-4.6" />
       </map>
     </option>
     <option name="myGradleVersions">
       <map>
-        <entry key="$PROJECT_DIR$" value="4.5.1" />
+        <entry key="$PROJECT_DIR$" value="4.6" />
       </map>
     </option>
     <option name="availableProjects">
@@ -4254,7 +4240,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="28902965442267" />
+        <entry key="$PROJECT_DIR$" value="28950243361731" />
         <entry key="$PROJECT_DIR$/build.gradle" value="127011389" />
         <entry key="$PROJECT_DIR$/build_learn.gradle" value="1201449143" />
         <entry key="$PROJECT_DIR$/gradle.properties" value="0" />
@@ -4729,150 +4715,81 @@
               <option name="name" value="xingtan" />
               <option name="projectBuildClasspath">
                 <list>
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/.idea" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/announce" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/antlr" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/base-services" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/base-services-groovy" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/build-cache" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/build-cache-http" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/build-comparison" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/build-init" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/build-option" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/cli" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/code-quality" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/composite-builds" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/core" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/core-api" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/dependency-management" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/diagnostics" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/ear" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/ide" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/ide-native" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/ide-play" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/installation-beacon" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/internal-android-performance-testing" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/internal-integ-testing" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/internal-performance-testing" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/internal-testing" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/ivy" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/jacoco" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/javascript" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/jvm-services" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/language-groovy" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/language-java" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/language-jvm" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/language-native" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/language-scala" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/launcher" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/logging" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/maven" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/messaging" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/model-core" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/model-groovy" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/native" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/osgi" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/persistent-cache" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/platform-base" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/platform-jvm" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/platform-native" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/platform-play" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/plugin-development" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/plugin-use" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/plugins" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/process-services" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/publish" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/reporting" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/resources" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/resources-gcs" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/resources-http" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/resources-s3" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/resources-sftp" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/scala" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/signing" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/test-kit" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/testing-base" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/testing-jvm" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/testing-native" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/tooling-api" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/tooling-api-builders" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/version-control" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/workers" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/src/wrapper" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/ant-1.9.9.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/ant-launcher-1.9.9.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-base-services-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-base-services-groovy-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-build-cache-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-build-option-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-cli-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-core-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-core-api-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-docs-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-installation-beacon-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-jvm-services-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-kotlin-dsl-0.14.2.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-kotlin-dsl-tooling-builders-0.14.2.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-kotlin-dsl-tooling-models-0.14.2.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-launcher-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-logging-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-messaging-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-model-core-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-model-groovy-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-native-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-persistent-cache-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-process-services-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-resources-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-runtime-api-info-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-tooling-api-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/gradle-wrapper-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/groovy-all-2.4.12.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-announce-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-antlr-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-build-cache-http-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-build-comparison-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-build-init-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-code-quality-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-composite-builds-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-dependency-management-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-diagnostics-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-ear-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-ide-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-ide-native-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-ide-play-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-ivy-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-jacoco-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-javascript-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-language-groovy-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-language-java-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-language-jvm-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-language-native-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-language-scala-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-maven-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-osgi-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-platform-base-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-platform-jvm-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-platform-native-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-platform-play-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-plugin-development-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-plugin-use-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-plugins-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-publish-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-reporting-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-resources-gcs-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-resources-http-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-resources-s3-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-resources-sftp-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-scala-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-signing-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-test-kit-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-testing-base-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-testing-jvm-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-testing-native-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-tooling-api-builders-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-version-control-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/gradle-workers-4.5.1.jar" />
-                  <option value="$PROJECT_DIR$/../../software/gradle-4.5.1/lib/plugins/ivy-2.2.0.jar" />
+                  <option value="D:/software/gradle-4.6/lib/ant-1.9.9.jar" />
+                  <option value="D:/software/gradle-4.6/lib/ant-launcher-1.9.9.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-base-services-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-base-services-groovy-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-build-cache-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-build-option-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-cli-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-core-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-core-api-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-docs-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-installation-beacon-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-jvm-services-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-kotlin-dsl-0.15.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-kotlin-dsl-tooling-builders-0.15.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-kotlin-dsl-tooling-models-0.15.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-launcher-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-logging-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-messaging-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-model-core-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-model-groovy-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-native-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-persistent-cache-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-process-services-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-resources-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-runtime-api-info-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-tooling-api-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/gradle-wrapper-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/groovy-all-2.4.12.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-announce-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-antlr-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-build-cache-http-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-build-comparison-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-build-init-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-code-quality-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-composite-builds-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-dependency-management-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-diagnostics-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-ear-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-ide-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-ide-native-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-ide-play-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-ivy-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-jacoco-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-javascript-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-language-groovy-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-language-java-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-language-jvm-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-language-native-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-language-scala-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-maven-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-osgi-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-platform-base-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-platform-jvm-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-platform-native-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-platform-play-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-plugin-development-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-plugin-use-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-plugins-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-publish-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-reporting-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-resources-gcs-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-resources-http-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-resources-s3-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-resources-sftp-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-scala-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-signing-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-test-kit-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-testing-base-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-testing-junit-platform-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-testing-jvm-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-testing-native-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-tooling-api-builders-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-version-control-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/gradle-workers-4.6.jar" />
+                  <option value="D:/software/gradle-4.6/lib/plugins/ivy-2.2.0.jar" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/java" />
                   <option value="$PROJECT_DIR$/buildSrc/src/main/groovy" />
                 </list>
@@ -4895,11 +4812,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/utils/RegexUtils.java" />
-        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/utils/MD5Utils.java" />
-        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/bean/LoginError.java" />
-        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/OperationStatus.java" />
-        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/bean/LoginType.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/LoginController.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/HabitMapper.xml" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/HabitTypeMapper.xml" />
@@ -4946,6 +4858,11 @@
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/habit/service/impl/UserHabitRelationServiceImpl.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/habit/web/HabitController.java" />
         <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Notification.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/TeacherCourseRelation.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/StudentCourseRelation.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Course.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/BaseLabel.java" />
+        <option value="$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/CourseLabel.java" />
       </list>
     </option>
   </component>
@@ -4965,9 +4882,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="13" />
-    <option name="width" value="1604" />
-    <option name="height" value="876" />
+    <option name="x" value="-11" />
+    <option name="width" value="1887" />
+    <option name="height" value="1020" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -5012,9 +4929,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -5065,6 +4979,16 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="xingtan" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xingtan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xingtan" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="xingtan-all" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="xingtan" type="462c0819:PsiDirectoryNode" />
               <item name="school" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -5078,29 +5002,21 @@
               <item name="school" type="462c0819:PsiDirectoryNode" />
               <item name="entity" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="xingtan" type="b2602c69:ProjectViewProjectNode" />
-              <item name="xingtan" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="xingtan-all" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="xingtan" type="462c0819:PsiDirectoryNode" />
-              <item name="school" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
       <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
     <property name="Downloaded.Files.Path.Enabled" value="true" />
     <property name="Repository.Attach.JavaDocs" value="false" />
     <property name="Repository.Attach.Sources" value="false" />
@@ -5503,7 +5419,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="f16c6fa6-851a-40e3-a5ae-f49b40e6066f" name="Default" comment="" />
+      <changelist id="9bffc13b-cb0b-4cae-ae24-360aed7454af" name="Default" comment="" />
       <created>1519436298100</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -5535,24 +5451,29 @@
       <workItem from="1523484898186" duration="1643000" />
       <workItem from="1523542753264" duration="756000" />
       <workItem from="1523630193244" duration="3798000" />
+      <workItem from="1523841064668" duration="52000" />
+      <workItem from="1523925273567" duration="1264000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="253982000" />
+    <option name="totallyTimeSpent" value="257445000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="13" y="0" width="1604" height="876" extended-state="0" />
+    <frame x="-11" y="0" width="1887" height="1020" extended-state="0" />
+    <editor active="true" />
     <layout>
+      <window_info id="PlantUML" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11749347" sideWeight="0.38602015" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="FindBugs-IDEA" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.047387607" sideWeight="0.3539232" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Statistic" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.445625" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.69712794" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -5560,56 +5481,35 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.64360315" sideWeight="0.6845088" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5678851" sideWeight="0.6876574" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52088773" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Code Review" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11749347" sideWeight="0.6139799" order="12" side_tool="false" content_ui="tabs" x="291" y="439" width="740" height="280" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24622166" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.047387607" sideWeight="0.6460768" order="12" side_tool="false" content_ui="tabs" x="291" y="439" width="740" height="280" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33500278" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
-      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12279597" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Analysis" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Compute Code Lines" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="SonarLint" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.065665" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1853786" sideWeight="0.34823677" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Android Monitor" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31462142" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.37597913" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.445625" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Android Model" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.69712794" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28851175" sideWeight="0.491875" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5678851" sideWeight="0.6876574" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.52088773" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1853786" sideWeight="0.6517632" order="12" side_tool="false" content_ui="tabs" x="291" y="439" width="740" height="280" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Database Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.46083552" sideWeight="0.7" order="14" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12720403" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Bean Validation" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.4975" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.06612091" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -5635,85 +5535,11 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/TeacherGradeRelation.java" />
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/TeacherSchoolRelation.java" />
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/StudentGradeRelationMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="14" column="54" lean-forward="false" selection-start-line="14" selection-start-column="49" selection-end-line="14" selection-end-column="54" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/StudentParentRelationMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="50" lean-forward="false" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/TeacherSchoolRelationMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="39" column="19" lean-forward="false" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-          <folding>
-            <marker date="1523663284573" expanded="true" signature="1061:1171" ph="SELECT FROM teacher_school_relation" />
-            <marker date="1523663284573" expanded="true" signature="1305:1430" ph="SELECT FROM teacher_school_relation" />
-            <marker date="1523663284573" expanded="true" signature="1562:1685" ph="SELECT FROM teacher_school_relation" />
-            <marker date="1523663284573" expanded="true" signature="1847:2047" ph="INSERT INTO teacher_school_relation" />
-            <marker date="1523663284573" expanded="true" signature="2168:2526" ph="UPDATE `teac... teacher_school_relation" />
-            <marker date="1523663284573" expanded="true" signature="2615:2700" ph="DELETE FROM teacher_school_relation" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/TeacherGradeRelationMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="29" lean-forward="false" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/StudentGradeRelation.java" />
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/StudentParentRelation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="825">
-          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/RegisterController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="31" lean-forward="false" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/SchoolController.java" />
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/web/StudentController.java" />
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/ValidateMessage.java" />
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/GradeValidateMessage.java" />
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/UserMapper.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="12" column="32" lean-forward="false" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/application.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="575">
-          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/account/entity/School.java" />
     <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/resources/mybatis/mapper/SchoolMapper.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="325">
           <caret line="13" column="32" lean-forward="false" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5853,13 +5679,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.swagger/swagger-annotations/1.5.14/13cdf98433e53e10fcdf7e557bcad353cdfb2d8/swagger-annotations-1.5.14-sources.jar!/io/swagger/annotations/ApiImplicitParams.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="30" column="18" lean-forward="false" selection-start-line="30" selection-start-column="18" selection-end-line="30" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/io.swagger/swagger-annotations/1.5.14/13cdf98433e53e10fcdf7e557bcad353cdfb2d8/swagger-annotations-1.5.14-sources.jar!/io/swagger/annotations/ApiImplicitParams.java" />
     <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/habit/entity/UserHabitRelation.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -5913,7 +5733,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
           <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -5921,29 +5740,144 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="573">
           <caret line="51" column="11" lean-forward="false" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
-          <folding>
-            <marker date="1523660403468" expanded="true" signature="1192:1284" ph="SELECT FROM grade" />
-            <marker date="1523660403468" expanded="true" signature="1398:1503" ph="SELECT FROM grade" />
-            <marker date="1523660403468" expanded="true" signature="1614:1713" ph="SELECT FROM grade" />
-            <marker date="1523660403468" expanded="true" signature="1856:2107" ph="INSERT INTO grade" />
-            <marker date="1523660403468" expanded="true" signature="2210:2704" ph="UPDATE `grad... grade" />
-            <marker date="1523660403468" expanded="true" signature="2790:2857" ph="DELETE FROM grade" />
-          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Grade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1026">
+          <caret line="40" column="0" lean-forward="false" selection-start-line="40" selection-start-column="0" selection-end-line="40" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/GradeValidateMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/School.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/StudentGradeRelation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="22" column="11" lean-forward="false" selection-start-line="22" selection-start-column="11" selection-end-line="22" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/TeacherGradeRelation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="22" column="9" lean-forward="false" selection-start-line="22" selection-start-column="9" selection-end-line="22" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/TeacherSchoolRelation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="513">
+          <caret line="21" column="11" lean-forward="false" selection-start-line="21" selection-start-column="11" selection-end-line="21" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/web/GradeController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="32" column="11" lean-forward="true" selection-start-line="32" selection-start-column="11" selection-end-line="32" selection-end-column="11" />
+        <state relative-caret-position="1080">
+          <caret line="58" column="24" lean-forward="false" selection-start-line="58" selection-start-column="24" selection-end-line="58" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/web/SchoolController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="23" column="40" lean-forward="false" selection-start-line="23" selection-start-column="40" selection-end-line="23" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/web/StudentController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Notification.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="7" lean-forward="false" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="7" />
+        <state relative-caret-position="135">
+          <caret line="5" column="7" lean-forward="false" selection-start-line="5" selection-start-column="7" selection-end-line="5" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/TeacherType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="2" column="12" lean-forward="false" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/TeacherCourseRelation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="14" column="55" lean-forward="false" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/StudentCourseRelation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="15" column="48" lean-forward="false" selection-start-line="15" selection-start-column="48" selection-end-line="15" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/Course.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/common/entity/BaseLabel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/xingtan-all/src/main/java/com/xingtan/school/entity/CourseLabel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="216">
+          <caret line="8" column="42" lean-forward="false" selection-start-line="8" selection-start-column="42" selection-end-line="8" selection-end-column="42" />
           <folding />
         </state>
       </provider>
