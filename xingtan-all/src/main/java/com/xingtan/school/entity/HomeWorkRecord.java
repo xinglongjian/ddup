@@ -6,35 +6,25 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import java.util.Date;
-
 /**
  * @Author zhengweiliang
- * @Date 2018/4/18 13:40
+ * @Date 2018/4/18 13:51
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
-public class HomeWork extends BaseEntity {
+public class HomeWorkRecord extends BaseEntity {
     /**
-     * 课程ID
+     * 作业ID
      */
-    private long courseId;
+    private long homeWorkId;
     /**
-     * 名称
+     * 学生ID
      */
-    private String name;
+    private long studentId;
     /**
-     * 内容
-     */
-    private String content;
-    /**
-     * 谁留的
+     * 创建者
      */
     private long createUserId;
-
-    private Date dd;
-    private boolean is;
-
 }
