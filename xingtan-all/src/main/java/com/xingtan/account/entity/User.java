@@ -66,6 +66,10 @@ public class User extends BaseEntity {
     /**
      * 省/直辖市
      */
+    private String country;
+    /**
+     * 省/直辖市
+     */
     private String province;
 
     /**
