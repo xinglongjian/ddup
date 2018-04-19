@@ -25,6 +25,11 @@ public class User extends BaseEntity {
     private String realName;
 
     /**
+     * 昵称
+     */
+    private String nickName;
+
+    /**
      * 英文名称
      */
     private String enName;
@@ -54,5 +59,5 @@ public class User extends BaseEntity {
     /**
      * 是否可用
      */
-    private UserStatus status = UserStatus.ENABLE;
+    private int status = UserStatus.ENABLE.ordinal();
 }

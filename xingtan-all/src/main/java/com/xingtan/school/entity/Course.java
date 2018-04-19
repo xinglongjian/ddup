@@ -1,10 +1,7 @@
 package com.xingtan.school.entity;
 
 import com.xingtan.common.entity.BaseEntity;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * 课程
@@ -15,6 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode(callSuper = false)
 public class Course extends BaseEntity {
     /**
      * 班级

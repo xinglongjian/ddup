@@ -3,6 +3,7 @@ package com.xingtan.account.entity;
 import com.xingtan.common.entity.BaseEntity;
 import com.xingtan.common.entity.IDCardType;
 import com.xingtan.common.entity.UserSexEnum;
+import lombok.*;
 
 import java.util.Date;
 
@@ -10,6 +11,11 @@ import java.util.Date;
  * @Author zhengweiliang
  * @Date 2018/4/19 8:51
  */
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@EqualsAndHashCode(callSuper = false)
 public class UserBaseData extends BaseEntity{
 
     /**

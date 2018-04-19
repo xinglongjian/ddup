@@ -37,7 +37,7 @@
         WHERE user_id = #{userId}
     </select>
 
-    <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.User" >
+    <insert id="insertUserBaseData" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.User" >
         INSERT INTO
         `user_base_data`
         (user_id, sex, birthday, head_image, id_card_type,
@@ -47,7 +47,7 @@
         #{idCardNo},  #{country}, #{province}, #{city}, #{district}, #{address}, #{introduce}, #{weixin}, #{qq},NOW(), NOW())
     </insert>
 
-    <update id="updateUser" parameterType="com.xingtan.account.entity.User" >
+    <update id="updateUserBaseData" parameterType="com.xingtan.account.entity.User" >
         UPDATE
         `user_base_data`
         SET

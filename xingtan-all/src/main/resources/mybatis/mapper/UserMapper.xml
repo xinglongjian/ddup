@@ -4,6 +4,7 @@
     <resultMap id="UserMap" type="com.xingtan.account.entity.User" >
         <id column="id" property="id"/>
         <result column="user_name" property="userName"/>
+        <result column="nick_name" property="nickName"/>
         <result column="real_name" property="realName"/>
         <result column="en_name" property="enName"/>
         <result column="telephone" property="telephone"/>
@@ -17,10 +18,10 @@
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, user_name, real_name, en_name, telephone, email, `password`, from_source, `status`,created_user_id ]]>
+        <![CDATA[id, user_name, real_name, nick_name, en_name, telephone, email, `password`, from_source, `status`,created_user_id ]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, user_name, real_name, en_name, telephone, email, `password`, from_source, `status`, created_user_id, gmt_create, gmt_modified]]>
+        <![CDATA[id, user_name, real_name, nick_name, en_name, telephone, email, `password`, from_source, `status`, created_user_id, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getSimpleUserById" parameterType="java.lang.Long" resultMap="UserMap" >
@@ -71,9 +72,9 @@
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.User" >
         INSERT INTO
         `user`
-        (user_name, real_name, en_name, telephone, email, `password`, from_source, created_user_id, `status`, gmt_create, gmt_modified)
+        (user_name, real_name, nick_name, en_name, telephone, email, `password`, from_source, created_user_id, `status`, gmt_create, gmt_modified)
         VALUES
-        (#{userName}, #{realName},#{enName}, #{telephone}, #{email}, #{password}, #{fromSource}, #{createdUserId}, #{status},NOW(), NOW())
+        (#{userName}, #{realName}, #{nickName},#{enName}, #{telephone}, #{email}, #{password}, #{fromSource}, #{createdUserId}, #{status},NOW(), NOW())
     </insert>
 
     <update id="updateUser" parameterType="com.xingtan.account.entity.User" >
@@ -81,6 +82,7 @@
         `user`
         SET
         <if test="userName != null">user_name = #{userName},</if>
+        <if test="nickName != null">nick_name = #{nickName},</if>
         <if test="realName != null">real_name = #{realName},</if>
         <if test="enName != null">en_name = #{enName},</if>
         <if test="telephone != null">telephone = #{telephone},</if>

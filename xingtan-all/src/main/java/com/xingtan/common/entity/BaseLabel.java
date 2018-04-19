@@ -1,9 +1,6 @@
 package com.xingtan.common.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @Author zhengweiliang
@@ -13,6 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode(callSuper = false)
 public class BaseLabel extends BaseEntity {
     //名称
     private String name;

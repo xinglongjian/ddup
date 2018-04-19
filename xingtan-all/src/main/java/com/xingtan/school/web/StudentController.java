@@ -49,7 +49,7 @@ public class StudentController {
         }
         StudentParentRelation studentParentRelation;
         try {
-            user.setCreatedBy(createdUserId);
+            user.setCreatedUserId(createdUserId);
             Long studentId  = userService.insertUser(user);
             studentParentRelation = new StudentParentRelation(studentId, createdUserId,
                     FamilyRelation.valueOf(relation));

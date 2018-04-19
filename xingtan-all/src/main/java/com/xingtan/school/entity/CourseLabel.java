@@ -9,6 +9,5 @@ import lombok.NoArgsConstructor;
  * @Date 2018/4/17 8:55
  */
 @NoArgsConstructor
-@AllArgsConstructor
 public class CourseLabel extends BaseLabel {
 }

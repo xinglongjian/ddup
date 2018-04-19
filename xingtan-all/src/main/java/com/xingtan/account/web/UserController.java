@@ -2,7 +2,11 @@ package com.xingtan.account.web;
 
 import com.xingtan.account.bean.WeixinUser;
 import com.xingtan.account.entity.User;
+import com.xingtan.account.entity.UserBaseData;
+import com.xingtan.account.service.UserBaseDataService;
 import com.xingtan.account.service.UserService;
+import com.xingtan.common.entity.FromSource;
+import com.xingtan.common.entity.UserStatus;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import io.swagger.annotations.*;
@@ -19,6 +23,8 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private UserBaseDataService userBaseDataService;
 
     @GetMapping("/{userName}")
     @ApiOperation(value = "通过用户名获取学生", notes = "通过用户名获取学生", httpMethod = "GET")
@@ -66,7 +72,7 @@ public class UserController {
     }
 
     @PostMapping("/addByWeixin")
-    @ApiOperation(value = "添加用户", notes = "添加用户", httpMethod = "POST")
+    @ApiOperation(value = "通过微信添加用户", notes = "通过微信添加用户", httpMethod = "POST")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "user", value = "用户", required = true, dataType = "User", paramType = "body")
     })
@@ -75,17 +81,31 @@ public class UserController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse addUserByWeixin(@RequestBody WeixinUser user) {
-//        if (user.getEmail() == null && user.getTelephone() == null && user.getUserName() == null) {
-//            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "用户名、手机号、邮箱至少有一个",
-//                    null);
-//        }
-//        try {
-//            userService.insertUser(user);
-//        } catch (Exception e) {
-//            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
-//        }
-        return new BaseResponse<WeixinUser>(HttpStatus.OK, user);
+    public BaseResponse addUserByWeixin(@RequestBody WeixinUser wxUser) {
+        long userId = 0;
+        try {
+            log.info("addUserByWeixin, user:{}", wxUser);
+            User user = new User();
+            user.setUserName(wxUser.getNickName());
+            user.setNickName(wxUser.getNickName());
+            user.setRealName(wxUser.getNickName());
+            user.setCreatedUserId(1L);
+            user.setFromSource(FromSource.WEIXIN.name());
+            user.setStatus(UserStatus.ENABLE.ordinal());
+            userId =  userService.insertUser(user);
+
+            UserBaseData baseData = new UserBaseData();
+            baseData.setUserId(userId);
+            baseData.setCountry(wxUser.getCountry());
+            baseData.setProvince(wxUser.getProvince());
+            baseData.setCity(wxUser.getCity());
+            baseData.setHeadImage(wxUser.getHeadImage());
+            userBaseDataService.insertUserBaseData(baseData);
+            log.info("addUserByWeixin Success.");
+        } catch (Exception e) {
+            return new BaseResponse<Long>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<Long>(HttpStatus.OK, userId);
     }
 
     @PostMapping("/delete/{id}")

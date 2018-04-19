@@ -2,10 +2,7 @@ package com.xingtan.school.entity;
 
 import com.xingtan.common.entity.BaseEntity;
 import com.xingtan.common.entity.StudentDuty;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 
 /**
  * @Author zhengweiliang
@@ -15,6 +12,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
+@EqualsAndHashCode(callSuper = false)
 public class StudentCourseRelation extends BaseEntity {
 
     /**
