@@ -13,12 +13,12 @@ import java.util.List;
 @Mapper
 public interface UserBaseDataMapper {
     /**
-     * 通过ID获取
+     * 通过userId获取
      *
-     * @param id
+     * @param userId
      * @return
      */
-    UserBaseData getById(@Param("id") long id);
+    UserBaseData getDataByUserId(@Param("userId") long userId);
     /**
      * 插入
      *
@@ -30,7 +30,7 @@ public interface UserBaseDataMapper {
     /**
      * 修改
      *
-     * @param student
+     * @param user
      */
     void updateUserBaseData(UserBaseData user);
 

@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   KEY `idx_status`(`status`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户表';
 
-CREATE TABLE IF NOT EXISTS `user_data` (
+CREATE TABLE IF NOT EXISTS `user_base_data` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '用户ID',
   `sex` VARCHAR(255) NOT NULL DEFAULT 'SECRECY' COMMENT '性别',
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `user_data` (
   KEY `idx_birthday`(`birthday`) USING BTREE,
   KEY `idx_sex`(`sex`) USING BTREE,
   KEY `idx_province_city_district`(`province`,`city`,`district`) USING BTREE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户资料表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户基本信息表';
 
 CREATE TABLE IF NOT EXISTS `school` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
