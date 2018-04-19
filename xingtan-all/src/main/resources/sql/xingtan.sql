@@ -6,6 +6,21 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '密码',
   `telephone` VARCHAR(11) NOT NULL DEFAULT '' COMMENT '手机号',
   `email` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `from_source` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '来源',
+  `created_by` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '由谁添加',
+  `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态',
+  `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
+  `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `idx_user_name`(`user_name`) USING BTREE ,
+  UNIQUE KEY `idx_telephone`(`telephone`) USING BTREE ,
+  UNIQUE KEY `idx_email`(`email`) USING BTREE,
+  KEY `idx_status`(`status`) USING BTREE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户表';
+
+CREATE TABLE IF NOT EXISTS `user_data` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `user_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '用户ID',
   `sex` VARCHAR(255) NOT NULL DEFAULT 'SECRECY' COMMENT '性别',
   `birthday` DATE NOT NULL DEFAULT '1970-01-01' COMMENT '生日',
   `head_image` TEXT COMMENT '头像',
@@ -16,24 +31,18 @@ CREATE TABLE IF NOT EXISTS `user` (
   `city` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '市',
   `district` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '区',
   `address` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '其他地址',
-  `zip_code` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '邮编',
   `introduce` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '个人介绍',
-  `from_source` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '来源',
   `weixin` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '微信',
   `qq` VARCHAR(255) NOT NULL DEFAULT '' COMMENT 'qq',
-  `created_by` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '由谁添加',
-  `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态',
   `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_user_name`(`user_name`) USING BTREE ,
-  UNIQUE KEY `idx_telephone`(`telephone`) USING BTREE ,
-  UNIQUE KEY `idx_email`(`email`) USING BTREE,
+  UNIQUE KEY `idx_user_id`(`user_id`) USING BTREE ,
   UNIQUE KEY `idx_id_card_no`(`id_card_no`) USING BTREE,
   KEY `idx_birthday`(`birthday`) USING BTREE,
   KEY `idx_sex`(`sex`) USING BTREE,
   KEY `idx_province_city_district`(`province`,`city`,`district`) USING BTREE
-)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户表';
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户资料表';
 
 CREATE TABLE IF NOT EXISTS `school` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
