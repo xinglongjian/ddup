@@ -1,5 +1,6 @@
 package com.xingtan.account.web;
 
+import com.xingtan.account.bean.WeixinUser;
 import com.xingtan.account.entity.User;
 import com.xingtan.account.service.UserService;
 import com.xingtan.common.web.BaseResponse;
@@ -62,6 +63,29 @@ public class UserController {
             return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<User>(HttpStatus.OK, user);
+    }
+
+    @PostMapping("/addByWeixin")
+    @ApiOperation(value = "添加用户", notes = "添加用户", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "user", value = "用户", required = true, dataType = "User", paramType = "body")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_BAD_REQUEST, message = "参数不全"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse addUserByWeixin(@RequestBody WeixinUser user) {
+//        if (user.getEmail() == null && user.getTelephone() == null && user.getUserName() == null) {
+//            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "用户名、手机号、邮箱至少有一个",
+//                    null);
+//        }
+//        try {
+//            userService.insertUser(user);
+//        } catch (Exception e) {
+//            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+//        }
+        return new BaseResponse<WeixinUser>(HttpStatus.OK, user);
     }
 
     @PostMapping("/delete/{id}")
