@@ -16,9 +16,6 @@
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
-    <sql id="SIMPLE_COLUMNS" >
-        <![CDATA[id, user_name, real_name, en_name, telephone, email, `password`,`status`]]>
-    </sql>
     <sql id="BASE_COLUMNS" >
         <![CDATA[id, user_name, real_name, en_name, telephone, email, `password`, from_source, `status`,created_user_id ]]>
     </sql>
@@ -28,7 +25,7 @@
 
     <select id="getSimpleUserById" parameterType="java.lang.Long" resultMap="UserMap" >
         SELECT
-        <include refid="SIMPLE_COLUMNS" />
+        <include refid="BASE_COLUMNS" />
         FROM `user`
         WHERE id = #{id}
     </select>

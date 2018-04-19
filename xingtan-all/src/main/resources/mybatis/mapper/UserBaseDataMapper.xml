@@ -3,134 +3,76 @@
 <mapper namespace="com.xingtan.account.mapper.UserBaseDataMapper" >
     <resultMap id="UserBaseDataMap" type="com.xingtan.account.entity.UserBaseData" >
         <id column="id" property="id"/>
-        <result column="user_name" property="userName"/>
-        <result column="real_name" property="realName"/>
-        <result column="en_name" property="enName"/>
+        <result column="user_id" property="userId"/>
         <result column="sex" property="sex"/>
         <result column="birthday" property="birthday"/>
-        <result column="telephone" property="telephone"/>
-        <result column="email" property="email"/>
-        <result column="password" property="password"/>
         <result column="head_image" property="headImage"/>
         <result column="id_card_type" property="idCardType" />
         <result column="id_card_no" property="idCardNo" />
+        <result column="country" property="country" />
         <result column="province" property="province" />
         <result column="city" property="city" />
         <result column="district" property="district" />
         <result column="address" property="address" />
-        <result column="zip_code" property="zipCode" />
         <result column="introduce" property="introduce" />
-        <result column="from_source" property="fromSource" />
         <result column="weixin" property="weixin" />
         <result column="qq" property="qq" />
-        <result column="created_by" property="createdBy" />
-        <result column="enabled" property="enabled" />
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
-    <sql id="SIMPLE_COLUMNS" >
-        <![CDATA[id, user_name, real_name, en_name, sex, birthday, head_image]]>
-    </sql>
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, user_name, real_name, en_name, sex, birthday, telephone, email, `password`, head_image, id_card_type,
-    id_card_no, province, city, district, address, zip_code, introduce, from_source, weixin, qq, enabled,created_by ]]>
+        <![CDATA[id, user_id, sex, birthday, head_image, id_card_type,
+    id_card_no, country, province, city, district, address, introduce, weixin, qq ]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, user_name, real_name, en_name, sex, birthday, telephone, email, `password`, head_image, id_card_type,
-    id_card_no, province, city, district, address, zip_code, introduce, from_source, weixin, qq,enabled, created_by,gmt_create, gmt_modified]]>
+        <![CDATA[id, user_id, sex, birthday, head_image, id_card_type,
+    id_card_no, country, province, city, district, address, introduce, weixin, qq,gmt_create, gmt_modified]]>
     </sql>
 
-    <select id="getSimpleUserById" parameterType="java.lang.Long" resultMap="UserMap" >
+    <select id="getDataByUserId" parameterType="java.lang.Long" resultMap="UserBaseDataMap" >
         SELECT
-        <include refid="SIMPLE_COLUMNS" />
-        FROM `user`
-        WHERE id = #{id}
+        <include refid="BASE_COLUMNS" />
+        FROM `user_base_data`
+        WHERE user_id = #{userId}
     </select>
-    <select id="getUserById" parameterType="java.lang.Long" resultMap="UserMap" >
-        SELECT
-        <include refid="ALL_COLUMNS" />
-        FROM `user`
-        WHERE id = #{id}
-    </select>
-    <select id="getUsersByIds" parameterType="java.lang.Long" resultMap="UserMap" >
-        SELECT
-        <include refid="ALL_COLUMNS" />
-        FROM `user`
-        WHERE id in
-        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
-            #{item}
-        </foreach>
-    </select>
-    <select id="getUserByUserName" parameterType="java.lang.String" resultMap="UserMap" >
-        SELECT
-        <include refid="ALL_COLUMNS" />
-        FROM `user`
-        WHERE user_name = #{userName}
-    </select>
-    <select id="getUserByPhone" parameterType="java.lang.String" resultMap="UserMap" >
-        SELECT
-        <include refid="ALL_COLUMNS" />
-        FROM `user`
-        WHERE `telephone` = #{telephone}
-    </select>
-    <select id="getUserByEmail" parameterType="java.lang.String" resultMap="UserMap" >
-        SELECT
-        <include refid="ALL_COLUMNS" />
-        FROM `user`
-        WHERE email = #{email}
-    </select>
-    <select id="getUserByIdCardNo" parameterType="java.lang.String" resultMap="UserMap" >
-        SELECT
-        <include refid="ALL_COLUMNS" />
-        FROM `user`
-        WHERE id_card_no = #{idCardNo}
-    </select>
+
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.User" >
         INSERT INTO
-        `user`
-        (user_name, real_name, en_name, sex, birthday, telephone, email, `password`, head_image, id_card_type,
-         id_card_no, province, city, district, address, zip_code, introduce, from_source, weixin, qq, created_by, gmt_create, gmt_modified)
+        `user_base_data`
+        (user_id, sex, birthday, head_image, id_card_type,
+         id_card_no, country, province, city, district, address, introduce, weixin, qq, gmt_create, gmt_modified)
         VALUES
-        (#{userName}, #{realName},#{enName}, #{sex}, #{birthday}, #{telephone}, #{email}, #{password}, #{headImage}, #{idCardType},
-        #{idCardNo}, #{province}, #{city}, #{district}, #{address}, #{zipCode}, #{introduce}, #{fromSource}, #{weixin},
-        #{qq},#{createdBy},NOW(), NOW())
+        (#{userId}, #{sex}, #{birthday}, #{headImage}, #{idCardType},
+        #{idCardNo},  #{country}, #{province}, #{city}, #{district}, #{address}, #{introduce}, #{weixin}, #{qq},NOW(), NOW())
     </insert>
 
     <update id="updateUser" parameterType="com.xingtan.account.entity.User" >
         UPDATE
-        `user`
+        `user_base_data`
         SET
-        <if test="userName != null">user_name = #{userName},</if>
-        <if test="realName != null">real_name = #{realName},</if>
-        <if test="enName != null">en_name = #{enName},</if>
+        <if test="userId != null">user_id = #{userId},</if>
         <if test="sex != null">sex = #{sex},</if>
         <if test="birthday != null">birthday = #{birthday},</if>
-        <if test="telephone != null">telephone = #{telephone},</if>
-        <if test="email != null">email = #{email},</if>
-        <if test="password != null">password = #{password},</if>
         <if test="headImage != null">head_image = #{headImage},</if>
         <if test="idCardType != null">id_card_type = #{idCardType},</if>
         <if test="idCardNo != null">id_card_no = #{idCardNo},</if>
+        <if test="country != null">country = #{country},</if>
         <if test="province != null">province = #{province},</if>
         <if test="city != null">city = #{city},</if>
         <if test="district != null">district = #{district},</if>
         <if test="address != null">address = #{address},</if>
-        <if test="zipCode != null">zip_code = #{zipCode},</if>
         <if test="introduce != null">introduce = #{introduce},</if>
-        <if test="enabled != null">enabled = #{enabled},</if>
-        <if test="fromSource != null">from_source = #{fromSource},</if>
         <if test="weixin != null">weixin = #{weixin},</if>
         <if test="qq != null">qq = #{qq},</if>
-        <if test="createdBy != null">created_by = #{createdBy},</if>
         gmt_modified = now()
         WHERE
         id = #{id}
     </update>
 
-    <delete id="deleteUser" parameterType="java.lang.Long" >
+    <delete id="deleteUserBaseData" parameterType="java.lang.Long" >
         DELETE FROM
-        `user`
+        `user_base_data`
         WHERE
         id =#{id}
     </delete>
