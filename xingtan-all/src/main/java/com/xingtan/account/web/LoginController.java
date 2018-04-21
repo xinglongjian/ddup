@@ -59,6 +59,37 @@ public class LoginController {
         }
     }
 
+    @GetMapping("/loginByWx")
+    @ApiOperation(value = "通过微信登陆", notes = "通过微信登陆", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userName", value = "用户名", required = true, dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "password", value = "密码", required = true, dataType = "String", paramType = "query"),
+            @ApiImplicitParam(name = "type", value = "登录类型", required = true, dataType = "LoginType", paramType = "query")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_BAD_REQUEST, message = "参数不全"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse<User> loginByWx(String userName, String password, LoginType type) {
+        if (StringUtils.isEmpty(userName)) {
+            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "userName is not empty", null);
+        }
+        try {
+            User user = queryUser(userName, type);
+            if (null == user) {
+                return new BaseResponse<User>(HttpStatus.OK, LoginError.USERNAME_ERROR.name(), null);
+            }
+            if (MD5Utils.md5(password).equals(user.getPassword())) {
+                return new BaseResponse<User>(HttpStatus.OK, OperationStatus.SUCCESS.name(), user);
+            } else {
+                return new BaseResponse<User>(HttpStatus.OK, LoginError.PASSWORD_ERROR.name(), null);
+            }
+        } catch (Exception e) {
+            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+    }
+
     private User queryUser(String username, LoginType type) {
         switch (type) {
             case USERNAME:
