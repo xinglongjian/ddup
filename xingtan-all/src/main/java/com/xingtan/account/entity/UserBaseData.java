@@ -78,4 +78,12 @@ public class UserBaseData extends BaseEntity{
      * qq号
      */
     private String qq;
+    /**
+     *
+     */
+    private String openId;
+    /**
+     *
+     */
+    private String unionId;
 }

@@ -33,7 +33,7 @@ public class UserController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
     public BaseResponse getUserByUserName(@PathVariable("userName") String userName) {
-        if(StringUtils.isEmpty(userName)) {
+        if (StringUtils.isEmpty(userName)) {
             return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "userName is not exist", null);
         }
         User user = null;
@@ -42,7 +42,7 @@ public class UserController {
         } catch (Exception e) {
             return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
-        if(user == null) {
+        if (user == null) {
             return new BaseResponse<User>(HttpStatus.OK, "no data", user);
         }
         return new BaseResponse<User>(HttpStatus.OK, user);
@@ -71,7 +71,7 @@ public class UserController {
         return new BaseResponse<User>(HttpStatus.OK, user);
     }
 
-    @PostMapping("/addByWeixin")
+    @PostMapping("/addByWx")
     @ApiOperation(value = "通过微信添加用户", notes = "通过微信添加用户", httpMethod = "POST")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "user", value = "用户", required = true, dataType = "User", paramType = "body")
@@ -81,31 +81,16 @@ public class UserController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse addUserByWeixin(@RequestBody WeixinUser wxUser) {
-        long userId = 0;
+    public BaseResponse<User> addUserByWeixin(@RequestBody WeixinUser wxUser) {
+        User user = null;
         try {
             log.info("addUserByWeixin, user:{}", wxUser);
-            User user = new User();
-            user.setUserName(wxUser.getNickName());
-            user.setNickName(wxUser.getNickName());
-            user.setRealName(wxUser.getNickName());
-            user.setCreatedUserId(1L);
-            user.setFromSource(FromSource.WEIXIN.name());
-            user.setStatus(UserStatus.ENABLE.ordinal());
-            userId =  userService.insertUser(user);
-
-            UserBaseData baseData = new UserBaseData();
-            baseData.setUserId(userId);
-            baseData.setCountry(wxUser.getCountry());
-            baseData.setProvince(wxUser.getProvince());
-            baseData.setCity(wxUser.getCity());
-            baseData.setHeadImage(wxUser.getHeadImage());
-            userBaseDataService.insertUserBaseData(baseData);
+            user = userService.saveByWxUser(wxUser);
             log.info("addUserByWeixin Success.");
         } catch (Exception e) {
-            return new BaseResponse<Long>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
-        return new BaseResponse<Long>(HttpStatus.OK, userId);
+        return new BaseResponse<User>(HttpStatus.OK, user);
     }
 
     @PostMapping("/delete/{id}")

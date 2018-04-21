@@ -5,11 +5,13 @@ import com.xingtan.account.bean.LoginError;
 import com.xingtan.account.bean.LoginType;
 import com.xingtan.account.entity.User;
 import com.xingtan.account.service.UserService;
+import com.xingtan.account.service.WechatServerService;
 import com.xingtan.common.entity.OperationStatus;
 import com.xingtan.common.utils.MD5Utils;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import io.swagger.annotations.*;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +30,10 @@ public class LoginController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private WechatServerService wechatServerService;
+
 
     @GetMapping("/login")
     @ApiOperation(value = "通过用户名登陆", notes = "通过用户名登陆", httpMethod = "GET")
@@ -77,9 +83,14 @@ public class LoginController {
             return new BaseResponse<Jscode2sessionResult>(HttpStatus.BAD_REQUEST, "code is not empty", null);
         }
         try {
-//            Jscode2sessionResult jscode2sessionResult =
-           return null;
+            Jscode2sessionResult jscode2sessionResult = wechatServerService.getJscode2session(code);
+            if(StringUtils.isNotEmpty(jscode2sessionResult.getErrcode())) {
+                return new BaseResponse<>(HttpStatus.OK, jscode2sessionResult);
+            } else {
+                return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, jscode2sessionResult);
+            }
         } catch (Exception e) {
+            log.error("loginByWx Error:{}", e.getMessage());
             return new BaseResponse<Jscode2sessionResult>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
     }

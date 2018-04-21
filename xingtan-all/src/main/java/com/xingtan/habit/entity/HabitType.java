@@ -24,4 +24,8 @@ public class HabitType extends BaseEntity {
      * 描述
      */
     private String description;
+    /**
+     * 是否可用
+     */
+    private int enabled;
 }

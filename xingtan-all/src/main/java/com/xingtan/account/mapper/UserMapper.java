@@ -64,7 +64,7 @@ public interface UserMapper {
      * @param student
      * @return new Id
      */
-    long insertUser(User student);
+    void insertUser(User student);
 
     /**
      * 修改

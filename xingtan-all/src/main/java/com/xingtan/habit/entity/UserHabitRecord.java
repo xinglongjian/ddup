@@ -28,4 +28,5 @@ public class UserHabitRecord extends BaseEntity {
      * 谁给打的分
      */
     private long createdUserId;
+
 }

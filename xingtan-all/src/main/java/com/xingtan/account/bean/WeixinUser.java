@@ -18,6 +18,15 @@ import java.io.Serializable;
 @ToString
 public class WeixinUser implements Serializable{
     /**
+     *
+     */
+    private String openId;
+    /**
+     *
+     */
+    private String unionId;
+
+    /**
      * 昵称
      */
     private String nickName;
@@ -40,5 +49,5 @@ public class WeixinUser implements Serializable{
     /**
      * 头像
      */
-    private String headImage;
+    private String avatarUrl;
 }
