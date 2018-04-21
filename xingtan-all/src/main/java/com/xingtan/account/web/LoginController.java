@@ -1,5 +1,6 @@
 package com.xingtan.account.web;
 
+import com.xingtan.account.bean.Jscode2sessionResult;
 import com.xingtan.account.bean.LoginError;
 import com.xingtan.account.bean.LoginType;
 import com.xingtan.account.entity.User;
@@ -71,22 +72,15 @@ public class LoginController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse<User> loginByWx(String userName, String password, LoginType type) {
-        if (StringUtils.isEmpty(userName)) {
-            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "userName is not empty", null);
+    public BaseResponse<Jscode2sessionResult> loginByWx(String code) {
+        if (StringUtils.isEmpty(code)) {
+            return new BaseResponse<Jscode2sessionResult>(HttpStatus.BAD_REQUEST, "code is not empty", null);
         }
         try {
-            User user = queryUser(userName, type);
-            if (null == user) {
-                return new BaseResponse<User>(HttpStatus.OK, LoginError.USERNAME_ERROR.name(), null);
-            }
-            if (MD5Utils.md5(password).equals(user.getPassword())) {
-                return new BaseResponse<User>(HttpStatus.OK, OperationStatus.SUCCESS.name(), user);
-            } else {
-                return new BaseResponse<User>(HttpStatus.OK, LoginError.PASSWORD_ERROR.name(), null);
-            }
+//            Jscode2sessionResult jscode2sessionResult =
+           return null;
         } catch (Exception e) {
-            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+            return new BaseResponse<Jscode2sessionResult>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
     }
 
