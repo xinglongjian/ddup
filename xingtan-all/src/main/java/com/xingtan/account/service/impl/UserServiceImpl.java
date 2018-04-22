@@ -7,8 +7,10 @@ import com.xingtan.account.mapper.UserBaseDataMapper;
 import com.xingtan.account.mapper.UserMapper;
 import com.xingtan.account.service.UserService;
 import com.xingtan.common.entity.FromSource;
+import com.xingtan.common.entity.UserSexEnum;
 import com.xingtan.common.entity.UserStatus;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -60,6 +62,7 @@ public class UserServiceImpl implements UserService {
             user.setUserName(wxUser.getNickName());
             user.setNickName(wxUser.getNickName());
             user.setRealName(wxUser.getNickName());
+            user.setEnName(StringUtils.EMPTY);
             user.setCreatedUserId(1L);
             user.setFromSource(FromSource.WEIXIN.name());
             user.setStatus(UserStatus.ENABLE.ordinal());
@@ -67,6 +70,7 @@ public class UserServiceImpl implements UserService {
 
             UserBaseData baseData = new UserBaseData();
             baseData.setUserId(user.getId());
+            baseData.setSex(UserSexEnum.of(wxUser.getGender()));
             baseData.setCountry(wxUser.getCountry());
             baseData.setProvince(wxUser.getProvince());
             baseData.setCity(wxUser.getCity());

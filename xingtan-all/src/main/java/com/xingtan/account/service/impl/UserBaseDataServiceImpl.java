@@ -17,6 +17,11 @@ public class UserBaseDataServiceImpl implements UserBaseDataService {
     }
 
     @Override
+    public UserBaseData getDataByOpenId(String openId) {
+        return userBaseDataMapper.getDataByOpenId(openId);
+    }
+
+    @Override
     public void insertUserBaseData(UserBaseData baseData) {
         userBaseDataMapper.insertUserBaseData(baseData);
     }

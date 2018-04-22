@@ -17,15 +17,15 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class WechatServerServiceImpl implements WechatServerService {
 
-    @Value("#{wechat.appId}")
+    @Value("${wechat.appId}")
     private String appId;
-    @Value("#{wechat.appSecret}")
+    @Value("${wechat.appSecret}")
     private String appSecret;
 
-    @Value("#{wechat.jscode2sessionUrl}")
+    @Value("${wechat.jscode2sessionUrl}")
     private String jscode2sessionUrl;
 
-    @Value("#{wechat.getTokenUrl}")
+    @Value("${wechat.getTokenUrl}")
     private String getTokenUrl;
 
     private final static String GRANT_TYPE_SESSION = "authorization_code";
@@ -34,7 +34,7 @@ public class WechatServerServiceImpl implements WechatServerService {
     @Override
     public Jscode2sessionResult getJscode2session(String code) {
         String url = String.format(jscode2sessionUrl, appId, appSecret, code, GRANT_TYPE_SESSION);
-        log.info("getJscode2session Start");
+        log.info("getJscode2session Start,url:{}",url);
         OkHttpClient client = new OkHttpClient();
         client.newBuilder().readTimeout(10, TimeUnit.SECONDS).build();
         Request request = new Request.Builder().url(url).build();
@@ -63,5 +63,11 @@ public class WechatServerServiceImpl implements WechatServerService {
             log.error("getTokenByOpenid Fail, error:{}", ex.getMessage());
         }
         return null;
+    }
+
+    public static void main(String[] args) {
+        String json="{\"session_key\":\"Wp7vtOJOQu05HdpOL8Br2g==\",\"openid\":\"ofEkm0eZUrfmbky9gGjvpzfCyj44\"}";
+        Jscode2sessionResult result = JSON.parseObject(json, Jscode2sessionResult.class);
+        System.out.println(result);
     }
 }

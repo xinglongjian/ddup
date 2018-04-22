@@ -21,7 +21,7 @@ public class UserBaseData extends BaseEntity{
     /**
      * 用户ID
      */
-    private long userId;
+    private Long userId;
     /**
      * 性别
      */

@@ -4,6 +4,8 @@ import com.xingtan.account.bean.Jscode2sessionResult;
 import com.xingtan.account.bean.LoginError;
 import com.xingtan.account.bean.LoginType;
 import com.xingtan.account.entity.User;
+import com.xingtan.account.entity.UserBaseData;
+import com.xingtan.account.service.UserBaseDataService;
 import com.xingtan.account.service.UserService;
 import com.xingtan.account.service.WechatServerService;
 import com.xingtan.common.entity.OperationStatus;
@@ -33,6 +35,8 @@ public class LoginController {
 
     @Autowired
     private WechatServerService wechatServerService;
+    @Autowired
+    private UserBaseDataService userBaseDataService;
 
 
     @GetMapping("/loginBySys")
@@ -85,6 +89,11 @@ public class LoginController {
         try {
             Jscode2sessionResult jscode2sessionResult = wechatServerService.getJscode2session(code);
             if(StringUtils.isNotEmpty(jscode2sessionResult.getErrcode())) {
+                UserBaseData userBaseData =
+                        userBaseDataService.getDataByOpenId(jscode2sessionResult.getOpenid());
+                if(userBaseData != null) {
+                    jscode2sessionResult.setUserId(userBaseData.getUserId());
+                }
                 return new BaseResponse<>(HttpStatus.OK, jscode2sessionResult);
             } else {
                 return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, jscode2sessionResult);

@@ -11,8 +11,10 @@ import java.io.Serializable;
 @EqualsAndHashCode(callSuper = false)
 public class Jscode2sessionResult implements Serializable {
     private  String openid;
-    private String session_key;
+    private String sessionKey;
     private String unionid;
+    // 本系统的用户ID
+    private Long userId;
     //错误时
     private String errcode;
     private String errmsg;

@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
  * @Date 2018/4/21 15:22
  */
 @RestController
-public class HabitController {
+public class HabitAdminController {
 
 }

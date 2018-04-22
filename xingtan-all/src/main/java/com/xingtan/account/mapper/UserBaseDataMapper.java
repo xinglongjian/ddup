@@ -19,6 +19,13 @@ public interface UserBaseDataMapper {
      * @return
      */
     UserBaseData getDataByUserId(@Param("userId") long userId);
+
+    /**
+     *
+     * @param openId
+     * @return
+     */
+    UserBaseData getDataByOpenId(@Param("openId") String openId);
     /**
      * 插入
      *

@@ -23,7 +23,7 @@ logging:
 wechat:
   appId: wx20a319eb08aa5e8c
   appSecret: 382f62d773ec085f9ae779b0b1f00244
-  jscode2sessionUrl: https://api.weixin.qq.com/sns/jscode2session?appid={0}&secret={1}&js_code={2}&grant_type={3}
-  getTokenUrl: https://api.weixin.qq.com/cgi-bin/token?appid={0}&secret={1}&grant_type=client_credential
+  jscode2sessionUrl: https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=%s
+  getTokenUrl: https://api.weixin.qq.com/cgi-bin/token?appid=%s&secret=%s&grant_type=client_credential
 
 

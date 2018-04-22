@@ -54,10 +54,10 @@ public class User extends BaseEntity {
     /**
      * 由谁创建
      */
-    private long createdUserId;
+    private Long createdUserId;
 
     /**
      * 是否可用
      */
-    private int status = UserStatus.ENABLE.ordinal();
+    private Integer status = UserStatus.ENABLE.ordinal();
 }

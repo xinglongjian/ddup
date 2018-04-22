@@ -1,55 +1,98 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.xingtan.account.mapper.UserBaseDataMapper" >
-    <resultMap id="UserBaseDataMap" type="com.xingtan.account.entity.UserBaseData" >
+<mapper namespace="com.xingtan.account.mapper.UserBaseDataMapper">
+    <resultMap id="UserBaseDataMap" type="com.xingtan.account.entity.UserBaseData">
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="sex" property="sex"/>
         <result column="birthday" property="birthday"/>
         <result column="head_image" property="headImage"/>
-        <result column="id_card_type" property="idCardType" />
-        <result column="id_card_no" property="idCardNo" />
-        <result column="country" property="country" />
-        <result column="province" property="province" />
-        <result column="city" property="city" />
-        <result column="district" property="district" />
-        <result column="address" property="address" />
-        <result column="introduce" property="introduce" />
-        <result column="weixin" property="weixin" />
-        <result column="qq" property="qq" />
-        <result column="open_id" property="openId" />
-        <result column="union_id" property="unionId" />
+        <result column="id_card_type" property="idCardType"/>
+        <result column="id_card_no" property="idCardNo"/>
+        <result column="country" property="country"/>
+        <result column="province" property="province"/>
+        <result column="city" property="city"/>
+        <result column="district" property="district"/>
+        <result column="address" property="address"/>
+        <result column="introduce" property="introduce"/>
+        <result column="weixin" property="weixin"/>
+        <result column="qq" property="qq"/>
+        <result column="open_id" property="openId"/>
+        <result column="union_id" property="unionId"/>
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
-    <sql id="BASE_COLUMNS" >
-        <![CDATA[id, user_id, sex, birthday, head_image, id_card_type,
-    id_card_no, country, province, city, district, address, introduce, weixin, qq, open_id,union_id ]]>
+    <sql id="BASE_COLUMNS">
+        <![CDATA[
+        id, user_id, sex, birthday, head_image, id_card_type,
+        id_card_no, country, province, city, district, address, introduce, weixin, qq, open_id, union_id
+        ]]>
     </sql>
-    <sql id="ALL_COLUMNS" >
-        <![CDATA[id, user_id, sex, birthday, head_image, id_card_type,
-    id_card_no, country, province, city, district, address, introduce, weixin, qq, open_id,union_id,gmt_create, gmt_modified]]>
+    <sql id="ALL_COLUMNS">
+        <![CDATA[
+        id, user_id, sex, birthday, head_image, id_card_type,
+        id_card_no, country, province, city, district, address, introduce, weixin, qq, open_id, union_id, gmt_create, gmt_modified
+        ]]>
     </sql>
 
-    <select id="getDataByUserId" parameterType="java.lang.Long" resultMap="UserBaseDataMap" >
+    <select id="getDataByUserId" parameterType="java.lang.Long" resultMap="UserBaseDataMap">
         SELECT
-        <include refid="BASE_COLUMNS" />
+        <include refid="BASE_COLUMNS"/>
         FROM `user_base_data`
         WHERE user_id = #{userId}
     </select>
+    <select id="getDataByOpenId" parameterType="java.lang.String" resultMap="UserBaseDataMap">
+        SELECT
+        <include refid="BASE_COLUMNS"/>
+        FROM `user_base_data`
+        WHERE open_id = #{openId}
+    </select>
 
-    <insert id="insertUserBaseData" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.User" >
+    <insert id="insertUserBaseData" useGeneratedKeys="true" keyProperty="id"
+            parameterType="com.xingtan.account.entity.User">
         INSERT INTO
-        `user_base_data`
-        (user_id, sex, birthday, head_image, id_card_type,
-         id_card_no, country, province, city, district, address, introduce, weixin, qq,  open_id, union_id, gmt_create, gmt_modified)
+            `user_base_data`
+            (
+        <if test="userId != null">user_id,</if>
+        <if test="sex != null">sex,</if>
+        <if test="birthday != null">birthday,</if>
+        <if test="headImage != null">head_image,</if>
+        <if test="idCardType != null">id_card_type,</if>
+        <if test="idCardNo != null">id_card_no,</if>
+        <if test="country != null">country,</if>
+        <if test="province != null">province,</if>
+        <if test="city != null">city,</if>
+        <if test="district != null">district,</if>
+        <if test="address != null">address,</if>
+        <if test="introduce != null">introduce,</if>
+        <if test="weixin != null">weixin,</if>
+        <if test="qq != null">qq,</if>
+        <if test="openId != null">open_id,</if>
+        <if test="unionId != null">union_id,</if>
+                gmt_create, gmt_modified)
         VALUES
-        (#{userId}, #{sex}, #{birthday}, #{headImage}, #{idCardType},
-        #{idCardNo},  #{country}, #{province}, #{city}, #{district}, #{address}, #{introduce}, #{weixin}, #{qq}, #{openId}, #{unionId},NOW(), NOW())
+            (
+        <if test="userId != null">#{userId},</if>
+        <if test="sex != null">#{sex},</if>
+        <if test="birthday != null">#{birthday},</if>
+        <if test="headImage != null">#{headImage},</if>
+        <if test="idCardType != null">#{idCardType},</if>
+        <if test="idCardNo != null">#{idCardNo},</if>
+        <if test="country != null">#{country},</if>
+        <if test="province != null">#{province},</if>
+        <if test="city != null">#{city},</if>
+        <if test="district != null">#{district},</if>
+        <if test="address != null">#{address},</if>
+        <if test="introduce != null">#{introduce},</if>
+        <if test="weixin != null">#{weixin},</if>
+        <if test="qq != null">#{qq},</if>
+        <if test="openId != null">#{openId},</if>
+        <if test="unionId != null">#{unionId},</if>
+        NOW(), NOW())
     </insert>
 
-    <update id="updateUserBaseData" parameterType="com.xingtan.account.entity.User" >
+    <update id="updateUserBaseData" parameterType="com.xingtan.account.entity.User">
         UPDATE
         `user_base_data`
         SET
@@ -74,11 +117,11 @@
         id = #{id}
     </update>
 
-    <delete id="deleteUserBaseData" parameterType="java.lang.Long" >
+    <delete id="deleteUserBaseData" parameterType="java.lang.Long">
         DELETE FROM
-        `user_base_data`
+            `user_base_data`
         WHERE
-        id =#{id}
+            id = #{id}
     </delete>
 
 </mapper>
