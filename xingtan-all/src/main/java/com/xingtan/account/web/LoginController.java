@@ -25,7 +25,7 @@ import org.springframework.web.bind.annotation.RestController;
  */
 @RestController
 @Slf4j
-@RequestMapping(produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+@RequestMapping(value = "/api/login", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
 public class LoginController {
 
     @Autowired
@@ -35,7 +35,7 @@ public class LoginController {
     private WechatServerService wechatServerService;
 
 
-    @GetMapping("/login")
+    @GetMapping("/loginBySys")
     @ApiOperation(value = "通过用户名登陆", notes = "通过用户名登陆", httpMethod = "GET")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userName", value = "用户名", required = true, dataType = "String", paramType = "query"),
