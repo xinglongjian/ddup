@@ -1,6 +1,6 @@
 dependencies {
     compile "org.mybatis.spring.boot:mybatis-spring-boot-starter:${mybatisSpringVersion}"
-    compile "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
     compile "mysql:mysql-connector-java:${mysqlDriverVersion}"
     compile "org.apache.commons:commons-lang3:3.7"
     compile "org.apache.httpcomponents:httpcore:4.4.9"

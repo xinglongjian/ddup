@@ -85,7 +85,12 @@ public class UserController {
         User user = null;
         try {
             log.info("addUserByWeixin, user:{}", wxUser);
-            user = userService.saveByWxUser(wxUser);
+            UserBaseData baseData = userBaseDataService.getDataByOpenId(wxUser.getOpenId());
+            if(baseData == null) {
+                user = userService.saveByWxUser(wxUser);
+            } else {
+                user = userService.getUserById(baseData.getUserId());
+            }
             log.info("addUserByWeixin Success.");
         } catch (Exception e) {
             return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);

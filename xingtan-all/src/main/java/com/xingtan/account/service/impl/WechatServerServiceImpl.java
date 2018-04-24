@@ -34,15 +34,16 @@ public class WechatServerServiceImpl implements WechatServerService {
     @Override
     public Jscode2sessionResult getJscode2session(String code) {
         String url = String.format(jscode2sessionUrl, appId, appSecret, code, GRANT_TYPE_SESSION);
-        log.info("getJscode2session Start,url:{}",url);
+        log.info("getJscode2session Start,url:{}", url);
         OkHttpClient client = new OkHttpClient();
         client.newBuilder().readTimeout(10, TimeUnit.SECONDS).build();
         Request request = new Request.Builder().url(url).build();
-        try{
+        try {
             Response response = client.newCall(request).execute();
-            log.info("getJscode2session Success!body:{}", response.body().string());
-            return JSON.parseObject(response.body().string(), Jscode2sessionResult.class);
-        }catch (Exception ex) {
+            String result = response.body().string();
+            log.info("getJscode2session Success!body:{}", result);
+            return JSON.parseObject(result, Jscode2sessionResult.class);
+        } catch (Exception ex) {
             log.error("getJscode2session Fail, error:{}", ex.getMessage());
         }
         return null;
@@ -55,19 +56,14 @@ public class WechatServerServiceImpl implements WechatServerService {
         OkHttpClient client = new OkHttpClient();
         client.newBuilder().readTimeout(10, TimeUnit.SECONDS).build();
         Request request = new Request.Builder().url(url).build();
-        try{
+        try {
             Response response = client.newCall(request).execute();
-            log.info("getTokenByOpenid Success!body:{}", response.body().string());
-            return JSON.parseObject(response.body().string(), Token.class);
-        }catch (Exception ex) {
+            String result = response.body().string();
+            log.info("getTokenByOpenid Success!body:{}", result);
+            return JSON.parseObject(result, Token.class);
+        } catch (Exception ex) {
             log.error("getTokenByOpenid Fail, error:{}", ex.getMessage());
         }
         return null;
-    }
-
-    public static void main(String[] args) {
-        String json="{\"session_key\":\"Wp7vtOJOQu05HdpOL8Br2g==\",\"openid\":\"ofEkm0eZUrfmbky9gGjvpzfCyj44\"}";
-        Jscode2sessionResult result = JSON.parseObject(json, Jscode2sessionResult.class);
-        System.out.println(result);
     }
 }

@@ -88,7 +88,7 @@ public class LoginController {
         }
         try {
             Jscode2sessionResult jscode2sessionResult = wechatServerService.getJscode2session(code);
-            if(StringUtils.isNotEmpty(jscode2sessionResult.getErrcode())) {
+            if(StringUtils.isEmpty(jscode2sessionResult.getErrcode())) {
                 UserBaseData userBaseData =
                         userBaseDataService.getDataByOpenId(jscode2sessionResult.getOpenid());
                 if(userBaseData != null) {
