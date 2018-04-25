@@ -18,4 +18,5 @@ public class Notification extends BaseEntity{
      * 创建者
      */
     private long createdUserId;
+
 }
