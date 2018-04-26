@@ -1,8 +1,11 @@
 package com.xingtan.account.web;
 
+import com.xingtan.account.bean.Child;
 import com.xingtan.account.bean.WeixinUser;
+import com.xingtan.account.entity.StudentParentRelation;
 import com.xingtan.account.entity.User;
 import com.xingtan.account.entity.UserBaseData;
+import com.xingtan.account.service.StudentParentRelationService;
 import com.xingtan.account.service.UserBaseDataService;
 import com.xingtan.account.service.UserService;
 import com.xingtan.common.entity.FromSource;
@@ -14,7 +17,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @RestController
 @Slf4j
@@ -25,6 +33,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private UserBaseDataService userBaseDataService;
+    @Autowired
+    private StudentParentRelationService studentParentRelationService;
 
     @GetMapping("/{userName}")
     @ApiOperation(value = "通过用户名获取学生", notes = "通过用户名获取学生", httpMethod = "GET")
@@ -86,7 +96,7 @@ public class UserController {
         try {
             log.info("addUserByWeixin, user:{}", wxUser);
             UserBaseData baseData = userBaseDataService.getDataByOpenId(wxUser.getOpenId());
-            if(baseData == null) {
+            if (baseData == null) {
                 user = userService.saveByWxUser(wxUser);
             } else {
                 user = userService.getUserById(baseData.getUserId());
@@ -119,6 +129,70 @@ public class UserController {
             return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<Long>(HttpStatus.OK, "SUCCESS", id);
+    }
+
+    @PostMapping("/addByParent")
+    @ApiOperation(value = "添加父母添加用户", notes = "添加父母添加用户", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "user", value = "用户", required = true, dataType = "User", paramType = "body")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_BAD_REQUEST, message = "参数不全"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse addUserByParent(@RequestBody User user) {
+        if (user.getEmail() == null && user.getTelephone() == null && user.getUserName() == null) {
+            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "用户名、手机号、邮箱至少有一个",
+                    null);
+        }
+        try {
+            userService.insertUser(user);
+        } catch (Exception e) {
+            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<User>(HttpStatus.OK, user);
+    }
+
+
+    @GetMapping("/getByParent/{userId}")
+    @ApiOperation(value = "获取孩子", notes = "获取孩子", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userId", value = "用户ID", required = true, dataType = "Long", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_BAD_REQUEST, message = "参数不全"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getChildsByParent(@PathVariable("userId") Long userId) {
+        List<Child> childs = new ArrayList<>();
+        try {
+            List<StudentParentRelation> relations = studentParentRelationService.getRelationsByParentId(userId);
+            if (relations == null) {
+                return new BaseResponse(HttpStatus.OK, Collections.emptyList());
+            }
+            for (StudentParentRelation r : relations) {
+                User user = userService.getUserById(r.getStudentId());
+                UserBaseData userBaseData = userBaseDataService.getDataByUserId(r.getStudentId());
+                Child child = new Child();
+                if (child != null) {
+                    child.setId(user.getId());
+                    child.setRealName(user.getRealName());
+                    child.setEnName(user.getEnName());
+                }
+                if (userBaseData != null) {
+                    child.setBirthday(userBaseData.getBirthday());
+                    child.setHeadImage(userBaseData.getHeadImage());
+                    child.setSex(userBaseData.getSex());
+                }
+                childs.add(child);
+            }
+            log.info("getChildsByParent, parentId:{}, childs:{}", userId, childs);
+        } catch (Exception e) {
+            return new BaseResponse<List<Child>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<List<Child>>(HttpStatus.OK, childs);
     }
 
 }
