@@ -1,6 +1,7 @@
 package com.xingtan.account.web;
 
 import com.xingtan.account.bean.Child;
+import com.xingtan.account.bean.ChildForm;
 import com.xingtan.account.bean.WeixinUser;
 import com.xingtan.account.entity.StudentParentRelation;
 import com.xingtan.account.entity.User;
@@ -8,7 +9,9 @@ import com.xingtan.account.entity.UserBaseData;
 import com.xingtan.account.service.StudentParentRelationService;
 import com.xingtan.account.service.UserBaseDataService;
 import com.xingtan.account.service.UserService;
+import com.xingtan.common.constants.FileConstants;
 import com.xingtan.common.entity.FromSource;
+import com.xingtan.common.entity.ImageSuffix;
 import com.xingtan.common.entity.UserStatus;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
@@ -17,9 +20,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -141,17 +146,48 @@ public class UserController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse addUserByParent(@RequestBody User user) {
-        if (user.getEmail() == null && user.getTelephone() == null && user.getUserName() == null) {
-            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "用户名、手机号、邮箱至少有一个",
-                    null);
-        }
+    public BaseResponse addUserByParent(HttpServletRequest request,
+                                        @RequestParam(value = "imgFile", required = false) MultipartFile imageFile,
+                                        @RequestBody ChildForm child) {
+        long userId = 0;
         try {
+            User user = new User();
+            user.setUserName(child.getRealName());
+            user.setNickName(child.getNickName());
+            user.setRealName(child.getRealName());
+            user.setEnName(child.getEnName());
+            user.setCreatedUserId(child.getCreatedUserId());
+            user.setFromSource(FromSource.WEIXIN.name());
+            user.setStatus(UserStatus.ENABLE.ordinal());
             userService.insertUser(user);
+
+            String realPath = request.getSession().getServletContext().getRealPath("/");
+            String fileName = user.getId() + ImageSuffix.JPG.getName();
+            if (imageFile != null) {
+                File dir = new File(realPath + FileConstants.HEAD_IMAGE_PATH);
+                if (!dir.exists()) {
+                    dir.mkdir();
+                }
+                File file = new File(dir, fileName);
+                imageFile.transferTo(file);
+            }
+            UserBaseData parent = userBaseDataService.getDataByUserId(child.getCreatedUserId());
+            UserBaseData baseData = new UserBaseData();
+            baseData.setUserId(user.getId());
+            baseData.setSex(child.getSex());
+            baseData.setHeadImage(fileName);
+            if(parent!=null) {
+                baseData.setCountry(parent.getCountry());
+                baseData.setProvince(parent.getProvince());
+                baseData.setCity(parent.getCity());
+            }
+            userBaseDataService.insertUserBaseData(baseData);
+            userId = user.getId();
+            log.info("addUserByParent SUCCESS. baseInfo:{}", child);
         } catch (Exception e) {
-            return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+            return new BaseResponse<Long>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
-        return new BaseResponse<User>(HttpStatus.OK, user);
+        return new BaseResponse<Long>(HttpStatus.OK, userId);
     }
 
 
