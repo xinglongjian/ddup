@@ -15,11 +15,10 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 public class ChildForm implements Serializable {
-    private String userName;
     private String realName;
     private String nickName;
     private String enName;
     private Long createdUserId;
-    private UserSexEnum sex;
+    private int gender;
     private Date birthday;
 }

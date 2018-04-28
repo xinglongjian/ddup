@@ -25,5 +25,10 @@ wechat:
   appSecret: 382f62d773ec085f9ae779b0b1f00244
   jscode2sessionUrl: https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=%s
   getTokenUrl: https://api.weixin.qq.com/cgi-bin/token?appid=%s&secret=%s&grant_type=client_credential
+upload:
+  path: D:\1zwl_project\upload\
+#  path: /home/xingtan/apps/upload/
+
+
 
 

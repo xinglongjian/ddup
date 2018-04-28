@@ -12,6 +12,7 @@ import com.xingtan.account.service.UserService;
 import com.xingtan.common.constants.FileConstants;
 import com.xingtan.common.entity.FromSource;
 import com.xingtan.common.entity.ImageSuffix;
+import com.xingtan.common.entity.UserSexEnum;
 import com.xingtan.common.entity.UserStatus;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
@@ -19,14 +20,16 @@ import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.BufferedOutputStream;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 @RestController
@@ -40,6 +43,9 @@ public class UserController {
     private UserBaseDataService userBaseDataService;
     @Autowired
     private StudentParentRelationService studentParentRelationService;
+
+    @Value("${upload.path}")
+    private String uploadPath;
 
     @GetMapping("/{userName}")
     @ApiOperation(value = "通过用户名获取学生", notes = "通过用户名获取学生", httpMethod = "GET")
@@ -148,43 +154,54 @@ public class UserController {
     })
     public BaseResponse addUserByParent(HttpServletRequest request,
                                         @RequestParam(value = "imgFile", required = false) MultipartFile imageFile,
-                                        @RequestBody ChildForm child) {
+                                        @RequestParam("realName") String realName,
+                                        @RequestParam("nickName") String nickName,
+                                        @RequestParam("enName") String enName,
+                                        @RequestParam("sex") String sex,
+                                        @RequestParam("birthday") String birthday,
+                                        @RequestParam("createdUserId") String createdUserId) {
         long userId = 0;
+        log.info("addUserByParent,imgFile:{},realName:{}, nickName:{}, enName:{}, sex:{}, birthday:{}, " +
+                "createdUserId:{}", imageFile, realName, nickName, enName, sex, birthday, createdUserId);
         try {
             User user = new User();
-            user.setUserName(child.getRealName());
-            user.setNickName(child.getNickName());
-            user.setRealName(child.getRealName());
-            user.setEnName(child.getEnName());
-            user.setCreatedUserId(child.getCreatedUserId());
-            user.setFromSource(FromSource.WEIXIN.name());
+            user.setUserName(realName);
+            user.setNickName(nickName);
+            user.setRealName(realName);
+            user.setEnName(enName);
+            user.setCreatedUserId(Long.parseLong(createdUserId));
+            user.setFromSource(FromSource.PARENT.name());
             user.setStatus(UserStatus.ENABLE.ordinal());
             userService.insertUser(user);
 
-            String realPath = request.getSession().getServletContext().getRealPath("/");
             String fileName = user.getId() + ImageSuffix.JPG.getName();
             if (imageFile != null) {
-                File dir = new File(realPath + FileConstants.HEAD_IMAGE_PATH);
+                File dir = new File(uploadPath + FileConstants.HEAD_IMAGE_PATH);
                 if (!dir.exists()) {
-                    dir.mkdir();
+                    dir.mkdirs();
                 }
                 File file = new File(dir, fileName);
-                imageFile.transferTo(file);
+                byte[] bytes = imageFile.getBytes();
+                try (BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(file))) {
+                    buffStream.write(bytes);
+                    buffStream.close();
+                }
             }
-            UserBaseData parent = userBaseDataService.getDataByUserId(child.getCreatedUserId());
+            UserBaseData parent = userBaseDataService.getDataByUserId(Long.parseLong(createdUserId));
             UserBaseData baseData = new UserBaseData();
             baseData.setUserId(user.getId());
-            baseData.setSex(child.getSex());
+            baseData.setSex(UserSexEnum.of(Integer.parseInt(sex)));
             baseData.setHeadImage(fileName);
-            if(parent!=null) {
+            if (parent != null) {
                 baseData.setCountry(parent.getCountry());
                 baseData.setProvince(parent.getProvince());
                 baseData.setCity(parent.getCity());
             }
             userBaseDataService.insertUserBaseData(baseData);
             userId = user.getId();
-            log.info("addUserByParent SUCCESS. baseInfo:{}", child);
+            log.info("addUserByParent SUCCESS. userInfo:{}", user);
         } catch (Exception e) {
+            log.error("addUserByParent FAIL, error:{}", e.getMessage());
             return new BaseResponse<Long>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<Long>(HttpStatus.OK, userId);
@@ -201,12 +218,12 @@ public class UserController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse getChildsByParent(@PathVariable("userId") Long userId) {
+    public BaseResponse<List<Child>> getChildsByParent(@PathVariable("userId") Long userId) {
         List<Child> childs = new ArrayList<>();
         try {
             List<StudentParentRelation> relations = studentParentRelationService.getRelationsByParentId(userId);
             if (relations == null) {
-                return new BaseResponse(HttpStatus.OK, Collections.emptyList());
+                return new BaseResponse<List<Child>>(HttpStatus.OK, childs);
             }
             for (StudentParentRelation r : relations) {
                 User user = userService.getUserById(r.getStudentId());

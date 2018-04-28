@@ -14,7 +14,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_name`(`user_name`) USING BTREE ,
-  UNIQUE KEY `idx_email`(`email`) USING BTREE,
   KEY `idx_status`(`status`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户表';
 
