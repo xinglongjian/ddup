@@ -2,8 +2,8 @@ package com.xingtan.common.entity;
 
 public enum  ImageSuffix {
 
-    JPG(".jpg"),
-    GIF(".gif");
+    JPG("jpg"),
+    GIF("gif");
 
     private String name;
 

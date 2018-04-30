@@ -21,7 +21,8 @@ public class Child implements Serializable {
     private Long id;
     private String headImage;
     private String realName;
+    private String nickName;
     private String enName;
-    private UserSexEnum sex;
-    private Date birthday;
+    private int sex;
+    private String birthday;
 }

@@ -13,6 +13,7 @@ public interface UserService {
     User getUserByPhone(String telephone);
     User getUserByIdCardNo(String idCardNo);
     User saveByWxUser(WeixinUser user);
+    User saveByParent(String nickName,String realName,String enName,String createdUserId);
     long insertUser(User student);
     void updateUser(User student);
     void deleteUser(long id);

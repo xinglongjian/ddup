@@ -69,6 +69,11 @@
         FROM `user`
         WHERE id_card_no = #{idCardNo}
     </select>
+    <select id="getCounts" resultType="java.lang.Long">
+        SELECT
+        count(1) as num
+        FROM `user`
+    </select>
     <insert id="insertUser" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.account.entity.User" >
         INSERT INTO
         `user`

@@ -27,7 +27,7 @@ public class StudentParentRelation extends BaseEntity {
     /**
      * 关系
      */
-    private FamilyRelation relation = FamilyRelation.MOTHER;
+    private FamilyRelation relation = FamilyRelation.MAMA;
 
     /**
      * 别名

@@ -1,7 +1,6 @@
 package com.xingtan.account.web;
 
 import com.xingtan.account.bean.Child;
-import com.xingtan.account.bean.ChildForm;
 import com.xingtan.account.bean.WeixinUser;
 import com.xingtan.account.entity.StudentParentRelation;
 import com.xingtan.account.entity.User;
@@ -10,10 +9,9 @@ import com.xingtan.account.service.StudentParentRelationService;
 import com.xingtan.account.service.UserBaseDataService;
 import com.xingtan.account.service.UserService;
 import com.xingtan.common.constants.FileConstants;
-import com.xingtan.common.entity.FromSource;
-import com.xingtan.common.entity.ImageSuffix;
-import com.xingtan.common.entity.UserSexEnum;
-import com.xingtan.common.entity.UserStatus;
+import com.xingtan.common.entity.*;
+import com.xingtan.common.utils.DateUtils;
+import com.xingtan.common.utils.HeadImageUtils;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import io.swagger.annotations.*;
@@ -25,12 +23,17 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.activation.MimetypesFileTypeMap;
+import javax.annotation.PostConstruct;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
+import javax.servlet.http.HttpServletResponse;
+import java.io.*;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
 @Slf4j
@@ -46,6 +49,7 @@ public class UserController {
 
     @Value("${upload.path}")
     private String uploadPath;
+
 
     @GetMapping("/{userName}")
     @ApiOperation(value = "通过用户名获取学生", notes = "通过用户名获取学生", httpMethod = "GET")
@@ -159,38 +163,22 @@ public class UserController {
                                         @RequestParam("enName") String enName,
                                         @RequestParam("sex") String sex,
                                         @RequestParam("birthday") String birthday,
-                                        @RequestParam("createdUserId") String createdUserId) {
+                                        @RequestParam("createdUserId") String createdUserId,
+                                        @RequestParam("relation") String relation) {
         long userId = 0;
         log.info("addUserByParent,imgFile:{},realName:{}, nickName:{}, enName:{}, sex:{}, birthday:{}, " +
                 "createdUserId:{}", imageFile, realName, nickName, enName, sex, birthday, createdUserId);
         try {
-            User user = new User();
-            user.setUserName(realName);
-            user.setNickName(nickName);
-            user.setRealName(realName);
-            user.setEnName(enName);
-            user.setCreatedUserId(Long.parseLong(createdUserId));
-            user.setFromSource(FromSource.PARENT.name());
-            user.setStatus(UserStatus.ENABLE.ordinal());
-            userService.insertUser(user);
-
-            String fileName = user.getId() + ImageSuffix.JPG.getName();
+            User user = userService.saveByParent(nickName, realName, enName, createdUserId);
+            String fileName = String.format("%.%", user.getId(),ImageSuffix.JPG.getName());
             if (imageFile != null) {
-                File dir = new File(uploadPath + FileConstants.HEAD_IMAGE_PATH);
-                if (!dir.exists()) {
-                    dir.mkdirs();
-                }
-                File file = new File(dir, fileName);
-                byte[] bytes = imageFile.getBytes();
-                try (BufferedOutputStream buffStream = new BufferedOutputStream(new FileOutputStream(file))) {
-                    buffStream.write(bytes);
-                    buffStream.close();
-                }
+                HeadImageUtils.saveHeadImage(uploadPath, fileName, imageFile.getBytes());
             }
             UserBaseData parent = userBaseDataService.getDataByUserId(Long.parseLong(createdUserId));
             UserBaseData baseData = new UserBaseData();
             baseData.setUserId(user.getId());
             baseData.setSex(UserSexEnum.of(Integer.parseInt(sex)));
+            baseData.setBirthday(DateUtils.formatYYYYMMDD.parse(birthday));
             baseData.setHeadImage(fileName);
             if (parent != null) {
                 baseData.setCountry(parent.getCountry());
@@ -198,6 +186,11 @@ public class UserController {
                 baseData.setCity(parent.getCity());
             }
             userBaseDataService.insertUserBaseData(baseData);
+            // 插入关系表
+            StudentParentRelation studentParentRelation =
+                    new StudentParentRelation(user.getId(), Long.parseLong(createdUserId), FamilyRelation.valueOf(relation));
+            studentParentRelation.setAlias("");
+            studentParentRelationService.insertRelation(studentParentRelation);
             userId = user.getId();
             log.info("addUserByParent SUCCESS. userInfo:{}", user);
         } catch (Exception e) {
@@ -209,7 +202,7 @@ public class UserController {
 
 
     @GetMapping("/getByParent/{userId}")
-    @ApiOperation(value = "获取孩子", notes = "获取孩子", httpMethod = "POST")
+    @ApiOperation(value = "获取孩子", notes = "获取孩子", httpMethod = "GET")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userId", value = "用户ID", required = true, dataType = "Long", paramType = "path")
     })
@@ -235,9 +228,8 @@ public class UserController {
                     child.setEnName(user.getEnName());
                 }
                 if (userBaseData != null) {
-                    child.setBirthday(userBaseData.getBirthday());
-                    child.setHeadImage(userBaseData.getHeadImage());
-                    child.setSex(userBaseData.getSex());
+                    child.setBirthday(DateUtils.formatYYYYMMDD.format(userBaseData.getBirthday()));
+                    child.setSex(userBaseData.getSex().ordinal());
                 }
                 childs.add(child);
             }
@@ -247,5 +239,53 @@ public class UserController {
         }
         return new BaseResponse<List<Child>>(HttpStatus.OK, childs);
     }
+
+    @GetMapping("/getHeadImage/{userId}/{size}")
+    @ApiOperation(value = "获取用户头像", notes = "获取用户头像", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "userId", value = "用户ID", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "size", value = "大小", required = false, dataType = "Integer", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_BAD_REQUEST, message = "参数不全"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public void getHeadImage(@PathVariable("userId") Long userId, Integer size, HttpServletResponse res) {
+        ServletOutputStream writer = null;
+        try {
+            String sizeform="";
+            if(size != null) {
+                sizeform = String.format("%*%", size);
+            }
+
+            String fileName = String.format("%_%.%",userId, sizeform, ImageSuffix.JPG.getName());
+            File file = new File(uploadPath + HeadImageUtils.HEAD_IMAGE_PATH + "/" + fileName);
+            byte[] fileByte = HeadImageUtils.getHeadImage(file);
+            String fileType = new MimetypesFileTypeMap().getContentType(file);
+            res.setContentType(fileType);
+            res.setContentLength(fileByte.length);
+            writer = res.getOutputStream();
+            writer.write(fileByte);
+            writer.flush();
+        } catch (Exception e) {
+            log.error("getHeadImage error, userId:{}", userId);
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null)
+                    writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (writer != null)
+                    writer.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 }

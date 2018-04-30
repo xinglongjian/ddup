@@ -14,7 +14,9 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicLong;
 
 @Service
 @Slf4j
@@ -24,6 +26,16 @@ public class UserServiceImpl implements UserService {
     private UserMapper userMapper;
     @Autowired
     private UserBaseDataMapper userBaseDataMapper;
+
+    private static AtomicLong userNameId;
+    private static String userNamePrefix="xxx";
+
+    @PostConstruct
+    private void init() {
+        // 当没有输入userName时，用于生成username
+        long count = userMapper.getCounts();
+        userNameId=new AtomicLong(count);
+    }
 
     @Override
     public User getUserById(long id) {
@@ -59,7 +71,7 @@ public class UserServiceImpl implements UserService {
     public User saveByWxUser(WeixinUser wxUser){
         try{
             User user = new User();
-            user.setUserName(wxUser.getNickName());
+            user.setUserName(userNamePrefix+userNameId.incrementAndGet());
             user.setNickName(wxUser.getNickName());
             user.setRealName(wxUser.getNickName());
             user.setEnName(StringUtils.EMPTY);
@@ -84,6 +96,20 @@ public class UserServiceImpl implements UserService {
             log.error("saveByWxUser error, wxUser:{}, causeBy:{}", wxUser, ex.getMessage());
             return null;
         }
+    }
+
+    @Override
+    public User saveByParent(String nickName, String realName, String enName, String createdUserId) {
+        User user = new User();
+        user.setUserName(userNamePrefix + userNameId.incrementAndGet());
+        user.setNickName(nickName);
+        user.setRealName(realName);
+        user.setEnName(enName);
+        user.setCreatedUserId(Long.parseLong(createdUserId));
+        user.setFromSource(FromSource.PARENT.name());
+        user.setStatus(UserStatus.ENABLE.ordinal());
+        userMapper.insertUser(user);
+        return user;
     }
 
     @Override

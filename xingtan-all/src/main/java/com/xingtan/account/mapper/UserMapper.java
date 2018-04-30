@@ -21,6 +21,7 @@ public interface UserMapper {
 
     /**
      * 批量获取
+     *
      * @param ids
      * @return
      */
@@ -57,6 +58,13 @@ public interface UserMapper {
      * @return
      */
     User getUserByIdCardNo(@Param("idCardNo") String idCardNo);
+
+    /**
+     * 用户总数
+     *
+     * @return
+     */
+    long getCounts();
 
     /**
      * 插入

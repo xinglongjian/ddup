@@ -39,7 +39,6 @@ CREATE TABLE IF NOT EXISTS `user_base_data` (
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_id`(`user_id`) USING BTREE ,
-  UNIQUE KEY `idx_id_card_no`(`id_card_no`) USING BTREE,
   KEY `idx_birthday`(`birthday`) USING BTREE,
   KEY `idx_sex`(`sex`) USING BTREE,
   KEY `idx_province_city_district`(`province`,`city`,`district`) USING BTREE,
