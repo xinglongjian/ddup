@@ -35,12 +35,15 @@ public class HeadImageUtils {
                 buffStream.close();
             }
             // 压缩一张小图
-            String[] splits = fileName.split(".");
+            log.info(fileName);
+            String[] splits = fileName.split("[\\.]");
             String fileName100=String.format("%s_100*100.%s", splits[0], splits[1]);
+            log.info(fileName100);
             File file100 = new File(dir, fileName100);
             Thumbnails.of(file).size(100, 100).outputQuality(0.25).toFile(file100);
 
             String fileName200=String.format("%s_200*200.%s", splits[0], splits[1]);
+            log.info(fileName200);
             File file200 = new File(dir, fileName200);
             Thumbnails.of(file).size(200, 200).outputQuality(0.25).toFile(file200);
         } catch (Exception e) {

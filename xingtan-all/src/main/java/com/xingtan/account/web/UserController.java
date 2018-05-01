@@ -170,7 +170,7 @@ public class UserController {
                 "createdUserId:{}", imageFile, realName, nickName, enName, sex, birthday, createdUserId);
         try {
             User user = userService.saveByParent(nickName, realName, enName, createdUserId);
-            String fileName = String.format("%.%", user.getId(),ImageSuffix.JPG.getName());
+            String fileName = String.format("%s.%s", user.getId(), ImageSuffix.JPG.getName());
             if (imageFile != null) {
                 HeadImageUtils.saveHeadImage(uploadPath, fileName, imageFile.getBytes());
             }
@@ -194,7 +194,7 @@ public class UserController {
             userId = user.getId();
             log.info("addUserByParent SUCCESS. userInfo:{}", user);
         } catch (Exception e) {
-            log.error("addUserByParent FAIL, error:{}", e.getMessage());
+            log.error("addUserByParent FAIL, error:{}", e);
             return new BaseResponse<Long>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<Long>(HttpStatus.OK, userId);
@@ -251,15 +251,17 @@ public class UserController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public void getHeadImage(@PathVariable("userId") Long userId, Integer size, HttpServletResponse res) {
+    public void getHeadImage(@PathVariable("userId") Long userId,
+                             @PathVariable("size") Integer size,
+                             HttpServletResponse res) {
         ServletOutputStream writer = null;
         try {
-            String sizeform="";
-            if(size != null) {
-                sizeform = String.format("%*%", size);
+            String sizeform = "";
+            if (size != null) {
+                sizeform = String.format("%s*%s", size, size);
             }
 
-            String fileName = String.format("%_%.%",userId, sizeform, ImageSuffix.JPG.getName());
+            String fileName = String.format("%s_%s.%s", userId, sizeform, ImageSuffix.JPG.getName());
             File file = new File(uploadPath + HeadImageUtils.HEAD_IMAGE_PATH + "/" + fileName);
             byte[] fileByte = HeadImageUtils.getHeadImage(file);
             String fileType = new MimetypesFileTypeMap().getContentType(file);

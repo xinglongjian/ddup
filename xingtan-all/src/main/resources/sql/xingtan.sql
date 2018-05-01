@@ -162,11 +162,11 @@ CREATE TABLE IF NOT EXISTS `habit` (
   `code` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '习惯编码',
   `habit_type_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '类型ID',
   `description` TEXT COMMENT '描述',
+  `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态',
   `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_name`(`name`) USING BTREE ,
-  UNIQUE KEY `idx_code`(`code`) USING BTREE
+  UNIQUE KEY `idx_name`(`name`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '习惯表';
 
 CREATE TABLE IF NOT EXISTS `habit_type` (
@@ -174,11 +174,11 @@ CREATE TABLE IF NOT EXISTS `habit_type` (
   `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '名称',
   `code` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '编码',
   `description` TEXT COMMENT '描述',
+  `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态',
   `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `idx_name`(`name`) USING BTREE ,
-  UNIQUE KEY `idx_code`(`code`) USING BTREE
+  UNIQUE KEY `idx_name`(`name`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '习惯类型表';
 
 CREATE TABLE IF NOT EXISTS `user_habit_record` (

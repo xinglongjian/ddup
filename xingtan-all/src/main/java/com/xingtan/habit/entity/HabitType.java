@@ -27,5 +27,5 @@ public class HabitType extends BaseEntity {
     /**
      * 是否可用
      */
-    private int enabled;
+    private int status;
 }

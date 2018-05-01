@@ -31,5 +31,5 @@ public class Habit extends BaseEntity {
     /**
      * 是否可用
      */
-    private int enabled;
+    private int status;
 }

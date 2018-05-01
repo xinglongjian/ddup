@@ -6,16 +6,16 @@
         <result column="name" property="name"/>
         <result column="code" property="code"/>
         <result column="description" property="description" />
-        <result column="enabled" property="enabled" />
+        <result column="status" property="status" />
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, `name`, `code`, description,enabled]]>
+        <![CDATA[id, `name`, `code`, description,`status`]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, `name`, `code`, description,enabled,gmt_create, gmt_modified]]>
+        <![CDATA[id, `name`, `code`, description,`status`,gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getAll" resultMap="HabitTypeMap" >
@@ -33,9 +33,9 @@
     <insert id="insertHabitType" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.HabitType" >
         INSERT INTO
         `habit_type`
-        (`name`, `code`, `description`, enabled,gmt_create, gmt_modified)
+        (`name`, `code`, `description`, `status`,gmt_create, gmt_modified)
         VALUES
-        (#{name}, #{code}, #{description}, #{enabled},NOW(), NOW())
+        (#{name}, #{code}, #{description}, #{status},NOW(), NOW())
     </insert>
 
     <update id="updateHabitType" parameterType="com.xingtan.habit.entity.HabitType" >
@@ -45,7 +45,7 @@
         <if test="name != null">name = #{name},</if>
         <if test="code != null">code = #{code},</if>
         <if test="description != null">description = #{description},</if>
-        <if test="enabled != null">enabled = #{enabled},</if>
+        <if test="status != null">`status` = #{status},</if>
         gmt_modified = now()
         WHERE
         id = #{id}

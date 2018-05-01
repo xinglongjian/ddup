@@ -33,7 +33,7 @@ public class HabitController {
     @Autowired
     private UserHabitRelationService userHabitRelationService;
 
-    @GetMapping("/habitType/all")
+    @GetMapping("/allType")
     @ApiOperation(value = "获取所有习惯类型", notes = "获取所有习惯类型", httpMethod = "GET")
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
@@ -47,6 +47,40 @@ public class HabitController {
             return new BaseResponse<List<HabitType>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<List<HabitType>>(HttpStatus.OK, habitTypes);
+    }
+
+    @PostMapping("/addType")
+    @ApiOperation(value = "添加习惯类型", notes = "添加习惯类型", httpMethod = "POST")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse addHabitTypes(@RequestBody HabitType habitType) {
+        try {
+            log.info("habitType:{}", habitType);
+            habitTypeService.insertHabitType(habitType);
+            log.info("habitType add SUCCESS");
+        } catch (Exception e) {
+            log.error("addHabitTypes error,causedBy:{}", e);
+            return new BaseResponse<HabitType>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<HabitType>(HttpStatus.OK, habitType);
+    }
+
+    @PostMapping("/add")
+    @ApiOperation(value = "添加习惯", notes = "添加习惯", httpMethod = "POST")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse addHabit(@RequestBody Habit habit) {
+        try {
+            log.info("habit:{}", habit);
+            habitService.insertHabit(habit);
+            log.info("habit add SUCCESS");
+        } catch (Exception e) {
+            log.error("addHabit error,causedBy:{}", e);
+            return new BaseResponse<Habit>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<Habit>(HttpStatus.OK, habit);
     }
 
     @GetMapping("/getHabitsByType/{type}")
