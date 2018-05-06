@@ -6,6 +6,7 @@ import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.util.Strings;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
@@ -23,13 +24,13 @@ public class SchoolController {
     @Autowired
     private SchoolService schoolService;
 
-    @GetMapping("/{name}")
+    @GetMapping("/query")
     @ApiOperation(value = "通过名获取学校", notes = "通过名获取学校", httpMethod = "GET")
     @ApiImplicitParam(name = "name", value = "名称", required = true, dataType = "String", paramType = "path")
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse getSchoolsByName(@PathVariable("name") String name) {
+    public BaseResponse getSchoolsByName(@RequestParam("name") String name) {
         List<School> schools = null;
         try {
             schools = schoolService.getSchoolByName(name);
@@ -51,8 +52,13 @@ public class SchoolController {
     })
     public BaseResponse addSchool(@RequestBody School school) {
         try {
+            log.info("add School, {}", school);
+            school.setIntroduce(Strings.EMPTY);
+            school.setCreatedUserId(1);
             schoolService.insertSchool(school);
+            log.info("add School, SUCCESS");
         } catch (Exception e) {
+            log.error("add School Error, school:{}, error:{}", school, e);
             return new BaseResponse<School>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<School>(HttpStatus.OK, school);

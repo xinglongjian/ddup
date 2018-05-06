@@ -8,14 +8,13 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- *
  * @param <T>
  */
 @Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
-public class BaseResponse<T> implements Serializable{
+public class BaseResponse<T> implements Serializable {
     private HttpStatus status;
     private String message;
     private T data;

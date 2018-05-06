@@ -34,20 +34,21 @@
 
     <select id="getSchoolById" parameterType="java.lang.Long" resultMap="SchoolMap" >
         SELECT
-        <include refid="ALL_COLUMNS" />
+        <include refid="BASE_COLUMNS" />
         FROM `school`
         WHERE id = #{id}
     </select>
     <select id="getSchoolByName" parameterType="java.lang.String" resultMap="SchoolMap" >
+        <bind name="pattern" value="'%' + name + '%'" />
         SELECT
-        <include refid="ALL_COLUMNS" />
+        <include refid="BASE_COLUMNS" />
         FROM `school`
-        WHERE name like #{name}
+        WHERE name like #{pattern}
     </select>
     <insert id="insertSchool" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.School" >
         INSERT INTO
         `school`
-        (id, `name`, en_name, `code`, build_year, head_image, telephone, parent_id, created_user_id, province, city, district,
+        (`name`, en_name, `code`, build_year, head_image, telephone, parent_id, created_user_id, province, city, district,
          address, zip_code, type, introduce, enabled, gmt_create, gmt_modified)
         VALUES
         (#{name}, #{enName},#{code}, #{buildYear}, #{headImage}, #{telephone}, #{parentId}, #{createdUserId}, #{province}, #{city},

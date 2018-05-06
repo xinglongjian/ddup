@@ -76,7 +76,7 @@ public class UserController {
     @PostMapping("/add")
     @ApiOperation(value = "添加用户", notes = "添加用户", httpMethod = "POST")
     @ApiImplicitParams({
-            @ApiImplicitParam(name = "user", value = "用户", required = true, dataType = "User", paramType = "body")
+        @ApiImplicitParam(name = "user", value = "用户", required = true, dataType = "User", paramType = "body")
     })
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_BAD_REQUEST, message = "参数不全"),

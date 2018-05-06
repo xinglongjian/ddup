@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingtan.admin.mapper.AreaMapper" >
+    <resultMap id="AreaMap" type="com.xingtan.admin.entity.Area" >
+        <id column="id" property="id"/>
+        <result column="no" property="no"/>
+        <result column="name" property="name"/>
+        <result column="parent_no" property="parentNo"/>
+        <result column="area_code" property="areaCode" />
+        <result column="area_level" property="areaLevel" />
+        <result column="type_name" property="typeName"/>
+        <result column="abbreviate" property="abbreviate"/>
+        <result column="post_code" property="postCode"/>
+        <result column="pinyin" property="pinyin"/>
+        <result column="pinyin_brief" property="pinyinBrief"/>
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+    </resultMap>
+
+    <sql id="BASE_COLUMNS" >
+        <![CDATA[id, `no`, `name`, `parent_no`, area_code, area_level, type_name, abbreviate, post_code, pinyin, pinyin_brief]]>
+    </sql>
+    <sql id="ALL_COLUMNS" >
+        <![CDATA[id, `no`, `name`, `parent_no`, area_code, area_level, type_name, abbreviate, post_code, pinyin, pinyin_brief, gmt_create, gmt_modified]]>
+    </sql>
+
+    <select id="getAreaById" parameterType="java.lang.Long" resultMap="AreaMap" >
+        SELECT
+        <include refid="BASE_COLUMNS" />
+        FROM `area`
+        WHERE id = #{id}
+    </select>
+    <select id="getAreasByParentNo" resultMap="AreaMap" >
+        SELECT
+        <include refid="BASE_COLUMNS" />
+        FROM `area`
+        WHERE parent_no = #{parentNo} and area_level = #{level}
+    </select>
+    <select id="getAllLevelOne" resultMap="AreaMap" >
+        SELECT
+        <include refid="BASE_COLUMNS" />
+        FROM `area`
+        WHERE area_level = 1
+    </select>
+    <insert id="insertArea" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.admin.entity.Area" >
+        INSERT INTO
+        `area`
+        (`no`, `name`, `parent_no`, area_code, area_level, type_name, abbreviate, post_code, pinyin, pinyin_brief, gmt_create, gmt_modified)
+        VALUES
+        (#{no}, #{name}, #{parentNo}, #{areaCode}, #{areaLevel}, #{typeName}, #{abbreviate}, #{postCode}, #{pinyin}, #{pinyinBrief},NOW(), NOW())
+    </insert>
+
+    <update id="updateArea" parameterType="com.xingtan.admin.entity.Area" >
+        UPDATE
+        `area`
+        SET
+        <if test="no != null">`no` = #{no},</if>
+        <if test="name != null">`name` = #{name},</if>
+        <if test="parentNo != null">parent_no = #{parentNo},</if>
+        <if test="areaCode != null">area_code = #{areaCode},</if>
+        <if test="areaLevel != null">area_level = #{areaLevel},</if>
+        <if test="typeName != null">type_name = #{typeName},</if>
+        <if test="abbreviate != null">abbreviate = #{abbreviate},</if>
+        <if test="postCode != null">post_code = #{postCode},</if>
+        <if test="pinyin != null">pinyin = #{pinyin},</if>
+        <if test="pinyinBrief != null">pinyin_brief = #{pinyinBrief},</if>
+        gmt_modified = now()
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="deleteArea" parameterType="java.lang.Long" >
+        DELETE FROM
+            `area`
+        WHERE
+            id =#{id}
+    </delete>
+
+</mapper>

@@ -1,5 +1,6 @@
 package com.xingtan.school.entity;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.xingtan.common.entity.BaseEntity;
 import com.xingtan.common.entity.SchoolType;
 import lombok.*;
@@ -12,6 +13,7 @@ import lombok.*;
 @NoArgsConstructor
 @ToString
 @EqualsAndHashCode(callSuper = false)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class School extends BaseEntity{
 
     /**

@@ -110,6 +110,19 @@ CREATE TABLE IF NOT EXISTS `student_grade_relation` (
   KEY `idx_grade_id`(`grade_id`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '学生班级关系表';
 
+CREATE TABLE IF NOT EXISTS `student_school_relation` (
+  `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `student_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '学生ID',
+  `school_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '学校ID',
+  `start_date` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '入学时间',
+  `end_date` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '毕业时间',
+  `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
+  `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_student_id`(`student_id`) USING BTREE,
+  KEY `idx_school_id`(`school_id`) USING BTREE
+)ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '学生学校关系表';
+
 CREATE TABLE IF NOT EXISTS `teacher_grade_relation` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `teacher_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '教师ID',
@@ -226,16 +239,19 @@ CREATE TABLE IF NOT EXISTS `question` (
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '问题表';
 
 CREATE TABLE IF NOT EXISTS `area` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `no` int(255) DEFAULT NULL COMMENT '区号',
-  `name` varchar(255) DEFAULT NULL,
-  `parent_no` int(255) DEFAULT NULL COMMENT '父-区号',
-  `area_code` varchar(255) DEFAULT NULL COMMENT '电话区号',
-  `area_level` int(255) DEFAULT NULL,
+  `id` BIGINT(20) NOT NULL AUTO_INCREMENT,
+  `no` varchar(255) NOT NULL DEFAULT '' COMMENT '区号',
+  `name` varchar(255) NOT NULL DEFAULT '',
+  `parent_no` varchar(255) NOT NULL DEFAULT '' COMMENT '父-区号',
+  `area_code` varchar(255) NOT NULL DEFAULT '' COMMENT '电话区号',
+  `area_level` int NOT NULL DEFAULT 0,
   `type_name` varchar(255) DEFAULT NULL,
   `abbreviate` varchar(10) DEFAULT NULL COMMENT '简写',
   `post_code` varchar(10) DEFAULT NULL COMMENT '邮编',
   `pinyin` varchar(255) DEFAULT NULL COMMENT '拼音',
   `pinyin_brief` varchar(255) DEFAULT NULL COMMENT '拼音缩写',
-  PRIMARY KEY (`id`)
+  `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
+  `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_parent_no`(`parent_no`) USING BTREE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='行政区划表';
