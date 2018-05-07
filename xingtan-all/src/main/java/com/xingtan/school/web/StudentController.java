@@ -1,10 +1,12 @@
 package com.xingtan.school.web;
 
+import com.xingtan.common.entity.AdminType;
 import com.xingtan.school.entity.GradeValidateMessage;
 import com.xingtan.school.entity.StudentGradeRelation;
 import com.xingtan.account.entity.StudentParentRelation;
 import com.xingtan.account.entity.User;
 import com.xingtan.school.entity.StudentSchoolRelation;
+import com.xingtan.school.entity.TeacherSchoolRelation;
 import com.xingtan.school.service.GradeValidateMessageService;
 import com.xingtan.school.service.StudentGradeRelationService;
 import com.xingtan.account.service.StudentParentRelationService;
@@ -13,16 +15,19 @@ import com.xingtan.common.entity.FamilyRelation;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import com.xingtan.school.service.StudentSchoolRelationService;
+import com.xingtan.school.service.TeacherSchoolRelationService;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -40,6 +45,7 @@ public class StudentController {
     private StudentGradeRelationService studentGradeRelationService;
     @Autowired
     private StudentSchoolRelationService studentSchoolRelationService;
+
 
     @PostMapping("/addByParent")
     @ApiOperation(value = "通过家长添加学生", notes = "通过家长添加学生", httpMethod = "POST")
@@ -95,13 +101,19 @@ public class StudentController {
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse addStudentToSchool(@RequestBody StudentSchoolRelation relation) {
-
+    public BaseResponse addToSchool(@RequestParam("studentId") long studentId,
+                                    @RequestParam("schoolId") long schoolId) {
         try {
+            StudentSchoolRelation relation = new StudentSchoolRelation();
+            relation.setSchoolId(schoolId);
+            relation.setStudentId(studentId);
+            relation.setStartDate(new Date());
             Long id = studentSchoolRelationService.insertRelation(relation);
-            return new BaseResponse<>(HttpStatus.OK, id);
+            log.info("addToSchool studentId:{},schoolId:{}", studentId, schoolId);
+            return new BaseResponse<Long>(HttpStatus.OK, id);
         } catch (Exception e) {
-            return new BaseResponse<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR,
+            log.error("addToSchool studentId:{},schoolId:{},error:{}", studentId, schoolId, e);
+            return new BaseResponse<Long>(HttpStatus.INTERNAL_SERVER_ERROR,
                     e.getMessage(), null);
         }
     }
