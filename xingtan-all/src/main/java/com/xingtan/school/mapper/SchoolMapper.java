@@ -1,5 +1,6 @@
 package com.xingtan.school.mapper;
 
+import com.xingtan.account.entity.User;
 import com.xingtan.school.entity.School;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
@@ -18,6 +19,14 @@ public interface SchoolMapper {
      * @return
      */
     School getSchoolById(@Param("id") long id);
+
+    /**
+     * 批量获取
+     *
+     * @param ids
+     * @return
+     */
+    List<School> getSchoolsByIds(@Param("ids") List<Long> ids);
 
     /**
      * 通过名称模糊获取

@@ -21,6 +21,11 @@ public class SchoolServiceImpl implements SchoolService {
     }
 
     @Override
+    public List<School> getSchoolsByIds(List<Long> ids) {
+        return schoolMapper.getSchoolsByIds(ids);
+    }
+
+    @Override
     public List<School> getSchoolByName(String name) {
         return schoolMapper.getSchoolByName(name);
     }

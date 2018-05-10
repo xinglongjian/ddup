@@ -1,21 +1,18 @@
 package com.xingtan.school.web;
 
+import com.google.common.collect.Lists;
 import com.xingtan.common.entity.AdminType;
-import com.xingtan.school.entity.GradeValidateMessage;
-import com.xingtan.school.entity.StudentGradeRelation;
+import com.xingtan.school.bean.StudentSchool;
+import com.xingtan.school.entity.*;
 import com.xingtan.account.entity.StudentParentRelation;
 import com.xingtan.account.entity.User;
-import com.xingtan.school.entity.StudentSchoolRelation;
-import com.xingtan.school.entity.TeacherSchoolRelation;
-import com.xingtan.school.service.GradeValidateMessageService;
-import com.xingtan.school.service.StudentGradeRelationService;
+import com.xingtan.school.service.*;
 import com.xingtan.account.service.StudentParentRelationService;
 import com.xingtan.account.service.UserService;
 import com.xingtan.common.entity.FamilyRelation;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
-import com.xingtan.school.service.StudentSchoolRelationService;
-import com.xingtan.school.service.TeacherSchoolRelationService;
+import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
@@ -24,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -37,6 +35,8 @@ public class StudentController {
 
     @Autowired
     private UserService userService;
+    @Autowired
+    private SchoolService schoolService;
     @Autowired
     private StudentParentRelationService studentParentRelationService;
     @Autowired
@@ -101,18 +101,17 @@ public class StudentController {
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse addToSchool(@RequestParam("studentId") long studentId,
-                                    @RequestParam("schoolId") long schoolId) {
+    public BaseResponse addToSchool(@RequestBody StudentSchool studentSchool) {
         try {
             StudentSchoolRelation relation = new StudentSchoolRelation();
-            relation.setSchoolId(schoolId);
-            relation.setStudentId(studentId);
+            relation.setSchoolId(studentSchool.getSchoolId());
+            relation.setStudentId(studentSchool.getStudentId());
             relation.setStartDate(new Date());
             Long id = studentSchoolRelationService.insertRelation(relation);
-            log.info("addToSchool studentId:{},schoolId:{}", studentId, schoolId);
+            log.info("addToSchool info:{}", studentSchool);
             return new BaseResponse<Long>(HttpStatus.OK, id);
         } catch (Exception e) {
-            log.error("addToSchool studentId:{},schoolId:{},error:{}", studentId, schoolId, e);
+            log.error("addToSchool info:{},error:{}", studentSchool, e);
             return new BaseResponse<Long>(HttpStatus.INTERNAL_SERVER_ERROR,
                     e.getMessage(), null);
         }
@@ -141,5 +140,30 @@ public class StudentController {
             return new BaseResponse<List<User>>(HttpStatus.INTERNAL_SERVER_ERROR,
                     e.getMessage(), null);
         }
+    }
+
+    @GetMapping("/schools/{studentId}")
+    @ApiOperation(value = "获取学生的关联学校", notes = "获取学生的关联学校", httpMethod = "GET")
+    @ApiImplicitParam(name = "studentId", value = "学生ID", required = true, dataType = "Long", paramType = "path")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getSchoolsByTeacherId(@PathVariable("studentId") long studentId) {
+        List<School> schools = Lists.newArrayList();
+        try {
+            List<StudentSchoolRelation> studentSchoolRelations =
+                    studentSchoolRelationService.getRelationsByStudentId(studentId);
+            if(!CollectionUtils.isEmpty(studentSchoolRelations)) {
+                List<Long> ids =  Lists.newArrayList();
+                for(StudentSchoolRelation relation: studentSchoolRelations) {
+                    ids.add(relation.getSchoolId());
+                }
+                schools = schoolService.getSchoolsByIds(ids);
+            }
+
+        } catch (Exception e) {
+            return new BaseResponse<List<School>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<List<School>>(HttpStatus.OK, schools);
     }
 }

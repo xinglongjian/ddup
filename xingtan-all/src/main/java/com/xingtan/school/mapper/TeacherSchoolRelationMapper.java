@@ -11,7 +11,7 @@ public interface TeacherSchoolRelationMapper {
 
     TeacherSchoolRelation getRelationById(@Param("id") long id);
 
-    List<TeacherSchoolRelation> getRelationByTeacherId(@Param("teacherId") long teacherId);
+    List<TeacherSchoolRelation> getRelationsByTeacherId(@Param("teacherId") long teacherId);
 
     List<TeacherSchoolRelation> getRelationsBySchoolId(@Param("schoolId") long schoolId);
 

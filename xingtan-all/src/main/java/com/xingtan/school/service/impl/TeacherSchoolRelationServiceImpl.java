@@ -6,11 +6,18 @@ import com.xingtan.school.service.TeacherSchoolRelationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class TeacherSchoolRelationServiceImpl implements TeacherSchoolRelationService {
 
     @Autowired
     private TeacherSchoolRelationMapper teacherSchoolRelationMapper;
+
+    @Override
+    public List<TeacherSchoolRelation> getRelationsByTeacherId(long teacherId) {
+        return teacherSchoolRelationMapper.getRelationsByTeacherId(teacherId);
+    }
 
     @Override
     public long insertRelation(TeacherSchoolRelation relation) {

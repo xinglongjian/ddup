@@ -38,6 +38,15 @@
         FROM `school`
         WHERE id = #{id}
     </select>
+    <select id="getSchoolsByIds" parameterType="java.lang.Long" resultMap="SchoolMap" >
+        SELECT
+        <include refid="BASE_COLUMNS" />
+        FROM `school`
+        WHERE id in
+        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
     <select id="getSchoolByName" parameterType="java.lang.String" resultMap="SchoolMap" >
         <bind name="pattern" value="'%' + name + '%'" />
         SELECT
