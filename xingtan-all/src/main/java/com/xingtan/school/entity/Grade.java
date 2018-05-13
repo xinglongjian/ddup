@@ -1,6 +1,7 @@
 package com.xingtan.school.entity;
 
 import com.xingtan.common.entity.BaseEntity;
+import com.xingtan.common.entity.GradeLevel;
 import com.xingtan.common.entity.GradeStatus;
 import lombok.*;
 
@@ -28,6 +29,10 @@ public class Grade extends BaseEntity {
      * 哪一级
      */
     private int year;
+    /**
+     * 班级级别
+     */
+    private GradeLevel level = GradeLevel.BUTTON;
 
     /**
      * 班级创建者

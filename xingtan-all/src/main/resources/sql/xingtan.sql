@@ -62,6 +62,7 @@ CREATE TABLE IF NOT EXISTS `school` (
   `build_year` INT NOT NULL DEFAULT 0 COMMENT '创办年份',
   `parent_id` BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '父ID',
   `type` VARCHAR(255) NOT NULL DEFAULT 'SCHOOL' COMMENT '类型',
+  `level` VARCHAR(255) NOT NULL DEFAULT 'INFANT' COMMENT '类型级别',
   `created_user_id` BIGINT(20) UNSIGNED NOT NULL DEFAULT 0 COMMENT '该记录创建人',
   `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
@@ -141,6 +142,7 @@ CREATE TABLE IF NOT EXISTS `grade` (
   `school_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '学校ID',
   `name` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '名称',
   `year` INT NOT NULL DEFAULT 0 COMMENT '哪年级',
+  `level` VARCHAR(255) NOT NULL DEFAULT 'BUTTON' COMMENT '级别',
   `created_user_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '创建者',
   `status` VARCHAR(255) NOT NULL DEFAULT 'INITIALIZATION' COMMENT '初始化',
   `is_need_validate` TINYINT NOT NULL DEFAULT 1 COMMENT '是否需要验证',
@@ -149,6 +151,7 @@ CREATE TABLE IF NOT EXISTS `grade` (
   PRIMARY KEY (`id`),
   KEY `idx_school_id`(`school_id`) USING BTREE,
   KEY `idx_created_user_id`(`created_user_id`) USING BTREE,
+  KEY `idx_level`(`level`) USING BTREE,
   KEY `idx_year`(`year`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '班级表';
 

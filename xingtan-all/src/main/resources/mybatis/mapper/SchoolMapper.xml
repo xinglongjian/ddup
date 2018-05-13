@@ -17,6 +17,7 @@
         <result column="address" property="address" />
         <result column="zip_code" property="zipCode" />
         <result column="type" property="type" />
+        <result column="level" property="level" />
         <result column="introduce" property="introduce" />
         <result column="enabled" property="enabled" />
         <result column="gmt_create" property="gmtCreate"/>
@@ -25,11 +26,11 @@
 
     <sql id="BASE_COLUMNS" >
         <![CDATA[id, `name`, en_name, `code`, build_year, head_image, telephone, parent_id, created_user_id, province, city, district,
-    address, zip_code, type, introduce, enabled]]>
+    address, zip_code, type, `level`, introduce, enabled]]>
     </sql>
     <sql id="ALL_COLUMNS" >
         <![CDATA[id, `name`, en_name, `code`, build_year, head_image, telephone, parent_id, created_user_id, province, city, district,
-    address, zip_code, type, introduce, enabled, gmt_create, gmt_modified]]>
+    address, zip_code, type, `level`,introduce, enabled, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getSchoolById" parameterType="java.lang.Long" resultMap="SchoolMap" >
@@ -58,10 +59,10 @@
         INSERT INTO
         `school`
         (`name`, en_name, `code`, build_year, head_image, telephone, parent_id, created_user_id, province, city, district,
-         address, zip_code, type, introduce, enabled, gmt_create, gmt_modified)
+         address, zip_code, type, `level`,introduce, enabled, gmt_create, gmt_modified)
         VALUES
         (#{name}, #{enName},#{code}, #{buildYear}, #{headImage}, #{telephone}, #{parentId}, #{createdUserId}, #{province}, #{city},
-        #{district}, #{address}, #{zipCode}, #{type}, #{introduce},#{enabled}, NOW(), NOW())
+        #{district}, #{address}, #{zipCode}, #{type}, #{level},#{introduce},#{enabled}, NOW(), NOW())
     </insert>
 
     <update id="updateSchool" parameterType="com.xingtan.school.entity.School" >
@@ -82,6 +83,7 @@
         <if test="address != null">address = #{address},</if>
         <if test="zipCode != null">zip_code = #{zipCode},</if>
         <if test="type != null">type = #{type},</if>
+        <if test="level != null">`level` = #{level},</if>
         <if test="introduce != null">introduce = #{introduce},</if>
         <if test="enabled != null">enabled = #{enabled},</if>
         gmt_modified = now()

@@ -2,6 +2,7 @@ package com.xingtan.school.entity;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.xingtan.common.entity.BaseEntity;
+import com.xingtan.common.entity.SchoolLevel;
 import com.xingtan.common.entity.SchoolType;
 import lombok.*;
 
@@ -90,6 +91,10 @@ public class School extends BaseEntity{
      * 类型
      */
     private SchoolType type = SchoolType.SCHOOL;
+    /**
+     * 学校级别
+     */
+    private SchoolLevel level = SchoolLevel.INFANT;
 
     /**
      * 是否可用

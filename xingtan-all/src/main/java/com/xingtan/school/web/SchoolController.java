@@ -39,7 +39,21 @@ public class SchoolController {
         }
         return new BaseResponse<List<School>>(HttpStatus.OK, schools);
     }
-
+    @GetMapping("/{schoolId}")
+    @ApiOperation(value = "通过ID获取学校", notes = "通过ID获取学校", httpMethod = "GET")
+    @ApiImplicitParam(name = "schoolId", value = "ID", required = true, dataType = "Long", paramType = "path")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getSchoolsById(@PathVariable("schoolId") Long schoolId) {
+        School school = null;
+        try {
+            school = schoolService.getSchoolById(schoolId);
+        } catch (Exception e) {
+            return new BaseResponse<School>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<>(HttpStatus.OK, school);
+    }
     @PostMapping("/add")
     @ApiOperation(value = "添加学校", notes = "添加学校", httpMethod = "POST")
     @ApiImplicitParams({

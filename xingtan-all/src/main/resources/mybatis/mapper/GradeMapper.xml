@@ -6,6 +6,7 @@
         <result column="school_id" property="schoolId"/>
         <result column="name" property="name"/>
         <result column="year" property="year"/>
+        <result column="level" property="level"/>
         <result column="created_user_id" property="createdUserId" />
         <result column="status" property="status" />
         <result column="is_need_validate" property="isNeedValidate"/>
@@ -14,10 +15,10 @@
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`, is_need_validate]]>
+        <![CDATA[id, school_id, `name`, `year`, `level`, created_user_id, `status`, is_need_validate]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, school_id, `name`, `year`, created_user_id, `status`, is_need_validate, gmt_create, gmt_modified]]>
+        <![CDATA[id, school_id, `name`, `year`, `level`, created_user_id, `status`, is_need_validate, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getGradeById" parameterType="java.lang.Long" resultMap="GradeMap" >
@@ -41,9 +42,9 @@
     <insert id="insertGrade" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.Grade" >
         INSERT INTO
         `grade`
-        (school_id, `name`, `year`, created_user_id, `status`, is_need_validate, gmt_create, gmt_modified)
+        (school_id, `name`, `year`, `level`, created_user_id, `status`, is_need_validate, gmt_create, gmt_modified)
         VALUES
-        (#{schoolId}, #{name}, #{year}, #{createdUserId}, #{status}, #{isNeedValidate}, NOW(), NOW())
+        (#{schoolId}, #{name}, #{year}, #{level}, #{createdUserId}, #{status}, #{isNeedValidate}, NOW(), NOW())
     </insert>
 
     <update id="updateGrade" parameterType="com.xingtan.school.entity.Grade" >
@@ -53,6 +54,7 @@
         <if test="schoolId != null">school_id = #{schoolId},</if>
         <if test="name != null">name = #{name},</if>
         <if test="year != null">year = #{year},</if>
+        <if test="level != null">`level` = #{level},</if>
         <if test="createdUserId != null">created_user_id = #{createdUserId},</if>
         <if test="status != null">status = #{status},</if>
         <if test="isNeedValidate != null">is_need_validate = #{isNeedValidate},</if>
