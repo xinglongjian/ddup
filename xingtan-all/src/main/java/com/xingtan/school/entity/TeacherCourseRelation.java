@@ -25,5 +25,5 @@ public class TeacherCourseRelation extends BaseEntity {
     /**
      * 教师的类型
      */
-    private TeacherType teacherType = TeacherType.MAIM;
+    private TeacherType teacherType = TeacherType.MAIN;
 }

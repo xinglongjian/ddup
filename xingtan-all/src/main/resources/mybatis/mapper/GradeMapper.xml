@@ -27,6 +27,15 @@
         FROM `grade`
         WHERE id = #{id}
     </select>
+    <select id="getGradesByIds" parameterType="java.lang.Long" resultMap="GradeMap" >
+        SELECT
+        <include refid="BASE_COLUMNS" />
+        FROM `grade`
+        WHERE id in
+        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
     <select id="getGradesBySchoolId" parameterType="java.lang.Long" resultMap="GradeMap" >
         SELECT
         <include refid="ALL_COLUMNS" />

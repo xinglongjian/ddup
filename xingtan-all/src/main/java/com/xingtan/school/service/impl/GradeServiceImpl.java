@@ -20,6 +20,11 @@ public class GradeServiceImpl implements GradeService {
     }
 
     @Override
+    public List<Grade> getGradesByIds(List<Long> ids) {
+        return gradeMapper.getGradesByIds(ids);
+    }
+
+    @Override
     public List<Grade> getGradesBySchoolId(long schoolId) {
         return gradeMapper.getGradesBySchoolId(schoolId);
     }

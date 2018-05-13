@@ -4,7 +4,7 @@ public enum TeacherType {
     /**
      * 主教
      */
-    MAIM,
+    MAIN,
     /**
      * 助教
      */

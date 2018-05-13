@@ -27,7 +27,7 @@ public class TeacherGradeRelation extends BaseEntity {
     /**
      * 类型
      */
-    private TeacherType type = TeacherType.MAIM;
+    private TeacherType type = TeacherType.MAIN;
 
     /**
      * 别名

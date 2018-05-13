@@ -7,10 +7,13 @@ import com.xingtan.common.entity.AdminType;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import com.xingtan.school.bean.TeacherSchool;
+import com.xingtan.school.entity.Grade;
 import com.xingtan.school.entity.School;
 import com.xingtan.school.entity.TeacherGradeRelation;
 import com.xingtan.school.entity.TeacherSchoolRelation;
+import com.xingtan.school.service.GradeService;
 import com.xingtan.school.service.SchoolService;
+import com.xingtan.school.service.TeacherGradeRelationService;
 import com.xingtan.school.service.TeacherSchoolRelationService;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiOperation;
@@ -37,7 +40,11 @@ public class TeacherController {
     @Autowired
     private TeacherSchoolRelationService teacherSchoolRelationService;
     @Autowired
+    private TeacherGradeRelationService teacherGradeRelationService;
+    @Autowired
     private SchoolService schoolService;
+    @Autowired
+    private GradeService gradeService;
 
     @PostMapping("/addToSchool")
     @ApiOperation(value = "学生添加到学校", notes = "学生添加到学校", httpMethod = "POST")
@@ -90,5 +97,30 @@ public class TeacherController {
             return new BaseResponse<List<School>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<List<School>>(HttpStatus.OK, schools);
+    }
+
+    @GetMapping("/grades/{teacherId}")
+    @ApiOperation(value = "获取老师的关联班级", notes = "获取老师的关联班级", httpMethod = "GET")
+    @ApiImplicitParam(name = "teacherId", value = "教师ID", required = true, dataType = "Long", paramType = "path")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getGradesByTeacherId(@PathVariable("teacherId") long teacherId) {
+        List<Grade> grades = Lists.newArrayList();
+        try {
+            List<TeacherGradeRelation> teacherGradeRelations =
+                    teacherGradeRelationService.getRelationByTeacherId(teacherId);
+            if(!CollectionUtils.isEmpty(teacherGradeRelations)) {
+                List<Long> ids =  Lists.newArrayList();
+                for(TeacherGradeRelation relation: teacherGradeRelations) {
+                    ids.add(relation.getGradeId());
+                }
+                grades = gradeService.getGradesByIds(ids);
+            }
+
+        } catch (Exception e) {
+            return new BaseResponse<List<Grade>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<>(HttpStatus.OK, grades);
     }
 }

@@ -1,6 +1,7 @@
 package com.xingtan.school.web;
 
 import com.google.common.collect.Lists;
+import com.xingtan.common.entity.TeacherType;
 import com.xingtan.school.entity.Grade;
 import com.xingtan.school.entity.StudentGradeRelation;
 import com.xingtan.school.entity.TeacherGradeRelation;
@@ -40,7 +41,23 @@ public class GradeController {
     @Autowired
     private StudentGradeRelationService studentGradeRelationService;
 
-    @GetMapping("/{schoolId}")
+    @GetMapping("/{id}")
+    @ApiOperation(value = "通过ID获取班级", notes = "通过ID获取班级", httpMethod = "GET")
+    @ApiImplicitParam(name = "id", value = "班级ID", required = true, dataType = "Long", paramType = "path")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getGradesById(@PathVariable("id") long id) {
+        Grade grade = null;
+        try {
+            grade = gradeService.getGradeById(id);
+        } catch (Exception e) {
+            return new BaseResponse<Grade>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<Grade>(HttpStatus.OK, grade);
+    }
+
+    @GetMapping("/getBySchool/{schoolId}")
     @ApiOperation(value = "通过学校ID获取", notes = "通过学校ID获取", httpMethod = "GET")
     @ApiImplicitParam(name = "schoolId", value = "学校ID", required = true, dataType = "Long", paramType = "path")
     @ApiResponses({
@@ -69,6 +86,15 @@ public class GradeController {
     public BaseResponse addGrade(@RequestBody Grade grade) {
         try {
             gradeService.insertGrade(grade);
+            User teacher = userService.getUserById(grade.getCreatedUserId());
+            TeacherGradeRelation relation = new TeacherGradeRelation();
+            relation.setTeacherId(grade.getCreatedUserId());
+            relation.setGradeId(grade.getId());
+            relation.setType(TeacherType.MAIN);
+            if(teacher!=null) {
+                relation.setAlias(teacher.getRealName());
+            }
+            teacherGradeRelationService.insertRelation(relation);
         } catch (Exception e) {
             return new BaseResponse<Grade>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }

@@ -47,6 +47,6 @@ public class Grade extends BaseEntity {
     /**
      * 是否需要验证
      */
-    private boolean isNeedValidate;
+    private int isNeedValidate;
 
 }

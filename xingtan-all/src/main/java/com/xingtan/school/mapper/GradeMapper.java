@@ -20,6 +20,13 @@ public interface GradeMapper {
     Grade getGradeById(@Param("id") long id);
 
     /**
+     * 批量获取
+     * @param ids
+     * @return
+     */
+    List<Grade> getGradesByIds(@Param("ids") List<Long> ids);
+
+    /**
      *
      * @param schoolId
      * @return
