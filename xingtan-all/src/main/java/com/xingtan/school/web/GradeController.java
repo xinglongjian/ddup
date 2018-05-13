@@ -2,6 +2,7 @@ package com.xingtan.school.web;
 
 import com.google.common.collect.Lists;
 import com.xingtan.common.entity.TeacherType;
+import com.xingtan.school.bean.GradeData;
 import com.xingtan.school.entity.Grade;
 import com.xingtan.school.entity.StudentGradeRelation;
 import com.xingtan.school.entity.TeacherGradeRelation;
@@ -48,13 +49,13 @@ public class GradeController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
     public BaseResponse getGradesById(@PathVariable("id") long id) {
-        Grade grade = null;
+        GradeData grade = null;
         try {
-            grade = gradeService.getGradeById(id);
+            grade = gradeService.getGradeDataById(id);
         } catch (Exception e) {
-            return new BaseResponse<Grade>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+            return new BaseResponse<GradeData>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
-        return new BaseResponse<Grade>(HttpStatus.OK, grade);
+        return new BaseResponse<GradeData>(HttpStatus.OK, grade);
     }
 
     @GetMapping("/getBySchool/{schoolId}")

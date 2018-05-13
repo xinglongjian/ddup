@@ -30,6 +30,13 @@
         FROM `teacher_grade_relation`
         WHERE  teacher_id= #{teacherId}
     </select>
+
+    <select id="getCountOfTeacher" parameterType="java.lang.Long" resultType="java.lang.Integer" >
+        SELECT
+        count(1) as num
+        FROM `teacher_grade_relation`
+        WHERE grade_id = #{gradeId}
+    </select>
     <select id="getRelationByGradeId" parameterType="java.lang.Long" resultMap="TeacherGradeRelationMap" >
         SELECT
         <include refid="ALL_COLUMNS" />

@@ -15,7 +15,7 @@ public enum GradeLevel {
     /**
      * 小班
      */
-    BUTTON,
+    BOTTOM,
     /**
      * 中班
      */

@@ -6,6 +6,7 @@ import com.xingtan.account.service.UserService;
 import com.xingtan.common.entity.AdminType;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
+import com.xingtan.school.bean.GradeItemData;
 import com.xingtan.school.bean.TeacherSchool;
 import com.xingtan.school.entity.Grade;
 import com.xingtan.school.entity.School;
@@ -96,7 +97,7 @@ public class TeacherController {
         } catch (Exception e) {
             return new BaseResponse<List<School>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
-        return new BaseResponse<List<School>>(HttpStatus.OK, schools);
+        return new BaseResponse<>(HttpStatus.OK, schools);
     }
 
     @GetMapping("/grades/{teacherId}")
@@ -106,18 +107,15 @@ public class TeacherController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
     public BaseResponse getGradesByTeacherId(@PathVariable("teacherId") long teacherId) {
-        List<Grade> grades = Lists.newArrayList();
+        List<GradeItemData> grades = Lists.newArrayList();
         try {
             List<TeacherGradeRelation> teacherGradeRelations =
                     teacherGradeRelationService.getRelationByTeacherId(teacherId);
             if(!CollectionUtils.isEmpty(teacherGradeRelations)) {
-                List<Long> ids =  Lists.newArrayList();
                 for(TeacherGradeRelation relation: teacherGradeRelations) {
-                    ids.add(relation.getGradeId());
+                    grades.add(gradeService.getGradeItemData(relation.getGradeId()));
                 }
-                grades = gradeService.getGradesByIds(ids);
             }
-
         } catch (Exception e) {
             return new BaseResponse<List<Grade>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }

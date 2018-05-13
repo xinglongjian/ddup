@@ -36,6 +36,14 @@
         FROM `student_grade_relation`
         WHERE grade_id = #{gradeId}
     </select>
+
+    <select id="getCountOfStudent" parameterType="java.lang.Long" resultType="java.lang.Integer" >
+        SELECT
+        count(1) as num
+        FROM `student_grade_relation`
+        WHERE grade_id = #{gradeId}
+    </select>
+
     <insert id="insertRelation" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.StudentGradeRelation" >
         INSERT INTO
         `student_grade_relation`

@@ -21,4 +21,5 @@ public interface TeacherGradeRelationMapper {
 
     void deleteRelation(@Param("id") long id);
 
+    int getCountOfTeacher(@Param("gradeId") long gradeId);
 }

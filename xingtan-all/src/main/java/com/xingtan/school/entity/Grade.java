@@ -32,7 +32,7 @@ public class Grade extends BaseEntity {
     /**
      * 班级级别
      */
-    private GradeLevel level = GradeLevel.BUTTON;
+    private GradeLevel level = GradeLevel.BOTTOM;
 
     /**
      * 班级创建者
