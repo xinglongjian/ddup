@@ -33,6 +33,10 @@ public class StudentGradeRelation extends BaseEntity {
      * 别名
      */
     private String alias;
+    /**
+     * 学号
+     */
+    private String no;
 
     public StudentGradeRelation(long studentId, long gradeId) {
 
