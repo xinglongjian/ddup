@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xingtan.school.mapper.GradeAlbumUploadMapper" >
+    <resultMap id="AlbumUploadMap" type="com.xingtan.school.entity.GradeAlbumUpload" >
+        <id column="id" property="id"/>
+        <result column="album_id" property="albumId"/>
+        <result column="position" property="position"/>
+        <result column="info" property="info"/>
+        <result column="created_user_id" property="createdUserId" />
+        <result column="gmt_create" property="gmtCreate"/>
+        <result column="gmt_modified" property="gmtModified"/>
+    </resultMap>
+
+    <sql id="BASE_COLUMNS" >
+        <![CDATA[id, album_id, `position`, `info`, created_user_id]]>
+    </sql>
+    <sql id="ALL_COLUMNS" >
+        <![CDATA[id, album_id, `position`, `info`, created_user_id, gmt_create, gmt_modified]]>
+    </sql>
+
+    <select id="getAlbumUploadById" parameterType="java.lang.Long" resultMap="AlbumUploadMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `grade_album_upload`
+        WHERE id = #{id}
+    </select>
+    <select id="getAlbumsUploadsByAlbumId" parameterType="java.lang.Long" resultMap="AlbumUploadMap" >
+        SELECT
+        <include refid="BASE_COLUMNS" />
+        FROM `grade_album_upload`
+        WHERE album_id = #{albumId}
+    </select>
+    <insert id="insertAlbumUpload" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.GradeAlbumUpload" >
+        INSERT INTO
+        `grade_album_upload`
+        (album_id, `position`, `info`, created_user_id, gmt_create, gmt_modified)
+        VALUES
+        (#{albumId}, #{position}, #{info}, #{createdUserId}, NOW(), NOW())
+    </insert>
+
+    <update id="updateAlbumUpload" parameterType="com.xingtan.school.entity.GradeAlbumUpload" >
+        UPDATE
+        `grade_album_upload`
+        SET
+        <if test="albumId != null">album_id = #{albumId},</if>
+        <if test="position != null">position = #{position},</if>
+        <if test="info != null">`info` = #{info},</if>
+        <if test="createdUserId != null">created_user_id = #{createdUserId},</if>
+        gmt_modified = now()
+        WHERE
+        id = #{id}
+    </update>
+
+    <delete id="deleteAlbumUpload" parameterType="java.lang.Long" >
+        DELETE FROM
+            `grade_album_upload`
+        WHERE
+            id =#{id}
+    </delete>
+
+</mapper>
