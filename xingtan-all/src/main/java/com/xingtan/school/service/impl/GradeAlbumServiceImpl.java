@@ -1,6 +1,8 @@
 package com.xingtan.school.service.impl;
 
 import com.xingtan.school.entity.GradeAlbum;
+import com.xingtan.school.entity.GradeAlbumItem;
+import com.xingtan.school.entity.GradeAlbumUpload;
 import com.xingtan.school.mapper.GradeAlbumItemMapper;
 import com.xingtan.school.mapper.GradeAlbumMapper;
 import com.xingtan.school.mapper.GradeAlbumUploadMapper;
@@ -39,8 +41,9 @@ public class GradeAlbumServiceImpl implements GradeAlbumService {
     }
 
     @Override
-    public void insertAlbum(GradeAlbum album) {
+    public long insertAlbum(GradeAlbum album) {
         gradeAlbumMapper.insertAlbum(album);
+        return album.getId();
     }
 
     @Override
@@ -51,5 +54,16 @@ public class GradeAlbumServiceImpl implements GradeAlbumService {
     @Override
     public void deleteAlbum(long id) {
         gradeAlbumMapper.deleteAlbum(id);
+    }
+
+    @Override
+    public long insertAlbumUpload(GradeAlbumUpload albumUpload) {
+        gradeAlbumUploadMapper.insertAlbumUpload(albumUpload);
+        return albumUpload.getId();
+    }
+
+    @Override
+    public void insertBatchAlbumItems(List<GradeAlbumItem> items) {
+        gradeAlbumItemMapper.insertBatchAlbumItems(items);
     }
 }
