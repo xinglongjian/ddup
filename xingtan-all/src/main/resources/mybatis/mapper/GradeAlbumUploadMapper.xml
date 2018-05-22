@@ -29,6 +29,7 @@
         <include refid="BASE_COLUMNS" />
         FROM `grade_album_upload`
         WHERE album_id = #{albumId}
+        order by gmt_create desc
     </select>
     <insert id="insertAlbumUpload" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.GradeAlbumUpload" >
         INSERT INTO

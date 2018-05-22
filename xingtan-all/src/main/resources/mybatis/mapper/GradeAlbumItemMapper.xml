@@ -28,6 +28,22 @@
         FROM `grade_album_item`
         WHERE album_upload_id = #{albumUploadId}
     </select>
+    <select id="getLastAlbumsItemByUploadId" parameterType="java.lang.Long" resultMap="AlbumItemMap" >
+        SELECT
+        <include refid="BASE_COLUMNS" />
+        FROM `grade_album_item`
+        WHERE album_upload_id = #{albumUploadId}
+        order by gmt_create limit 1
+    </select>
+    <select id="getCountOfUploadIds" resultType="java.lang.Long" >
+        SELECT
+        COUNT(1) AS num
+        FROM `grade_album_item`
+        WHERE album_upload_id in
+        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
     <insert id="insertAlbumItem" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.GradeAlbumItem" >
         INSERT INTO
         `grade_album_item`
