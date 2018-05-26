@@ -1,6 +1,7 @@
 package com.xingtan.school.service;
 
 import com.xingtan.school.bean.AlbumSimple;
+import com.xingtan.school.bean.NewUpload;
 import com.xingtan.school.entity.GradeAlbum;
 import com.xingtan.school.entity.GradeAlbumItem;
 import com.xingtan.school.entity.GradeAlbumUpload;
@@ -20,6 +21,11 @@ public interface GradeAlbumService {
     void deleteAlbum(long id);
     //GradeAlbumUpload
     long insertAlbumUpload(GradeAlbumUpload albumUpload);
+    void insertAlbumItem(GradeAlbumItem item);
     void insertBatchAlbumItems(List<GradeAlbumItem> items);
     List<AlbumSimple> getAllAlbumSimple(long gradeId);
+    // 获取最新的5个
+    List<NewUpload> getNewUploads(long gradeId);
+
+
 }

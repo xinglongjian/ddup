@@ -1,6 +1,9 @@
 package com.xingtan.school.service.impl;
 
+import com.xingtan.account.entity.User;
+import com.xingtan.account.service.UserService;
 import com.xingtan.school.bean.AlbumSimple;
+import com.xingtan.school.bean.NewUpload;
 import com.xingtan.school.entity.GradeAlbum;
 import com.xingtan.school.entity.GradeAlbumItem;
 import com.xingtan.school.entity.GradeAlbumUpload;
@@ -28,6 +31,8 @@ public class GradeAlbumServiceImpl implements GradeAlbumService {
     private GradeAlbumUploadMapper gradeAlbumUploadMapper;
     @Autowired
     private GradeAlbumItemMapper gradeAlbumItemMapper;
+    @Autowired
+    private UserService userService;
 
     @Override
     public GradeAlbum getAlbumById(long id) {
@@ -67,6 +72,11 @@ public class GradeAlbumServiceImpl implements GradeAlbumService {
     }
 
     @Override
+    public void insertAlbumItem(GradeAlbumItem item) {
+        gradeAlbumItemMapper.insertAlbumItem(item);
+    }
+
+    @Override
     public void insertBatchAlbumItems(List<GradeAlbumItem> items) {
         gradeAlbumItemMapper.insertBatchAlbumItems(items);
     }
@@ -75,30 +85,71 @@ public class GradeAlbumServiceImpl implements GradeAlbumService {
     public List<AlbumSimple> getAllAlbumSimple(long gradeId) {
         List<AlbumSimple> albumSimples = new ArrayList<>();
         List<GradeAlbum> gradeAlbums = gradeAlbumMapper.getAlbumsByGradeId(gradeId);
-        if(!CollectionUtils.isEmpty(gradeAlbums)) {
-            for(GradeAlbum album:gradeAlbums) {
-                AlbumSimple simple = new AlbumSimple();
-                simple.setGradeId(gradeId);
-                simple.setId(album.getId());
-                simple.setName(album.getName());
-                List<GradeAlbumUpload> uploads =  gradeAlbumUploadMapper.getAlbumsUploadsByAlbumId(album.getId());
-                if(!CollectionUtils.isEmpty(uploads)) {
-                    GradeAlbumUpload last = uploads.get(0);
-                    List<Long> uploadIds = new ArrayList<>();
-                    for(GradeAlbumUpload upload:uploads) {
-                        uploadIds.add(upload.getId());
-                    }
-                    int count = gradeAlbumItemMapper.getCountOfUploadIds(uploadIds);
-                    simple.setCount(count);
-                    GradeAlbumItem item = gradeAlbumItemMapper.getLastAlbumsItemByUploadId(last.getId());
-                    if(item !=null) {
-                        simple.setFileName(item.getPath());
-                        simple.setUploadId(item.getAlbumUploadId());
-                    }
-                }
-                albumSimples.add(simple);
+        if (!CollectionUtils.isEmpty(gradeAlbums)) {
+            for (GradeAlbum album : gradeAlbums) {
+                albumSimples.add(getAlbumSimple(album));
             }
         }
         return albumSimples;
+    }
+
+    private AlbumSimple getAlbumSimple(GradeAlbum album) {
+        AlbumSimple simple = new AlbumSimple();
+        simple.setGradeId(album.getGradeId());
+        simple.setId(album.getId());
+        simple.setName(album.getName());
+        List<GradeAlbumUpload> uploads = gradeAlbumUploadMapper.getAlbumsUploadsByAlbumId(album.getId());
+        if (!CollectionUtils.isEmpty(uploads)) {
+            GradeAlbumUpload last = uploads.get(0);
+            List<Long> uploadIds = new ArrayList<>();
+            for (GradeAlbumUpload upload : uploads) {
+                uploadIds.add(upload.getId());
+            }
+            int count = gradeAlbumItemMapper.getCountOfUploadIds(uploadIds);
+            simple.setCount(count);
+            GradeAlbumItem item = gradeAlbumItemMapper.getLastAlbumsItemByUploadId(last.getId());
+            if (item != null) {
+                simple.setFileName(item.getPath());
+                simple.setUploadId(item.getAlbumUploadId());
+            }
+        }
+        return simple;
+    }
+
+    @Override
+    public List<NewUpload> getNewUploads(long gradeId) {
+        List<NewUpload> newUploads = new ArrayList<>();
+        //前5个
+        List<GradeAlbumUpload> uploads = gradeAlbumUploadMapper.getNewUploadsByGradeId(gradeId);
+        for (GradeAlbumUpload upload : uploads) {
+            NewUpload newUpload = new NewUpload();
+            newUpload.setGradeId(upload.getId());
+            newUpload.setGradeId(gradeId);
+            // 上传者
+            User user = userService.getUserById(upload.getCreatedUserId());
+            if (user != null) {
+                newUpload.setUploadNickName(user.getNickName());
+                newUpload.setUploadRealName(user.getRealName());
+            }
+            //items
+            List<GradeAlbumItem> items = gradeAlbumItemMapper.getAlbumsItemByUploadId(upload.getId());
+            if (!CollectionUtils.isEmpty(items)) {
+                int count = items.size() >= 9 ? 9 : items.size();
+                int leftNum = items.size() >= 9 ? (items.size() - 9) : 0;
+                List<String> fileList = new ArrayList<>();
+                for (int i = 0; i < count; i++) {
+                    fileList.add(items.get(i).getPath());
+                }
+                newUpload.setFileList(fileList);
+                newUpload.setLeftNum(leftNum);
+            }
+            //album
+            GradeAlbum album = gradeAlbumMapper.getAlbumById(upload.getAlbumId());
+            AlbumSimple simple = getAlbumSimple(album);
+            newUpload.setAlbumSimple(simple);
+
+            newUploads.add(newUpload);
+        }
+        return newUploads;
     }
 }

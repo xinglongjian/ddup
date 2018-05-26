@@ -14,6 +14,7 @@ import java.util.List;
 public interface GradeAlbumUploadMapper {
     GradeAlbumUpload getAlbumUploadById(@Param("id") long id);
     List<GradeAlbumUpload> getAlbumsUploadsByAlbumId(@Param("albumId") long albumId);
+    List<GradeAlbumUpload> getNewUploadsByGradeId(@Param("gradeId") long gradeId);
     void insertAlbumUpload(GradeAlbumUpload albumUpload);
     void updateAlbumUpload(GradeAlbumUpload albumUpload);
     void deleteAlbumUpload(@Param("id") long id);

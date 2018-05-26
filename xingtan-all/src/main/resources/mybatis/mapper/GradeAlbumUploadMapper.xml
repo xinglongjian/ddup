@@ -31,6 +31,15 @@
         WHERE album_id = #{albumId}
         order by gmt_create desc
     </select>
+
+    <select id="getNewUploadsByGradeId" parameterType="java.lang.Long" resultMap="AlbumUploadMap" >
+        SELECT
+        <include refid="BASE_COLUMNS" />
+        FROM `grade_album_upload`
+        WHERE grade_id = #{gradeId}
+        order by gmt_create desc limit 5
+    </select>
+
     <insert id="insertAlbumUpload" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.GradeAlbumUpload" >
         INSERT INTO
         `grade_album_upload`
