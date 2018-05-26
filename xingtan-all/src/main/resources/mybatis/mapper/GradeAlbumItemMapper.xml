@@ -26,13 +26,13 @@
         SELECT
         <include refid="BASE_COLUMNS" />
         FROM `grade_album_item`
-        WHERE album_upload_id = #{albumUploadId}
+        WHERE album_upload_id = #{uploadId}
     </select>
     <select id="getLastAlbumsItemByUploadId" parameterType="java.lang.Long" resultMap="AlbumItemMap" >
         SELECT
         <include refid="BASE_COLUMNS" />
         FROM `grade_album_item`
-        WHERE album_upload_id = #{albumUploadId}
+        WHERE album_upload_id = #{uploadId}
         order by gmt_create limit 1
     </select>
     <select id="getCountOfUploadIds" resultType="java.lang.Long" >

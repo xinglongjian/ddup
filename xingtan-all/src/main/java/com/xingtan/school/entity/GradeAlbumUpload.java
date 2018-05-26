@@ -14,7 +14,7 @@ import javax.naming.ldap.PagedResultsControl;
 @ToString
 @EqualsAndHashCode(callSuper = false)
 public class GradeAlbumUpload extends BaseEntity {
-
+    private long gradeId;
     /**
      * 相册ID
      */

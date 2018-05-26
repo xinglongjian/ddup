@@ -3,6 +3,7 @@
 <mapper namespace="com.xingtan.school.mapper.GradeAlbumUploadMapper" >
     <resultMap id="AlbumUploadMap" type="com.xingtan.school.entity.GradeAlbumUpload" >
         <id column="id" property="id"/>
+        <result column="grade_id" property="gradeId"/>
         <result column="album_id" property="albumId"/>
         <result column="position" property="position"/>
         <result column="info" property="info"/>
@@ -12,10 +13,10 @@
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, album_id, `position`, `info`, created_user_id]]>
+        <![CDATA[id, grade_id,album_id, `position`, `info`, created_user_id]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, album_id, `position`, `info`, created_user_id, gmt_create, gmt_modified]]>
+        <![CDATA[id, grade_id,album_id, `position`, `info`, created_user_id, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getAlbumUploadById" parameterType="java.lang.Long" resultMap="AlbumUploadMap" >
@@ -43,15 +44,16 @@
     <insert id="insertAlbumUpload" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.school.entity.GradeAlbumUpload" >
         INSERT INTO
         `grade_album_upload`
-        (album_id, `position`, `info`, created_user_id, gmt_create, gmt_modified)
+        (grade_id,album_id, `position`, `info`, created_user_id, gmt_create, gmt_modified)
         VALUES
-        (#{albumId}, #{position}, #{info}, #{createdUserId}, NOW(), NOW())
+        (#{albumId},#{gradeId}, #{position}, #{info}, #{createdUserId}, NOW(), NOW())
     </insert>
 
     <update id="updateAlbumUpload" parameterType="com.xingtan.school.entity.GradeAlbumUpload" >
         UPDATE
         `grade_album_upload`
         SET
+        <if test="gradeId != null">grade_id = #{gradeId},</if>
         <if test="albumId != null">album_id = #{albumId},</if>
         <if test="position != null">position = #{position},</if>
         <if test="info != null">`info` = #{info},</if>

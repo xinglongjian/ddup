@@ -129,7 +129,7 @@ public class GradeAlbumController {
                 album = new GradeAlbum(gradeId, name, info, userId);
                 gradeAlbumService.insertAlbum(album);
             }
-            GradeAlbumUpload upload = new GradeAlbumUpload(album.getId(), position, info, userId);
+            GradeAlbumUpload upload = new GradeAlbumUpload(gradeId, album.getId(), position, info, userId);
             gradeAlbumService.insertAlbumUpload(upload);
             String path = String.format("%s/%s/%s/", gradeId, album.getId(), upload.getId());
             GradeImageUtils.saveImage(uploadPath, path, imageFile.getOriginalFilename(), imageFile.getBytes());

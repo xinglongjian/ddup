@@ -19,7 +19,7 @@ public class AlbumSimple implements Serializable {
     private long id;
     private String name;
     // 该相册下照片数量
-    private int count;
+    private long count;
     private long gradeId;
     private long uploadId;
     private String fileName;

@@ -105,7 +105,7 @@ public class GradeAlbumServiceImpl implements GradeAlbumService {
             for (GradeAlbumUpload upload : uploads) {
                 uploadIds.add(upload.getId());
             }
-            int count = gradeAlbumItemMapper.getCountOfUploadIds(uploadIds);
+            long count = gradeAlbumItemMapper.getCountOfUploadIds(uploadIds);
             simple.setCount(count);
             GradeAlbumItem item = gradeAlbumItemMapper.getLastAlbumsItemByUploadId(last.getId());
             if (item != null) {
