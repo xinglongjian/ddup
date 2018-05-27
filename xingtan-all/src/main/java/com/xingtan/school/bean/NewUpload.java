@@ -20,6 +20,7 @@ public class NewUpload implements Serializable {
     // 上传ID
     private long uploadId;
     private long gradeId;
+    private long uploadUserId;
     // 上传者
     private String uploadRealName;
     private String uploadNickName;

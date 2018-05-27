@@ -20,6 +20,7 @@ public interface GradeAlbumService {
     void updateAlbum(GradeAlbum album);
     void deleteAlbum(long id);
     //GradeAlbumUpload
+    GradeAlbumUpload getAlbumUpload(long id);
     long insertAlbumUpload(GradeAlbumUpload albumUpload);
     void insertAlbumItem(GradeAlbumItem item);
     void insertBatchAlbumItems(List<GradeAlbumItem> items);

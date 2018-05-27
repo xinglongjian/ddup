@@ -11,7 +11,7 @@ import java.io.*;
  */
 @Slf4j
 public class GradeImageUtils {
-    public final static String HEAD_IMAGE_PATH = "photo/grade/";
+    public final static String GRADE_PHOTO_PATH = "photo/grade/";
 
     /**
      * 保存照片
@@ -23,7 +23,7 @@ public class GradeImageUtils {
      */
     public static void saveImage(String uploadPath, String path, String fileName, byte[] imgFileBytes) throws IOException {
         try {
-            File dir = new File(uploadPath + HEAD_IMAGE_PATH + path);
+            File dir = new File(uploadPath + GRADE_PHOTO_PATH + path);
             if (!dir.exists()) {
                 dir.mkdirs();
             }

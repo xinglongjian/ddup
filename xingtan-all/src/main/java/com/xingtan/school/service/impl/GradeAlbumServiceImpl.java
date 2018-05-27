@@ -2,6 +2,7 @@ package com.xingtan.school.service.impl;
 
 import com.xingtan.account.entity.User;
 import com.xingtan.account.service.UserService;
+import com.xingtan.common.utils.DateUtils;
 import com.xingtan.school.bean.AlbumSimple;
 import com.xingtan.school.bean.NewUpload;
 import com.xingtan.school.entity.GradeAlbum;
@@ -66,6 +67,11 @@ public class GradeAlbumServiceImpl implements GradeAlbumService {
     }
 
     @Override
+    public GradeAlbumUpload getAlbumUpload(long id) {
+        return gradeAlbumUploadMapper.getAlbumUploadById(id);
+    }
+
+    @Override
     public long insertAlbumUpload(GradeAlbumUpload albumUpload) {
         gradeAlbumUploadMapper.insertAlbumUpload(albumUpload);
         return albumUpload.getId();
@@ -123,8 +129,10 @@ public class GradeAlbumServiceImpl implements GradeAlbumService {
         List<GradeAlbumUpload> uploads = gradeAlbumUploadMapper.getNewUploadsByGradeId(gradeId);
         for (GradeAlbumUpload upload : uploads) {
             NewUpload newUpload = new NewUpload();
-            newUpload.setGradeId(upload.getId());
+            newUpload.setUploadId(upload.getId());
             newUpload.setGradeId(gradeId);
+            newUpload.setUploadUserId(upload.getCreatedUserId());
+            newUpload.setUploadDate(DateUtils.longFormat.format(upload.getGmtCreate()));
             // 上传者
             User user = userService.getUserById(upload.getCreatedUserId());
             if (user != null) {

@@ -1,20 +1,20 @@
 package com.xingtan.school.web;
 
 import com.xingtan.common.entity.ImageSuffix;
+import com.xingtan.common.utils.DateUtils;
 import com.xingtan.common.utils.GradeImageUtils;
+import com.xingtan.common.utils.HeadImageUtils;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import com.xingtan.school.bean.AlbumSimple;
 import com.xingtan.school.bean.GradeData;
 import com.xingtan.school.bean.NewUpload;
+import com.xingtan.school.bean.UploadBean;
 import com.xingtan.school.entity.GradeAlbum;
 import com.xingtan.school.entity.GradeAlbumItem;
 import com.xingtan.school.entity.GradeAlbumUpload;
 import com.xingtan.school.service.GradeAlbumService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
-import io.swagger.annotations.ApiResponse;
-import io.swagger.annotations.ApiResponses;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -22,8 +22,14 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.activation.MimetypesFileTypeMap;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -75,6 +81,29 @@ public class GradeAlbumController {
         return new BaseResponse<Long>(HttpStatus.OK, id);
     }
 
+    @PostMapping("/addUpload")
+    @ApiOperation(value = "添加上传记录", notes = "添加上传记录", httpMethod = "POST")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse addAlbumUpload(@RequestBody UploadBean uploadBean) {
+        Long id = null;
+        try {
+            GradeAlbum album = gradeAlbumService.getAlbumByName(uploadBean.getName());
+            if (album == null) {
+                album = new GradeAlbum(uploadBean.getGradeId(), uploadBean.getName(),
+                        uploadBean.getInfo(), uploadBean.getUserId());
+                gradeAlbumService.insertAlbum(album);
+            }
+            GradeAlbumUpload upload = new GradeAlbumUpload(uploadBean.getGradeId(), album.getId(),
+                    uploadBean.getPosition(), uploadBean.getInfo(), uploadBean.getUserId());
+            id = gradeAlbumService.insertAlbumUpload(upload);
+        } catch (Exception e) {
+            return new BaseResponse<Long>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<Long>(HttpStatus.OK, id);
+    }
+
     @GetMapping("/newUpload/{gradeId}")
     @ApiOperation(value = "获取班级最新上传前5个", notes = "获取班级最新上传前5个", httpMethod = "GET")
     @ApiImplicitParam(name = "gradeId", value = "班级ID", required = true, dataType = "Long", paramType = "path")
@@ -87,6 +116,7 @@ public class GradeAlbumController {
             newUploads = gradeAlbumService.getNewUploads(gradeId);
             log.info("getNewUpload:{}", newUploads);
         } catch (Exception e) {
+            log.error("getNewUpload error:", e);
             return new BaseResponse<List<NewUpload>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<>(HttpStatus.OK, newUploads);
@@ -116,24 +146,20 @@ public class GradeAlbumController {
     })
     public BaseResponse uploadAlbum(HttpServletRequest request,
                                     @RequestParam(value = "imgFile", required = false) MultipartFile imageFile,
-                                    @RequestParam("name") String name,
-                                    @RequestParam("position") String position,
-                                    @RequestParam("info") String info,
-                                    @RequestParam("userId") long userId,
-                                    @RequestParam("gradeId") long gradeId
-                                    ) {
+                                    @RequestParam("uploadId") long uploadId
+    ) {
         try {
-            log.info("uploadAlbum:name:{},file:{}",name, imageFile.getName());
-            GradeAlbum album = gradeAlbumService.getAlbumByName(name);
-            if (album == null) {
-                album = new GradeAlbum(gradeId, name, info, userId);
-                gradeAlbumService.insertAlbum(album);
+            GradeAlbumUpload upload = gradeAlbumService.getAlbumUpload(uploadId);
+            if (upload == null) {
+                return new BaseResponse<Long>(HttpStatus.BAD_REQUEST, "upload is null", null);
             }
-            GradeAlbumUpload upload = new GradeAlbumUpload(gradeId, album.getId(), position, info, userId);
-            gradeAlbumService.insertAlbumUpload(upload);
-            String path = String.format("%s/%s/%s/", gradeId, album.getId(), upload.getId());
-            GradeImageUtils.saveImage(uploadPath, path, imageFile.getOriginalFilename(), imageFile.getBytes());
-            GradeAlbumItem item = new GradeAlbumItem(upload.getId(), imageFile.getOriginalFilename());
+            String originName = imageFile.getOriginalFilename();
+            String suffix = originName.substring(originName.lastIndexOf(".") + 1);
+            String path = String.format("%s/%s/%s/", upload.getGradeId(), upload.getAlbumId(), upload.getId());
+            String fileDate = DateUtils.fileNameFormat.format(new Date());
+            String fileName = String.format("%s.%s", fileDate, suffix);
+            GradeImageUtils.saveImage(uploadPath, path, fileName, imageFile.getBytes());
+            GradeAlbumItem item = new GradeAlbumItem(upload.getId(), fileName);
             gradeAlbumService.insertAlbumItem(item);
             log.info("Upload Grade Image Success!");
         } catch (Exception e) {
@@ -142,5 +168,61 @@ public class GradeAlbumController {
         return new BaseResponse<Long>(HttpStatus.OK, null);
     }
 
+    @GetMapping("/getAlbumImage/{gradeId}/{albumId}/{uploadId}/{fileName}/{size}")
+    @ApiOperation(value = "获取上传的图像", notes = "获取上传的图像", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "gradeId", value = "班级ID", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "albumId", value = "相册ID", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "uploadId", value = "上传ID", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "fileName", value = "文件名", required = true, dataType = "String", paramType = "path"),
+            @ApiImplicitParam(name = "size", value = "大小", required = false, dataType = "Integer", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_BAD_REQUEST, message = "参数不全"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_INTERNAL_SERVER_ERROR, message = "服务器内部错误"),
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public void getGradeImage(@PathVariable("gradeId") Long gradeId,
+                              @PathVariable("albumId") Long albumId,
+                              @PathVariable("uploadId") Long uploadId,
+                              @PathVariable("fileName") String fileName,
+                              @PathVariable("size") Integer size,
+                              HttpServletResponse res) {
+        ServletOutputStream writer = null;
+        try {
+            String sizeform = "";
+            if (size != null) {
+                sizeform = String.format("_%s*%s", size, size);
+            }
+            String[] fileSplits = fileName.split("[.]");
+            String filePath = String.format("%s/%s/%s/%s%s.%s", gradeId, albumId, uploadId, fileSplits[0], sizeform, fileSplits[1]);
+            log.info("filePath:{}", filePath);
+            File file = new File(uploadPath + GradeImageUtils.GRADE_PHOTO_PATH + "/" + filePath);
+            byte[] fileByte = GradeImageUtils.getGradeImage(file);
+            String fileType = new MimetypesFileTypeMap().getContentType(file);
+            res.setContentType(fileType);
+            res.setContentLength(fileByte.length);
+            writer = res.getOutputStream();
+            writer.write(fileByte);
+            writer.flush();
+        } catch (Exception e) {
+            log.error("getGradeImage error, gradeId:{},albumId:{},uploadId:{},fileName:{},size:{},error:{}",
+                    gradeId, albumId, uploadId, fileName, size, e);
+            e.printStackTrace();
+        } finally {
+            try {
+                if (writer != null)
+                    writer.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            try {
+                if (writer != null)
+                    writer.flush();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 }

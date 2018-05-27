@@ -18,6 +18,6 @@ public interface GradeAlbumItemMapper {
     void insertBatchAlbumItems(List<GradeAlbumItem> list);
     void updateAlbumItem(GradeAlbumItem albumItem);
     void deleteAlbumItem(@Param("id") long id);
-    int getCountOfUploadIds(@Param("ids") List<Long> ids);
+    long getCountOfUploadIds(@Param("ids") List<Long> ids);
     GradeAlbumItem getLastAlbumsItemByUploadId(@Param("uploadId") long uploadId);
 }

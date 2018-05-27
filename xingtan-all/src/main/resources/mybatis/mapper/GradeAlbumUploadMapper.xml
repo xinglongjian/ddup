@@ -35,7 +35,7 @@
 
     <select id="getNewUploadsByGradeId" parameterType="java.lang.Long" resultMap="AlbumUploadMap" >
         SELECT
-        <include refid="BASE_COLUMNS" />
+        <include refid="ALL_COLUMNS" />
         FROM `grade_album_upload`
         WHERE grade_id = #{gradeId}
         order by gmt_create desc limit 5
@@ -46,7 +46,7 @@
         `grade_album_upload`
         (grade_id,album_id, `position`, `info`, created_user_id, gmt_create, gmt_modified)
         VALUES
-        (#{albumId},#{gradeId}, #{position}, #{info}, #{createdUserId}, NOW(), NOW())
+        (#{gradeId},#{albumId}, #{position}, #{info}, #{createdUserId}, NOW(), NOW())
     </insert>
 
     <update id="updateAlbumUpload" parameterType="com.xingtan.school.entity.GradeAlbumUpload" >
