@@ -17,10 +17,6 @@ public class HabitType extends BaseEntity {
      */
     private String name;
     /**
-     * 编码
-     */
-    private String code;
-    /**
      * 描述
      */
     private String description;

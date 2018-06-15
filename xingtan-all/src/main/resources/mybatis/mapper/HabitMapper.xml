@@ -4,19 +4,21 @@
     <resultMap id="HabitMap" type="com.xingtan.habit.entity.Habit" >
         <id column="id" property="id"/>
         <result column="name" property="name"/>
-        <result column="code" property="code"/>
         <result column="habit_type_id" property="habitTypeId" />
         <result column="description" property="description" />
         <result column="status" property="status" />
+        <result column="sex_scope" property="sexScope" />
+        <result column="age_start" property="ageStart" />
+        <result column="age_end" property="ageEnd" />
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, `name`, `code`, habit_type_id, description, `status`]]>
+        <![CDATA[id, `name`, habit_type_id, description, `status`,sex_scope, age_start, age_end]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, `name`, `code`, habit_type_id, description, `status`,gmt_create, gmt_modified]]>
+        <![CDATA[id, `name`,  habit_type_id, description, `status`,sex_scope, age_start, age_end, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getAll" resultMap="HabitMap" >
@@ -41,9 +43,9 @@
     <insert id="insertHabit" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.Habit" >
         INSERT INTO
         `habit`
-        (`name`, `code`, habit_type_id, `description`, `status`, gmt_create, gmt_modified)
+        (`name`, habit_type_id, `description`, `status`, sex_scope, age_start, age_end, gmt_create, gmt_modified)
         VALUES
-        (#{name}, #{code}, #{habitTypeId}, #{description}, #{status}, NOW(), NOW())
+        (#{name}, #{habitTypeId}, #{description}, #{status},#{sexScope},#{ageStart},#{ageEnd}, NOW(), NOW())
     </insert>
 
     <update id="updateHabit" parameterType="com.xingtan.habit.entity.Habit" >
@@ -51,10 +53,12 @@
         `habit`
         SET
         <if test="name != null">name = #{name},</if>
-        <if test="code != null">code = #{code},</if>
         <if test="habitTypeId != null">habit_type_id = #{habitTypeId},</if>
         <if test="description != null">description = #{description},</if>
         <if test="status != null">`status` = #{status},</if>
+        <if test="sexScope != null">`sex_scope` = #{sexScope},</if>
+        <if test="ageStart != null">`age_start` = #{ageStart},</if>
+        <if test="ageEnd != null">`age_end` = #{ageEnd},</if>
         gmt_modified = now()
         WHERE
         id = #{id}

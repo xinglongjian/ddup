@@ -17,10 +17,6 @@ public class Habit extends BaseEntity {
      */
     private String name;
     /**
-     * 习惯代码
-     */
-    private String code;
-    /**
      * 分类ID
      */
     private long habitTypeId;
@@ -32,4 +28,17 @@ public class Habit extends BaseEntity {
      * 是否可用
      */
     private int status;
+
+    /**
+     * 适合性别，0 所有，1 男，2女
+     */
+    private int sexScope;
+    /**
+     * 年龄范围 2.0 - 5.0
+     */
+    private int ageStart;
+    /**
+     * 年龄范围 2.0 - 5.0
+     */
+    private int ageEnd;
 }
