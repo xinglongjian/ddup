@@ -1,5 +1,6 @@
 package com.xingtan.habit.service.impl;
 
+import com.xingtan.habit.bean.HabitData;
 import com.xingtan.habit.entity.Habit;
 import com.xingtan.habit.mapper.HabitMapper;
 import com.xingtan.habit.service.HabitService;
@@ -16,6 +17,11 @@ public class HabitServiceImpl implements HabitService {
     @Override
     public List<Habit> getAll() {
         return habitMapper.getAll();
+    }
+
+    @Override
+    public List<HabitData> getMostHabitsByLimit(int start, int num) {
+        return habitMapper.getMostHabitsByLimit(start, num);
     }
 
     @Override

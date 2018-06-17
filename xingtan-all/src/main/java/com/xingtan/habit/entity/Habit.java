@@ -25,6 +25,10 @@ public class Habit extends BaseEntity {
      */
     private String description;
     /**
+     * 图片
+     */
+    private String image;
+    /**
      * 是否可用
      */
     private int status;

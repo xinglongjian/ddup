@@ -12,5 +12,5 @@ INSERT INTO habit_type(id,name,description,`status`) VALUES(4,'礼貌方面','',
 INSERT INTO habit_type(id,name,description,`status`) VALUES(5,'节约方面','',1);
 
 /*Habit*/
-INSERT INTO habit(id,name,habit_type_id,description,`status`,sex_scope, age_start, age_end) VALUES(1,'做作业', 1, '',1,0,3,7);
-INSERT INTO habit(id,name,habit_type_id,description,`status`,sex_scope, age_start, age_end) VALUES(2,'读书', 1, '',1,0,3,7);
+INSERT INTO habit(id,name,habit_type_id,description,image,`status`,sex_scope, age_start, age_end) VALUES(1,'做作业', 1, '','',1,0,3,7);
+INSERT INTO habit(id,name,habit_type_id,description,image,`status`,sex_scope, age_start, age_end) VALUES(2,'读书', 1, '','',1,0,3,7);

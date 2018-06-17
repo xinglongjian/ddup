@@ -30,6 +30,7 @@
         FROM `user_habit_relation`
         WHERE user_id = #{id}
     </select>
+
     <insert id="insertRelation" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.UserHabitRelation" >
         INSERT INTO
         `user_habit_relation`

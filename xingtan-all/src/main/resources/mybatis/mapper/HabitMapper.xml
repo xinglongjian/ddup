@@ -6,6 +6,7 @@
         <result column="name" property="name"/>
         <result column="habit_type_id" property="habitTypeId" />
         <result column="description" property="description" />
+        <result column="image" property="image" />
         <result column="status" property="status" />
         <result column="sex_scope" property="sexScope" />
         <result column="age_start" property="ageStart" />
@@ -14,17 +15,40 @@
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
+    <resultMap id="HabitDataMap" type="com.xingtan.habit.bean.HabitData" >
+        <id column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="habit_type_id" property="habitTypeId" />
+        <result column="description" property="description" />
+        <result column="image" property="image" />
+        <result column="sex_scope" property="sexScope" />
+        <result column="age_start" property="ageStart" />
+        <result column="age_end" property="ageEnd" />
+        <result column="cnt" property="count"/>
+    </resultMap>
+
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, `name`, habit_type_id, description, `status`,sex_scope, age_start, age_end]]>
+        <![CDATA[id, `name`, habit_type_id, description, image, `status`,sex_scope, age_start, age_end]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, `name`,  habit_type_id, description, `status`,sex_scope, age_start, age_end, gmt_create, gmt_modified]]>
+        <![CDATA[id, `name`,  habit_type_id, description, image, `status`,sex_scope, age_start, age_end, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getAll" resultMap="HabitMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
         FROM `habit`
+    </select>
+
+    <select id="getMostHabitsByLimit" resultMap="HabitDataMap" >
+        SELECT
+        h.id, h.name,h.image, h.description,h.habit_type_id,h.sex_scope,h.age_start,h.age_end,count(u.habit_id) as cnt
+        FROM `habit` AS h
+        left join `user_habit_relation` AS u
+        on h.id = u.habit_id
+        group by h.id
+        order by cnt desc
+        limit #{start}, #{num}
     </select>
 
     <select id="getHabitById" parameterType="java.lang.Long" resultMap="HabitMap" >
@@ -43,9 +67,9 @@
     <insert id="insertHabit" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.Habit" >
         INSERT INTO
         `habit`
-        (`name`, habit_type_id, `description`, `status`, sex_scope, age_start, age_end, gmt_create, gmt_modified)
+        (`name`, habit_type_id, `description`, image, `status`, sex_scope, age_start, age_end, gmt_create, gmt_modified)
         VALUES
-        (#{name}, #{habitTypeId}, #{description}, #{status},#{sexScope},#{ageStart},#{ageEnd}, NOW(), NOW())
+        (#{name}, #{habitTypeId}, #{description}, #{image}, #{status},#{sexScope},#{ageStart},#{ageEnd}, NOW(), NOW())
     </insert>
 
     <update id="updateHabit" parameterType="com.xingtan.habit.entity.Habit" >
@@ -55,6 +79,7 @@
         <if test="name != null">name = #{name},</if>
         <if test="habitTypeId != null">habit_type_id = #{habitTypeId},</if>
         <if test="description != null">description = #{description},</if>
+        <if test="image != null">`image` = #{image},</if>
         <if test="status != null">`status` = #{status},</if>
         <if test="sexScope != null">`sex_scope` = #{sexScope},</if>
         <if test="ageStart != null">`age_start` = #{ageStart},</if>

@@ -1,7 +1,11 @@
 package com.xingtan.habit.web;
 
+import com.google.common.cache.CacheBuilder;
+import com.google.common.cache.CacheLoader;
+import com.google.common.cache.LoadingCache;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
+import com.xingtan.habit.bean.HabitData;
 import com.xingtan.habit.entity.Habit;
 import com.xingtan.habit.entity.HabitType;
 import com.xingtan.habit.entity.UserHabitRecord;
@@ -14,10 +18,12 @@ import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @RestController
 @Slf4j
@@ -32,6 +38,14 @@ public class HabitController {
     private UserHabitRecordService userHabitRecordService;
     @Autowired
     private UserHabitRelationService userHabitRelationService;
+
+    public LoadingCache<Long, HabitType> habitTypeCache = CacheBuilder.newBuilder()
+            .refreshAfterWrite(1, TimeUnit.HOURS).maximumSize(1000).build(new CacheLoader<Long, HabitType>() {
+                @Override
+                public HabitType load(Long id) throws Exception {
+                    return habitTypeService.getHabitTypeById(id);
+                }
+            });
 
     @GetMapping("/allType")
     @ApiOperation(value = "获取所有习惯类型", notes = "获取所有习惯类型", httpMethod = "GET")
@@ -65,6 +79,30 @@ public class HabitController {
         }
         return new BaseResponse<HabitType>(HttpStatus.OK, habitType);
     }
+
+    @GetMapping("/allByParams")
+    @ApiOperation(value = "获取所有习惯", notes = "获取所有习惯", httpMethod = "GET")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getAllHabits() {
+        List<HabitData> habitDatas = null;
+        int start = 1;
+        int num = 10;
+        try {
+            habitDatas = habitService.getMostHabitsByLimit(start, num);
+            for(HabitData data:habitDatas) {
+                HabitType type =habitTypeCache.get(data.getHabitTypeId());
+                data.setHabitTypeName(type == null?"":type.getName());
+            }
+            log.info("Get 10 Habits: {}", habitDatas);
+        } catch (Exception e) {
+            log.error("getAllHabitTypes error,causedBy:{}", e.getMessage());
+            return new BaseResponse<List<HabitData>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<>(HttpStatus.OK, habitDatas);
+    }
+
 
     @PostMapping("/add")
     @ApiOperation(value = "添加习惯", notes = "添加习惯", httpMethod = "POST")

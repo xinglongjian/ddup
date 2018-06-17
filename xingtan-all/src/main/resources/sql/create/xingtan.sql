@@ -50,6 +50,7 @@ CREATE TABLE IF NOT EXISTS `habit` (
   `name` VARCHAR(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL DEFAULT '' COMMENT '习惯名称',
   `habit_type_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '类型ID',
   `description` TEXT COMMENT '描述',
+  `image` VARCHAR(255) COMMENT '图片',
   `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态',
   `sex_scope` INT NOT NULL DEFAULT 0 COMMENT '性别范围',
   `age_start` INT NOT NULL DEFAULT 0 COMMENT '年龄开始',
