@@ -6,6 +6,7 @@ import com.google.common.cache.LoadingCache;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import com.xingtan.habit.bean.HabitData;
+import com.xingtan.habit.bean.HabitDetail;
 import com.xingtan.habit.entity.Habit;
 import com.xingtan.habit.entity.HabitType;
 import com.xingtan.habit.entity.UserHabitRecord;
@@ -21,8 +22,10 @@ import org.springframework.http.MediaType;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 @RestController
@@ -79,7 +82,29 @@ public class HabitController {
         }
         return new BaseResponse<HabitType>(HttpStatus.OK, habitType);
     }
+    @GetMapping("/{id}")
+    @ApiOperation(value = "获取特定ID习惯", notes = "获取特定ID习惯", httpMethod = "GET")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getHabitById(@PathVariable("id") long id) {
+        HabitDetail habitDetail = null;
+        try {
+            Habit habit = habitService.getHabitById(id);
+            if(habit != null) {
+                habitDetail = new HabitDetail(habit);
+                HabitType type = habitTypeCache.get(habitDetail.getHabitTypeId());
+                habitDetail.setHabitTypeName(type.getName());
+                habitDetail.setCount(userHabitRelationService.getCountOfHabit(habitDetail.getId()));
+            }
 
+            log.info("Get HabitDetail: {}", habitDetail);
+        } catch (Exception e) {
+            log.error("getAllHabitTypes error,causedBy:{}", e.getMessage());
+            return new BaseResponse<HabitDetail>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<>(HttpStatus.OK, habitDetail);
+    }
     @GetMapping("/allByParams")
     @ApiOperation(value = "获取所有习惯", notes = "获取所有习惯", httpMethod = "GET")
     @ApiResponses({
@@ -87,7 +112,7 @@ public class HabitController {
     })
     public BaseResponse getAllHabits() {
         List<HabitData> habitDatas = null;
-        int start = 1;
+        int start = 0;
         int num = 10;
         try {
             habitDatas = habitService.getMostHabitsByLimit(start, num);
@@ -138,7 +163,7 @@ public class HabitController {
         return new BaseResponse<List<Habit>>(HttpStatus.OK, habits);
     }
 
-    @PostMapping("/{userId}/{byUserId}")
+    @PostMapping("/to/{userId}/by/{byUserId}")
     @ApiOperation(value = "给用户添加习惯", notes = "给用户添加习惯", httpMethod = "POST")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "userId", value = "userId", required = true, dataType = "String", paramType = "path"),
@@ -147,7 +172,7 @@ public class HabitController {
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse addHabitToUser(@PathVariable("userId") Long userId,
+    public BaseResponse addManyHabitToUser(@PathVariable("userId") Long userId,
                                        @PathVariable("byUserId") Long byUserId,
                                        @RequestBody String habitIds) {
         try {
@@ -157,14 +182,43 @@ public class HabitController {
                 relations.add(new UserHabitRelation(userId, Long.parseLong(habitArrays[i]), byUserId));
             }
             userHabitRelationService.insertBatchRelations(relations);
-            log.info("addHabitToUser SUCCESS. userId:{}, byUserId:{}, habitsIds:{}",
+            log.info("addManyHabitToUser SUCCESS. userId:{}, byUserId:{}, habitsIds:{}",
                     userId, byUserId, habitIds);
         } catch (Exception e) {
-            log.error("addHabitToUser error.userId:{}, byUserId:{}, habitsIds:{},causedBy:{}",
+            log.error("addManyHabitToUser error.userId:{}, byUserId:{}, habitsIds:{},causedBy:{}",
                     userId, byUserId, habitIds, e.getMessage());
             return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<>(HttpStatus.OK, habitIds);
+    }
+
+    @PostMapping("/{habitId}/{byUserId}")
+    @ApiOperation(value = "给用户添加习惯", notes = "给用户添加习惯", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "habitId", value = "habitId", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "byUserId", value = "byUserId", required = true, dataType = "String", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse addHabitToManyUser(@PathVariable("habitId") Long habitId,
+                                       @PathVariable("byUserId") Long byUserId,
+                                       @RequestBody Map<String,Object> userIds) {
+        try {
+            String[] userArrays = userIds.get("userIds").toString().split(",");
+            List<UserHabitRelation> relations = new ArrayList<>();
+            for (int i = 0; i < userArrays.length; i++) {
+                relations.add(new UserHabitRelation(Long.parseLong(userArrays[i]), habitId, byUserId));
+            }
+            userHabitRelationService.insertBatchRelations(relations);
+            log.info("addHabitToManyUser SUCCESS. habitId:{}, byUserId:{}, userIds:{}",
+                    habitId, byUserId, userIds);
+        } catch (Exception e) {
+            log.error("addHabitToManyUser error.habitId:{}, byUserId:{}, userIds:{},causedBy:{}",
+                    habitId, byUserId, userIds, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<>(HttpStatus.OK, userIds);
     }
 
     @DeleteMapping("/{userId}/{byUserId}")

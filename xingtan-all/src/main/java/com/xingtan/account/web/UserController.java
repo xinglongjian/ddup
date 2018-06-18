@@ -14,6 +14,8 @@ import com.xingtan.common.utils.DateUtils;
 import com.xingtan.common.utils.HeadImageUtils;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
+import com.xingtan.habit.entity.Habit;
+import com.xingtan.habit.service.HabitService;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -46,6 +48,8 @@ public class UserController {
     private UserBaseDataService userBaseDataService;
     @Autowired
     private StudentParentRelationService studentParentRelationService;
+    @Autowired
+    private HabitService habitService;
 
     @Value("${upload.path}")
     private String uploadPath;
@@ -231,10 +235,13 @@ public class UserController {
                     child.setBirthday(DateUtils.formatYYYYMMDD.format(userBaseData.getBirthday()));
                     child.setSex(userBaseData.getSex().ordinal());
                 }
+                List<Habit> habits = habitService.getHabitsByUserId(user.getId());
+                child.setHabits(habits);
                 childs.add(child);
             }
             log.info("getChildsByParent, parentId:{}, childs:{}", userId, childs);
         } catch (Exception e) {
+            log.error("getChildsByParent, parentId:{}, childs:{},causedBy:{}", userId, childs, e);
             return new BaseResponse<List<Child>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<List<Child>>(HttpStatus.OK, childs);

@@ -63,7 +63,15 @@
         FROM `habit`
         WHERE habit_type_id = #{habitTypeId}
     </select>
-
+    <select id="getHabitsByIds" parameterType="java.lang.Long" resultMap="HabitMap" >
+        SELECT
+        <include refid="BASE_COLUMNS" />
+        FROM `habit`
+        WHERE id in
+        <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
+            #{item}
+        </foreach>
+    </select>
     <insert id="insertHabit" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.Habit" >
         INSERT INTO
         `habit`

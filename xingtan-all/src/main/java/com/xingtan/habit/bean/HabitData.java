@@ -22,6 +22,6 @@ public class HabitData implements Serializable {
     private long habitTypeId;
     private String habitTypeName;
     // 参加人的数量
-    private int count;
+    private long count;
 
 }

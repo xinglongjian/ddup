@@ -8,6 +8,7 @@ import java.util.List;
 
 public interface HabitService {
     List<Habit> getAll();
+    List<Habit> getHabitsByUserId(long userId);
     List<HabitData> getMostHabitsByLimit(int start, int num);
     Habit getHabitById(long id);
     List<Habit> getHabitByTypeId(long habitTypeId);

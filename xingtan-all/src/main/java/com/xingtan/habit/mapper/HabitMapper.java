@@ -17,6 +17,8 @@ public interface HabitMapper {
 
     Habit getHabitById(@Param("id") long id);
 
+    List<Habit> getHabitsByIds(@Param("ids") List<Long> ids);
+
     List<Habit> getHabitByTypeId(@Param("habitTypeId") long habitTypeId);
 
     void insertHabit(Habit habit);
