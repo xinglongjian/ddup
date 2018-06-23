@@ -31,6 +31,13 @@
         WHERE user_id = #{userId}
     </select>
 
+    <select id="getRelationByUserIdAndHabitId" resultMap="UserHabitRelationMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `user_habit_relation`
+        WHERE user_id = #{userId} and habit_id = #{habitId}
+    </select>
+
     <select id="getCountOfHabit" parameterType="java.lang.Long" resultType="java.lang.Long" >
         SELECT
         COUNT(1) AS cnt

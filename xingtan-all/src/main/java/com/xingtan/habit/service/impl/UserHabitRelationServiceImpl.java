@@ -25,6 +25,11 @@ public class UserHabitRelationServiceImpl implements UserHabitRelationService {
     }
 
     @Override
+    public UserHabitRelation getRelationByUserIdAndHabitId(long userId, long habitId) {
+        return userHabitRelationMapper.getRelationByUserIdAndHabitId(userId, habitId);
+    }
+
+    @Override
     public long getCountOfHabit(long habitId) {
         return userHabitRelationMapper.getCountOfHabit(habitId);
     }

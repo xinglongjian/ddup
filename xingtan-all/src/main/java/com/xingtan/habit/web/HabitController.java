@@ -221,6 +221,28 @@ public class HabitController {
         return new BaseResponse<>(HttpStatus.OK, userIds);
     }
 
+    @GetMapping("/isExist/{habitId}/{userId}")
+    @ApiOperation(value = "该用户是否已添加该习惯", notes = "该用户是否已添加该习惯", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "habitId", value = "habitId", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "userId", value = "userId", required = true, dataType = "Long", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse isHabitContainUser(@PathVariable("habitId") Long habitId,
+                                           @PathVariable("userId") Long userId) {
+        try {
+            UserHabitRelation relation = userHabitRelationService.getRelationByUserIdAndHabitId(userId,habitId);
+            return new BaseResponse<>(HttpStatus.OK, relation);
+        } catch (Exception e) {
+            log.error("isHabitContainUser error.habitId:{}, userId:{},causedBy:{}",
+                    habitId, userId, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+
+    }
+
     @DeleteMapping("/{userId}/{byUserId}")
     @ApiOperation(value = "删除用户习惯", notes = "删除用户习惯", httpMethod = "DELETE")
     @ApiImplicitParams({

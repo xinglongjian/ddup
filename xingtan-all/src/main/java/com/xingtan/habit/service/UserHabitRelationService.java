@@ -8,6 +8,7 @@ import java.util.List;
 public interface UserHabitRelationService {
     UserHabitRelation getRelationById(long id);
     List<UserHabitRelation> getRecordsByUserId(long userId);
+    UserHabitRelation getRelationByUserIdAndHabitId(long userId,long habitId);
     long getCountOfHabit(long habitId);
     long insertRecord(UserHabitRelation userHabitRelation);
     void insertBatchRelations(List<UserHabitRelation> list);

@@ -12,6 +12,9 @@ public interface UserHabitRelationMapper {
 
     List<UserHabitRelation> getRecordsByUserId(@Param("userId") long userId);
 
+    UserHabitRelation getRelationByUserIdAndHabitId(@Param("userId") long userId,
+                                  @Param("habitId") long habitId);
+
     long getCountOfHabit(@Param("habitId") long habitId);
 
     void insertRecord(UserHabitRelation userHabitRelation);
