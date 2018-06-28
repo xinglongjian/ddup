@@ -7,14 +7,8 @@ import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import com.xingtan.habit.bean.HabitData;
 import com.xingtan.habit.bean.HabitDetail;
-import com.xingtan.habit.entity.Habit;
-import com.xingtan.habit.entity.HabitType;
-import com.xingtan.habit.entity.UserHabitRecord;
-import com.xingtan.habit.entity.UserHabitRelation;
-import com.xingtan.habit.service.HabitService;
-import com.xingtan.habit.service.HabitTypeService;
-import com.xingtan.habit.service.UserHabitRecordService;
-import com.xingtan.habit.service.UserHabitRelationService;
+import com.xingtan.habit.entity.*;
+import com.xingtan.habit.service.*;
 import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.naming.ldap.PagedResultsControl;
 import java.net.URLDecoder;
 import java.util.ArrayList;
 import java.util.List;
@@ -41,6 +36,12 @@ public class HabitController {
     private UserHabitRecordService userHabitRecordService;
     @Autowired
     private UserHabitRelationService userHabitRelationService;
+    @Autowired
+    private HabitQuestionService habitQuestionService;
+    @Autowired
+    private HabitQuestionItemService habitQuestionItemService;
+    @Autowired
+    private HabitQuestionRelationService habitQuestionRelationService;
 
     public LoadingCache<Long, HabitType> habitTypeCache = CacheBuilder.newBuilder()
             .refreshAfterWrite(1, TimeUnit.HOURS).maximumSize(1000).build(new CacheLoader<Long, HabitType>() {
@@ -82,6 +83,7 @@ public class HabitController {
         }
         return new BaseResponse<HabitType>(HttpStatus.OK, habitType);
     }
+
     @GetMapping("/{id}")
     @ApiOperation(value = "获取特定ID习惯", notes = "获取特定ID习惯", httpMethod = "GET")
     @ApiResponses({
@@ -91,7 +93,7 @@ public class HabitController {
         HabitDetail habitDetail = null;
         try {
             Habit habit = habitService.getHabitById(id);
-            if(habit != null) {
+            if (habit != null) {
                 habitDetail = new HabitDetail(habit);
                 HabitType type = habitTypeCache.get(habitDetail.getHabitTypeId());
                 habitDetail.setHabitTypeName(type.getName());
@@ -105,6 +107,7 @@ public class HabitController {
         }
         return new BaseResponse<>(HttpStatus.OK, habitDetail);
     }
+
     @GetMapping("/allByParams")
     @ApiOperation(value = "获取所有习惯", notes = "获取所有习惯", httpMethod = "GET")
     @ApiResponses({
@@ -116,9 +119,9 @@ public class HabitController {
         int num = 10;
         try {
             habitDatas = habitService.getMostHabitsByLimit(start, num);
-            for(HabitData data:habitDatas) {
-                HabitType type =habitTypeCache.get(data.getHabitTypeId());
-                data.setHabitTypeName(type == null?"":type.getName());
+            for (HabitData data : habitDatas) {
+                HabitType type = habitTypeCache.get(data.getHabitTypeId());
+                data.setHabitTypeName(type == null ? "" : type.getName());
             }
             log.info("Get 10 Habits: {}", habitDatas);
         } catch (Exception e) {
@@ -173,8 +176,8 @@ public class HabitController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
     public BaseResponse addManyHabitToUser(@PathVariable("userId") Long userId,
-                                       @PathVariable("byUserId") Long byUserId,
-                                       @RequestBody String habitIds) {
+                                           @PathVariable("byUserId") Long byUserId,
+                                           @RequestBody String habitIds) {
         try {
             String[] habitArrays = habitIds.split(",");
             List<UserHabitRelation> relations = new ArrayList<>();
@@ -202,8 +205,8 @@ public class HabitController {
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
     public BaseResponse addHabitToManyUser(@PathVariable("habitId") Long habitId,
-                                       @PathVariable("byUserId") Long byUserId,
-                                       @RequestBody Map<String,Object> userIds) {
+                                           @PathVariable("byUserId") Long byUserId,
+                                           @RequestBody Map<String, Object> userIds) {
         try {
             String[] userArrays = userIds.get("userIds").toString().split(",");
             List<UserHabitRelation> relations = new ArrayList<>();
@@ -233,7 +236,7 @@ public class HabitController {
     public BaseResponse isHabitContainUser(@PathVariable("habitId") Long habitId,
                                            @PathVariable("userId") Long userId) {
         try {
-            UserHabitRelation relation = userHabitRelationService.getRelationByUserIdAndHabitId(userId,habitId);
+            UserHabitRelation relation = userHabitRelationService.getRelationByUserIdAndHabitId(userId, habitId);
             return new BaseResponse<>(HttpStatus.OK, relation);
         } catch (Exception e) {
             log.error("isHabitContainUser error.habitId:{}, userId:{},causedBy:{}",
@@ -297,4 +300,84 @@ public class HabitController {
         }
         return new BaseResponse<>(HttpStatus.OK, habitId);
     }
+
+    /**
+     * =================================Habit question==============================================================
+     */
+    @PostMapping("/question/add")
+    @ApiOperation(value = "添加习惯问题", notes = "添加习惯问题", httpMethod = "POST")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse addHabitQuestion(@RequestBody HabitQuestion question) {
+        try {
+            long id = habitQuestionService.insertHabitQuestion(question);
+            log.info("addHabitQuestion Success,question:{}", question);
+            return new BaseResponse<>(HttpStatus.OK, id);
+        } catch (Exception e) {
+            log.error("addHabitQuestion error.question:{},causedBy:{}", question, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+
+    }
+
+    @PostMapping("/question/item/add")
+    @ApiOperation(value = "添加习惯问题选项", notes = "添加习惯问题选项", httpMethod = "POST")
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse addHabitQuestionItem(@RequestBody HabitQuestionItem questionItem) {
+        try {
+            long id = habitQuestionItemService.insertHabitItem(questionItem);
+            log.info("addHabitQuestionItem Success,item:{}", questionItem);
+            return new BaseResponse<>(HttpStatus.OK, id);
+        } catch (Exception e) {
+            log.error("addHabitQuestionItem error.item:{},causedBy:{}", questionItem, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+    }
+
+    @PostMapping("/question/relation/add/{habitId}/{questionId}")
+    @ApiOperation(value = "添加习惯问题关联", notes = "添加习惯问题关联", httpMethod = "POST")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "habitId", value = "habitId", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "questionId", value = "questionId", required = true, dataType = "Long", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse addHabitQuestionRelation(@PathVariable("habitId") Long habitId,
+                                                 @PathVariable("questionId") Long questionId) {
+        try {
+            HabitQuestionRelation relation = new HabitQuestionRelation(habitId, questionId);
+            long id = habitQuestionRelationService.insertRelation(relation);
+            log.info("addHabitQuestionRelation Success,habitId:{},questionId:{}", habitId, questionId);
+            return new BaseResponse<>(HttpStatus.OK, id);
+        } catch (Exception e) {
+            log.error("addHabitQuestionItem error.habitId:{},questionId:{},causedBy:{}",
+                    habitId, questionId, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+
+    }
+
+    @GetMapping("/question/search/{value}")
+    @ApiOperation(value = "通过题目搜索习惯问题", notes = "通过题目搜索习惯问题", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "value", value = "value", required = true, dataType = "String", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse searchHabitQuestion(@PathVariable("value") String title) {
+        try {
+            List<HabitQuestion> habits = habitQuestionService.getHabitQuestionByTitle(title);
+            return new BaseResponse<>(HttpStatus.OK, habits);
+        } catch (Exception e) {
+            log.error("searchHabitQuestion error.title:{},causedBy:{}", title, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+
+    }
+
 }

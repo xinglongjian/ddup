@@ -27,6 +27,13 @@
         WHERE id = #{id}
     </select>
 
+    <select id="getHabitQuestionByTitle" parameterType="java.lang.String" resultMap="HabitQuestionMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `habit_question`
+        WHERE title like '%${title}%'
+    </select>
+
     <select id="getHabitQuestionByIds" parameterType="java.lang.Long" resultMap="HabitQuestionMap" >
         SELECT
         <include refid="BASE_COLUMNS" />
