@@ -1,5 +1,6 @@
 package com.xingtan.habit.service;
 
+import com.xingtan.habit.bean.HabitQuestionData;
 import com.xingtan.habit.entity.HabitQuestion;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,6 +12,7 @@ import java.util.List;
  */
 public interface HabitQuestionService {
     HabitQuestion getHabitQuestionById(long id);
+    HabitQuestionData getHabitQuestionDataById(long id);
     List<HabitQuestion> getHabitQuestionByIds(List<Long> ids);
     long insertHabitQuestion(HabitQuestion habitQuestion);
     void updateHabitQuestion(HabitQuestion habitQuestion);

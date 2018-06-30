@@ -7,6 +7,7 @@ import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import com.xingtan.habit.bean.HabitData;
 import com.xingtan.habit.bean.HabitDetail;
+import com.xingtan.habit.bean.HabitQuestionData;
 import com.xingtan.habit.entity.*;
 import com.xingtan.habit.service.*;
 import io.swagger.annotations.*;
@@ -375,6 +376,25 @@ public class HabitController {
             return new BaseResponse<>(HttpStatus.OK, habits);
         } catch (Exception e) {
             log.error("searchHabitQuestion error.title:{},causedBy:{}", title, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+
+    }
+
+    @GetMapping("/question/item/{questionId}")
+    @ApiOperation(value = "显示问题的选项", notes = "显示问题的选项", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "questionId", value = "questionId", required = true, dataType = "Long", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse toHabitQuestionItem(@PathVariable("questionId") Long questionId) {
+        try {
+            HabitQuestionData data = habitQuestionService.getHabitQuestionDataById(questionId);
+            return new BaseResponse<>(HttpStatus.OK, data);
+        } catch (Exception e) {
+            log.error("toHabitQuestionItem error.questionId:{},causedBy:{}", questionId, e.getMessage());
             return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
 
