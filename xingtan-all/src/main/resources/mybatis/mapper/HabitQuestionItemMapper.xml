@@ -27,14 +27,14 @@
     <select id="getHabitItemById" parameterType="java.lang.Long" resultMap="HabitItemMap">
         SELECT
         <include refid="ALL_COLUMNS"/>
-        FROM `habit_item`
+        FROM `habit_question_item`
         WHERE id = #{id}
     </select>
 
     <select id="getHabitItemByQuestionId" parameterType="java.lang.Long" resultMap="HabitItemMap">
         SELECT
         <include refid="ALL_COLUMNS"/>
-        FROM `habit_item`
+        FROM `habit_question_item`
         WHERE question_id = #{questionId}
         ORDER BY seq
     </select>
@@ -42,7 +42,7 @@
     <select id="getHabitItemByIds" parameterType="java.lang.Long" resultMap="HabitItemMap">
         SELECT
         <include refid="BASE_COLUMNS"/>
-        FROM `habit_item`
+        FROM `habit_question_item`
         WHERE id in
         <foreach item="item" index="index" collection="ids" open="(" separator="," close=")">
             #{item}
@@ -51,7 +51,7 @@
     <insert id="insertHabitItem" useGeneratedKeys="true" keyProperty="id"
             parameterType="com.xingtan.habit.entity.HabitQuestionItem">
         INSERT INTO
-        `habit_item`
+        `habit_question_item`
         (question_id, seq, seqNo, content, affect, score, gmt_create, gmt_modified)
         VALUES
         (#{questionId}, #{seq}, #{seqNo}, #{content}, #{affect},#{score}, NOW(), NOW())
@@ -59,7 +59,7 @@
 
     <update id="updateHabitItem" parameterType="com.xingtan.habit.entity.HabitQuestionItem">
         UPDATE
-        `habit_item`
+        `habit_question_item`
         SET
         <if test="questionId != null">question_id = #{questionId},</if>
         <if test="seq != null">seq = #{seq},</if>
@@ -74,7 +74,7 @@
 
     <delete id="deleteHabitItem" parameterType="java.lang.Long">
         DELETE FROM
-            `habit_item`
+            `habit_question_item`
         WHERE
             id =#{id}
     </delete>

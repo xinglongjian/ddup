@@ -1,7 +1,15 @@
 package com.xingtan.habit.entity;
 
 import com.xingtan.common.entity.BaseEntity;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class HabitQuestionItem extends BaseEntity {
     /**
      * 问题ID

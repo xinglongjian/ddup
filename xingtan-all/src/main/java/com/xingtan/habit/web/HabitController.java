@@ -312,9 +312,17 @@ public class HabitController {
     })
     public BaseResponse addHabitQuestion(@RequestBody HabitQuestion question) {
         try {
-            long id = habitQuestionService.insertHabitQuestion(question);
-            log.info("addHabitQuestion Success,question:{}", question);
-            return new BaseResponse<>(HttpStatus.OK, id);
+
+            if (question.getId() == 0) {
+                long id = habitQuestionService.insertHabitQuestion(question);
+                log.info("addHabitQuestion Success,question:{}", question);
+                return new BaseResponse<>(HttpStatus.OK, id);
+            } else {
+                habitQuestionService.updateHabitQuestion(question);
+                log.info("updateHabitQuestion Success,question:{}", question);
+                return new BaseResponse<>(HttpStatus.OK, question.getId());
+            }
+
         } catch (Exception e) {
             log.error("addHabitQuestion error.question:{},causedBy:{}", question, e.getMessage());
             return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
@@ -329,9 +337,17 @@ public class HabitController {
     })
     public BaseResponse addHabitQuestionItem(@RequestBody HabitQuestionItem questionItem) {
         try {
-            long id = habitQuestionItemService.insertHabitItem(questionItem);
-            log.info("addHabitQuestionItem Success,item:{}", questionItem);
-            return new BaseResponse<>(HttpStatus.OK, id);
+
+            if (questionItem.getId() == 0) {
+                long id = habitQuestionItemService.insertHabitItem(questionItem);
+                log.info("addHabitQuestionItem Success,item:{}", questionItem);
+                return new BaseResponse<>(HttpStatus.OK, id);
+            } else {
+                habitQuestionItemService.updateHabitItem(questionItem);
+                log.info("editHabitQuestionItem Success,item:{}", questionItem);
+                return new BaseResponse<>(HttpStatus.OK, questionItem.getId());
+            }
+
         } catch (Exception e) {
             log.error("addHabitQuestionItem error.item:{},causedBy:{}", questionItem, e.getMessage());
             return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
@@ -381,7 +397,7 @@ public class HabitController {
 
     }
 
-    @GetMapping("/question/item/{questionId}")
+    @GetMapping("/question/items/{questionId}")
     @ApiOperation(value = "显示问题的选项", notes = "显示问题的选项", httpMethod = "GET")
     @ApiImplicitParams({
             @ApiImplicitParam(name = "questionId", value = "questionId", required = true, dataType = "Long", paramType = "path")
@@ -395,6 +411,64 @@ public class HabitController {
             return new BaseResponse<>(HttpStatus.OK, data);
         } catch (Exception e) {
             log.error("toHabitQuestionItem error.questionId:{},causedBy:{}", questionId, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+
+    }
+
+    @GetMapping("/question/item/{id}")
+    @ApiOperation(value = "检索单个选项", notes = "检索单个选项", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "id", required = true, dataType = "Long", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getHabitQuestionItem(@PathVariable("id") Long id) {
+        try {
+            HabitQuestionItem item = habitQuestionItemService.getHabitItemById(id);
+            return new BaseResponse<>(HttpStatus.OK, item);
+        } catch (Exception e) {
+            log.error("getHabitQuestionItem error.id:{},causedBy:{}", id, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+
+    }
+
+    @GetMapping("/question/{id}")
+    @ApiOperation(value = "检索单个问题", notes = "检索单个问题", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "id", required = true, dataType = "Long", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getHabitQuestion(@PathVariable("id") Long id) {
+        try {
+            HabitQuestion item = habitQuestionService.getHabitQuestionById(id);
+            return new BaseResponse<>(HttpStatus.OK, item);
+        } catch (Exception e) {
+            log.error("getHabitQuestion error.id:{},causedBy:{}", id, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+
+    }
+
+    @DeleteMapping("/question/item/{id}")
+    @ApiOperation(value = "删除单个选项", notes = "删除单个选项", httpMethod = "DELETE")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "id", value = "id", required = true, dataType = "Long", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse deleteHabitQuestionItem(@PathVariable("id") Long id) {
+        try {
+            habitQuestionItemService.deleteHabitItem(id);
+            log.info("deleteHabitQuestionItem SUCCESS, id:{}", id);
+            return new BaseResponse<>(HttpStatus.OK, id);
+        } catch (Exception e) {
+            log.error("deleteHabitQuestionItem error.id:{},causedBy:{}", id, e.getMessage());
             return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
 
