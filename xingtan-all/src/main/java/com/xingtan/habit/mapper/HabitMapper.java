@@ -26,4 +26,12 @@ public interface HabitMapper {
     void updateHabit(Habit habit);
 
     void deleteHabit(@Param("id") long id);
+
+    long getCountByTypeIdAndName(@Param("typeId") long typeId,
+                                 @Param("name") String name);
+
+    List<Habit> getHabitByTypeIdAndName(@Param("typeId") long typeId,
+                                        @Param("name") String name,
+                                        @Param("offset") int offset,
+                                        @Param("pageSize") int pageSize);
 }

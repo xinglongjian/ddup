@@ -3,6 +3,7 @@ package com.xingtan.habit.web;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
+import com.xingtan.common.entity.PageEntity;
 import com.xingtan.common.web.BaseResponse;
 import com.xingtan.common.web.HttpStatus;
 import com.xingtan.habit.bean.HabitData;
@@ -165,6 +166,29 @@ public class HabitController {
             return new BaseResponse<List<Habit>>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<List<Habit>>(HttpStatus.OK, habits);
+    }
+
+    @GetMapping("/type/{typeId}/name/{name}")
+    @ApiOperation(value = "获取制定类型的习惯", notes = "获取制定类型的习惯", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "typeId", value = "typeId", required = true, dataType = "Long", paramType = "path"),
+            @ApiImplicitParam(name = "name", value = "name", required = true, dataType = "String", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getHabitsByTypeAndName(@PathVariable("typeId") Long typeId,
+                                               @PathVariable("name") String name,
+                                               @RequestParam("pageNum") int pageNum) {
+        PageEntity page = null;
+        try {
+            page = habitService.getPageEntity(typeId, name, pageNum,PageEntity.PAGESIZE);
+        } catch (Exception e) {
+            log.error("getHabitsByTypeAndName error.typeId:{}, name:{},pageNum:{},causedBy:{}",
+                    typeId, name, pageNum,e.getMessage());
+            return new BaseResponse<PageEntity>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+        return new BaseResponse<>(HttpStatus.OK, page);
     }
 
     @PostMapping("/to/{userId}/by/{byUserId}")

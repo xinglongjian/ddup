@@ -1,5 +1,6 @@
 package com.xingtan.habit.service.impl;
 
+import com.xingtan.common.entity.PageEntity;
 import com.xingtan.habit.bean.HabitData;
 import com.xingtan.habit.entity.Habit;
 import com.xingtan.habit.entity.UserHabitRecord;
@@ -21,6 +22,7 @@ public class HabitServiceImpl implements HabitService {
     private HabitMapper habitMapper;
     @Autowired
     private UserHabitRelationMapper userHabitRelationMapper;
+
     @Override
     public List<Habit> getAll() {
         return habitMapper.getAll();
@@ -29,12 +31,12 @@ public class HabitServiceImpl implements HabitService {
     @Override
     public List<Habit> getHabitsByUserId(long userId) {
         List<UserHabitRelation> userHabitRelations = userHabitRelationMapper.getRecordsByUserId(userId);
-        if(CollectionUtils.isEmpty(userHabitRelations)) {
+        if (CollectionUtils.isEmpty(userHabitRelations)) {
             return new ArrayList<>();
-        } else  {
+        } else {
 
             List<Long> habitIds = new ArrayList<>();
-            for(UserHabitRelation relation: userHabitRelations) {
+            for (UserHabitRelation relation : userHabitRelations) {
                 habitIds.add(relation.getHabitId());
             }
             return habitMapper.getHabitsByIds(habitIds);
@@ -70,5 +72,18 @@ public class HabitServiceImpl implements HabitService {
     @Override
     public void deleteHabit(long id) {
         habitMapper.deleteHabit(id);
+    }
+
+    @Override
+    public PageEntity getPageEntity(long typeId, String name, int pageNum, int pageSize) {
+
+        PageEntity page = new PageEntity();
+        long allCount = habitMapper.getCountByTypeIdAndName(typeId, name);
+        page.setAllCount(allCount);
+        page.setPageNum(pageNum);
+        page.setPageSize(pageSize);
+        List<Habit> datas = habitMapper.getHabitByTypeIdAndName(typeId, name, (pageNum - 1) * pageSize, pageSize);
+        page.setDatas(datas);
+        return page;
     }
 }

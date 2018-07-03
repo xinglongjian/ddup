@@ -1,5 +1,6 @@
 package com.xingtan.habit.service;
 
+import com.xingtan.common.entity.PageEntity;
 import com.xingtan.habit.bean.HabitData;
 import com.xingtan.habit.entity.Habit;
 import org.apache.ibatis.annotations.Param;
@@ -15,4 +16,5 @@ public interface HabitService {
     long insertHabit(Habit habit);
     void updateHabit(Habit habit);
     void deleteHabit(long id);
+    PageEntity getPageEntity(long typeId, String name, int pageNum, int pageSize);
 }

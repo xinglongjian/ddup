@@ -63,6 +63,22 @@
         FROM `habit`
         WHERE habit_type_id = #{habitTypeId}
     </select>
+    <select id="getCountByTypeIdAndName" resultType="java.lang.Long" >
+        SELECT
+        COUNT(1)
+        FROM `habit`
+        WHERE habit_type_id = #{typeId}
+        <if test="name != null">and `name` like '%${name}%'</if>
+    </select>
+    <select id="getHabitByTypeIdAndName" resultMap="HabitMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `habit`
+        WHERE habit_type_id = #{typeId}
+        <if test="name != null">and `name` like '%${name}%'</if>
+        limit #{offset} #{pageSize}
+    </select>
+
     <select id="getHabitsByIds" parameterType="java.lang.Long" resultMap="HabitMap" >
         SELECT
         <include refid="BASE_COLUMNS" />
