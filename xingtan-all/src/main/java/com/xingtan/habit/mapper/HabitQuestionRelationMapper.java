@@ -16,4 +16,5 @@ public interface HabitQuestionRelationMapper {
     void insertRelation(HabitQuestionRelation habitQuestionRelation);
     void updateRelation(HabitQuestionRelation habitQuestionRelation);
     void deleteRelation(@Param("id") long id);
+    int getRelationCountByHabitId(@Param("habitId") long habitId);
 }

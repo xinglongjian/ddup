@@ -76,7 +76,7 @@
         FROM `habit`
         WHERE habit_type_id = #{typeId}
         <if test="name != null">and `name` like '%${name}%'</if>
-        limit #{offset} #{pageSize}
+        limit #{offset},#{pageSize}
     </select>
 
     <select id="getHabitsByIds" parameterType="java.lang.Long" resultMap="HabitMap" >

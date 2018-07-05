@@ -1,6 +1,7 @@
 package com.xingtan.habit.service;
 
 import com.xingtan.habit.bean.HabitQuestionData;
+import com.xingtan.habit.bean.HabitQuestionRelationList;
 import com.xingtan.habit.entity.HabitQuestion;
 import org.apache.ibatis.annotations.Param;
 
@@ -18,4 +19,5 @@ public interface HabitQuestionService {
     void updateHabitQuestion(HabitQuestion habitQuestion);
     void deleteHabitQuestion(long id);
     List<HabitQuestion> getHabitQuestionByTitle(String title);
+    HabitQuestionRelationList getHabitRelationList(long habitId);
 }

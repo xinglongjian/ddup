@@ -30,6 +30,13 @@
         WHERE habit_id = #{habitId}
     </select>
 
+    <select id="getRelationCountByHabitId" parameterType="java.lang.Long" resultType="java.lang.Integer" >
+        SELECT
+        COUNT(1)
+        FROM `habit_question_relation`
+        WHERE habit_id = #{habitId}
+    </select>
+
     <select id="getRelationByQuestionId" parameterType="java.lang.Long" resultMap="HabitQuestionRelationMap" >
         SELECT
         <include refid="ALL_COLUMNS" />

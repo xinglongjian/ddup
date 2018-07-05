@@ -9,6 +9,7 @@ import com.xingtan.common.web.HttpStatus;
 import com.xingtan.habit.bean.HabitData;
 import com.xingtan.habit.bean.HabitDetail;
 import com.xingtan.habit.bean.HabitQuestionData;
+import com.xingtan.habit.bean.HabitQuestionRelationList;
 import com.xingtan.habit.entity.*;
 import com.xingtan.habit.service.*;
 import io.swagger.annotations.*;
@@ -182,6 +183,9 @@ public class HabitController {
                                                @RequestParam("pageNum") int pageNum) {
         PageEntity page = null;
         try {
+            if(name.equals("all")) {
+                name = null;
+            }
             page = habitService.getPageEntity(typeId, name, pageNum,PageEntity.PAGESIZE);
         } catch (Exception e) {
             log.error("getHabitsByTypeAndName error.typeId:{}, name:{},pageNum:{},causedBy:{}",
@@ -473,6 +477,25 @@ public class HabitController {
             return new BaseResponse<>(HttpStatus.OK, item);
         } catch (Exception e) {
             log.error("getHabitQuestion error.id:{},causedBy:{}", id, e.getMessage());
+            return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
+        }
+
+    }
+
+    @GetMapping("/question/relations/{habitId}")
+    @ApiOperation(value = "检索单个习惯的问题列表", notes = "检索单个习惯的问题列表", httpMethod = "GET")
+    @ApiImplicitParams({
+            @ApiImplicitParam(name = "habitId", value = "habitId", required = true, dataType = "Long", paramType = "path")
+    })
+    @ApiResponses({
+            @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
+    })
+    public BaseResponse getHabitRelationsByHabitId(@PathVariable("habitId") Long habitId) {
+        try {
+            HabitQuestionRelationList item = habitQuestionService.getHabitRelationList(habitId);
+            return new BaseResponse<>(HttpStatus.OK, item);
+        } catch (Exception e) {
+            log.error("getHabitQuestion error.habitId:{},causedBy:{}", habitId, e.getMessage());
             return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
 

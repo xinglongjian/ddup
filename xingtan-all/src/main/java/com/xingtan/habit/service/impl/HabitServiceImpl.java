@@ -2,10 +2,13 @@ package com.xingtan.habit.service.impl;
 
 import com.xingtan.common.entity.PageEntity;
 import com.xingtan.habit.bean.HabitData;
+import com.xingtan.habit.bean.HabitQuestionData;
+import com.xingtan.habit.bean.HabitQuestionRelationData;
 import com.xingtan.habit.entity.Habit;
 import com.xingtan.habit.entity.UserHabitRecord;
 import com.xingtan.habit.entity.UserHabitRelation;
 import com.xingtan.habit.mapper.HabitMapper;
+import com.xingtan.habit.mapper.HabitQuestionRelationMapper;
 import com.xingtan.habit.mapper.UserHabitRelationMapper;
 import com.xingtan.habit.service.HabitService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,8 @@ public class HabitServiceImpl implements HabitService {
     private HabitMapper habitMapper;
     @Autowired
     private UserHabitRelationMapper userHabitRelationMapper;
+    @Autowired
+    private HabitQuestionRelationMapper habitQuestionRelationMapper;
 
     @Override
     public List<Habit> getAll() {
@@ -82,7 +87,17 @@ public class HabitServiceImpl implements HabitService {
         page.setAllCount(allCount);
         page.setPageNum(pageNum);
         page.setPageSize(pageSize);
-        List<Habit> datas = habitMapper.getHabitByTypeIdAndName(typeId, name, (pageNum - 1) * pageSize, pageSize);
+        List<Habit> habits = habitMapper.getHabitByTypeIdAndName(typeId, name, (pageNum - 1) * pageSize, pageSize);
+        List<HabitQuestionRelationData> datas = new ArrayList<>();
+        if (!CollectionUtils.isEmpty(habits)) {
+            for (Habit habit : habits) {
+                int count = habitQuestionRelationMapper.getRelationCountByHabitId(habit.getId());
+                HabitQuestionRelationData data = new HabitQuestionRelationData();
+                data.setHabit(habit);
+                data.setRelationCount(count);
+                datas.add(data);
+            }
+        }
         page.setDatas(datas);
         return page;
     }
