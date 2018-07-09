@@ -72,11 +72,16 @@
         id = #{id}
     </update>
 
-    <delete id="deleteRelation" parameterType="java.lang.Long" >
+    <delete id="deleteRelationById" parameterType="java.lang.Long" >
         DELETE FROM
             `habit_question_relation`
         WHERE
             id =#{id}
     </delete>
-
+    <delete id="deleteRelation" parameterType="java.lang.Long" >
+        DELETE FROM
+            `habit_question_relation`
+        WHERE
+            habit_id =#{habitId} and question_id=#{questionId}
+    </delete>
 </mapper>

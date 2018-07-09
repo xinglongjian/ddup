@@ -1,6 +1,7 @@
 package com.xingtan.habit.service.impl;
 
 import com.xingtan.habit.bean.HabitQuestionData;
+import com.xingtan.habit.bean.HabitQuestionDetails;
 import com.xingtan.habit.bean.HabitQuestionRelationList;
 import com.xingtan.habit.entity.Habit;
 import com.xingtan.habit.entity.HabitQuestion;
@@ -50,6 +51,34 @@ public class HabitQuestionServiceImpl implements HabitQuestionService {
             data.setItems(items);
         }
         return data;
+    }
+
+    @Override
+    public HabitQuestionDetails getHabitQuestionDetails(long habitId) {
+        HabitQuestionDetails details = new HabitQuestionDetails();
+        Habit habit = habitMapper.getHabitById(habitId);
+        if (habit != null) {
+            details.setHabitId(habitId);
+            details.setTitle(habit.getName());
+        }
+        List<HabitQuestionRelation> relations = habitQuestionRelationMapper.getRelationByHabitId(habitId);
+        if (!CollectionUtils.isEmpty(relations)) {
+            List<HabitQuestionData> dataList = new ArrayList<>();
+            for (HabitQuestionRelation q : relations) {
+                HabitQuestion question = habitQuestionMapper.getHabitQuestionById(q.getQuestionId());
+                if (question != null) {
+                    HabitQuestionData questionData = new HabitQuestionData();
+                    questionData.setQuestionId(q.getQuestionId());
+                    questionData.setTitle(question.getTitle());
+
+                    List<HabitQuestionItem> items = habitQuestionItemMapper.getHabitItemByQuestionId(q.getQuestionId());
+                    questionData.setItems(items);
+                    dataList.add(questionData);
+                }
+            }
+            details.setQuestions(dataList);
+        }
+        return details;
     }
 
     @Override

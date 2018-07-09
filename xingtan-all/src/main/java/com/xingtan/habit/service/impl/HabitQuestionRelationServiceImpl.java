@@ -50,7 +50,12 @@ public class HabitQuestionRelationServiceImpl implements HabitQuestionRelationSe
     }
 
     @Override
-    public void deleteRelation(long id) {
-        habitQuestionRelationMapper.deleteRelation(id);
+    public void deleteRelationById(long id) {
+        habitQuestionRelationMapper.deleteRelationById(id);
+    }
+
+    @Override
+    public void deleteRelation(long habitId, long questionId) {
+        habitQuestionRelationMapper.deleteRelation(habitId, questionId);
     }
 }

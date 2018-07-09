@@ -16,5 +16,6 @@ public interface HabitQuestionRelationService {
     List<HabitQuestionRelation> getRelationsByIds(List<Long> ids);
     long insertRelation(HabitQuestionRelation habitQuestionRelation);
     void updateRelation(HabitQuestionRelation habitQuestionRelation);
-    void deleteRelation(long id);
+    void deleteRelationById(long id);
+    void deleteRelation(long habitId, long questionId);
 }

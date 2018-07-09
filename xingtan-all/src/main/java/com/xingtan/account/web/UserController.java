@@ -54,27 +54,24 @@ public class UserController {
     @Value("${upload.path}")
     private String uploadPath;
 
-
-    @GetMapping("/{userName}")
-    @ApiOperation(value = "通过用户名获取学生", notes = "通过用户名获取学生", httpMethod = "GET")
-    @ApiImplicitParam(name = "userName", value = "用户名", required = true, dataType = "String", paramType = "path")
+    @GetMapping("/{userId}")
+    @ApiOperation(value = "通过Id获取学生", notes = "通过Id获取学生", httpMethod = "GET")
+    @ApiImplicitParam(name = "userId", value = "用户ID", required = true, dataType = "Long", paramType = "path")
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse getUserByUserName(@PathVariable("userName") String userName) {
-        if (StringUtils.isEmpty(userName)) {
-            return new BaseResponse<User>(HttpStatus.BAD_REQUEST, "userName is not exist", null);
-        }
+    public BaseResponse getUserById(@PathVariable("userId") Long userId) {
         User user = null;
         try {
-            user = userService.getUserByUserName(userName);
+            user = userService.getUserById(userId);
         } catch (Exception e) {
+            log.error("getUserById Error, userId:{},causedBy:{}", userId, e.getMessage());
             return new BaseResponse<User>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         if (user == null) {
-            return new BaseResponse<User>(HttpStatus.OK, "no data", user);
+            return new BaseResponse<>(HttpStatus.NOT_FOUND, "no data", user);
         }
-        return new BaseResponse<User>(HttpStatus.OK, user);
+        return new BaseResponse<>(HttpStatus.OK, user);
     }
 
     @PostMapping("/add")

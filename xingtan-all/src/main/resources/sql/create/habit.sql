@@ -82,6 +82,7 @@ CREATE TABLE IF NOT EXISTS `habit_question_relation` (
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
   KEY `idx_habit_id`(`habit_id`) USING BTREE,
-  KEY `idx_question_id`(`question_id`) USING BTREE
+  KEY `idx_question_id`(`question_id`) USING BTREE,
+  UNIQUE KEY `idx_habit_question`(`habit_id`,`question_id`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '习惯问题关系表';
 
