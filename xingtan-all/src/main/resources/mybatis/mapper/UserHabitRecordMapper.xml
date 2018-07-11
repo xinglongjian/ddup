@@ -5,17 +5,18 @@
         <id column="id" property="id"/>
         <result column="user_id" property="userId"/>
         <result column="habit_id" property="habitId"/>
-        <result column="score" property="score" />
+        <result column="habit_question_id" property="habitQuestionId"/>
+        <result column="checked_item_id" property="checkedItemId"/>
         <result column="created_user_id" property="createdUserId" />
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, user_id, habit_id, score, created_user_id]]>
+        <![CDATA[id, user_id, habit_id, habit_question_id,checked_item_id,created_user_id]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, user_id, habit_id, score, created_user_id, gmt_create, gmt_modified]]>
+        <![CDATA[id, user_id, habit_id, habit_question_id,checked_item_id,created_user_id, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getRecordById" parameterType="java.lang.Long" resultMap="UserHabitRecordMap" >
@@ -34,9 +35,9 @@
     <insert id="insertRecord" useGeneratedKeys="true" keyProperty="id" parameterType="com.xingtan.habit.entity.UserHabitRecord" >
         INSERT INTO
         `user_habit_record`
-        (user_id, habit_id, score, created_user_id, gmt_create, gmt_modified)
+        (user_id, habit_id, habit_question_id,checked_item_id,created_user_id, gmt_create, gmt_modified)
         VALUES
-        (#{userId}, #{habitId}, #{score}, #{createdUserId},NOW(), NOW())
+        (#{userId}, #{habitId}, #{habitQuestionId}, #{checkedItemId},#{createdUserId},NOW(), NOW())
     </insert>
 
     <update id="updateRecord" parameterType="com.xingtan.habit.entity.UserHabitRecord" >
@@ -45,7 +46,8 @@
         SET
         <if test="userId != null">user_id = #{userId},</if>
         <if test="habitId != null">habit_id = #{habitId},</if>
-        <if test="score != null">score = #{score},</if>
+        <if test="habitQuestionId != null">habit_question_id = #{habitQuestionId},</if>
+        <if test="checkedItemId != null">checked_item_id = #{checkedItemId},</if>
         <if test="createdUserId != null">created_user_id = #{createdUserId},</if>
         gmt_modified = now()
         WHERE

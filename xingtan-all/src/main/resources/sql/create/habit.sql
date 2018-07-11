@@ -29,11 +29,13 @@ CREATE TABLE IF NOT EXISTS `user_habit_record` (
   `id` BIGINT(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `user_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '用户ID',
   `habit_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '习惯ID',
-  `score` INT NOT NULL DEFAULT 0 COMMENT '分数',
+  `habit_question_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '习惯问题ID',
+  `checked_item_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '选中的选项ID',
   `created_user_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '谁打分',
   `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `idx_user_habit_question_id`(`user_id`,`habit_id`,`habit_question_id`,`checked_item_id` ) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户习惯分数表';
 
 CREATE TABLE IF NOT EXISTS `user_habit_relation` (

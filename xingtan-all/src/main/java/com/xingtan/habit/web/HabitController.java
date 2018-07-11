@@ -1,5 +1,7 @@
 package com.xingtan.habit.web;
 
+import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
@@ -312,17 +314,24 @@ public class HabitController {
     @ApiResponses({
             @ApiResponse(code = org.apache.http.HttpStatus.SC_OK, message = "操作成功")
     })
-    public BaseResponse scoreHabit(@PathVariable("userId") Long userId,
-                                   @PathVariable("byUserId") Long byUserId,
-                                   @PathVariable("habitId") Long habitId,
-                                   @RequestBody Integer score) {
+    public BaseResponse scoreHabitRecord(@PathVariable("userId") Long userId,
+                                         @PathVariable("byUserId") Long byUserId,
+                                         @PathVariable("habitId") Long habitId,
+                                         @RequestBody String recordsJson) {
         try {
-            userHabitRecordService.insertRecord(new UserHabitRecord(userId, habitId, score, byUserId));
-            log.info("scoreHabit SUCCESS. userId:{}, byUserId:{}, habitsId:{}, score:{}",
-                    userId, byUserId, habitId, score);
+            JSONArray jsonArray = JSONArray.parseArray(recordsJson);
+            int size = jsonArray.size();
+            for (int i = 0; i < size; i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                long questionId = jsonObject.getLong("questionId");
+                long itemId = jsonObject.getLong("itemId");
+                userHabitRecordService.insertRecord(new UserHabitRecord(userId, habitId, questionId, itemId, byUserId));
+            }
+            log.info("scoreHabitRecord SUCCESS. userId:{}, byUserId:{}, habitsId:{}, records:{}",
+                    userId, byUserId, habitId, recordsJson);
         } catch (Exception e) {
-            log.error("scoreHabit error.userId:{}, byUserId:{}, habitsId:{},score:{},causedBy:{}",
-                    userId, byUserId, habitId, score, e.getMessage());
+            log.error("scoreHabitRecord error.userId:{}, byUserId:{}, habitsId:{},records:{},causedBy:{}",
+                    userId, byUserId, habitId, recordsJson, e.getMessage());
             return new BaseResponse<>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<>(HttpStatus.OK, habitId);

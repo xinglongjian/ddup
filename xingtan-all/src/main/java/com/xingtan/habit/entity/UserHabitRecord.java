@@ -20,10 +20,17 @@ public class UserHabitRecord extends BaseEntity {
      * 习惯ID
      */
     private long habitId;
+
     /**
-     * 分数（-2 -1 0 1 2）
+     * 习惯问题ID
      */
-    private int score;
+    private long habitQuestionId;
+
+    /**
+     * 选中的选项ID
+     */
+    private long checkedItemId;
+
     /**
      * 谁给打的分
      */
