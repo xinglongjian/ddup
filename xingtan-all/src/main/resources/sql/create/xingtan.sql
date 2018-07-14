@@ -9,11 +9,13 @@ CREATE TABLE IF NOT EXISTS `user` (
   `email` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '邮箱',
   `from_source` VARCHAR(255) NOT NULL DEFAULT '' COMMENT '来源',
   `created_user_id` BIGINT(20) NOT NULL DEFAULT 0 COMMENT '由谁添加',
+  `token` VARCHAR(255) NOT NULL DEFAULT '' COMMENT 'token',
   `status` TINYINT NOT NULL DEFAULT 1 COMMENT '状态',
   `gmt_create` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '创建时间',
   `gmt_modified` DATETIME NOT NULL DEFAULT '1970-01-01 00:00:00' COMMENT '修改时间',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_user_name`(`user_name`) USING BTREE ,
+  KEY `idx_token`(`token`) USING BTREE,
   KEY `idx_status`(`status`) USING BTREE
 )ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT '用户表';
 

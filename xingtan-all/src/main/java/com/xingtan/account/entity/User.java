@@ -57,6 +57,11 @@ public class User extends BaseEntity {
     private Long createdUserId;
 
     /**
+     * 验证通过后，id+openId
+     */
+    private String token;
+
+    /**
      * 是否可用
      */
     private Integer status = UserStatus.ENABLE.ordinal();

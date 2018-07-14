@@ -1,0 +1,4 @@
+添加一列
+alter table user add column token VARCHAR(255) NOT NULL DEFAULT '' COMMENT 'token' after created_user_id;
+删除一列
+alter table user_base_data drop column token ;

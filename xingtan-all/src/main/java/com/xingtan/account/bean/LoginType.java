@@ -4,4 +4,5 @@ public enum  LoginType {
     USERNAME,
     EMAIL,
     PHONE,
+    TOKEN
 }

@@ -12,16 +12,17 @@
         <result column="password" property="password"/>
         <result column="from_source" property="fromSource" />
         <result column="created_user_id" property="createdUserId" />
+        <result column="token" property="token" />
         <result column="status" property="status" />
         <result column="gmt_create" property="gmtCreate"/>
         <result column="gmt_modified" property="gmtModified"/>
     </resultMap>
 
     <sql id="BASE_COLUMNS" >
-        <![CDATA[id, user_name, real_name, nick_name, en_name, telephone, email, `password`, from_source, `status`,created_user_id ]]>
+        <![CDATA[id, user_name, real_name, nick_name, en_name, telephone, email, `password`, from_source, `status`,created_user_id,token ]]>
     </sql>
     <sql id="ALL_COLUMNS" >
-        <![CDATA[id, user_name, real_name, nick_name, en_name, telephone, email, `password`, from_source, `status`, created_user_id, gmt_create, gmt_modified]]>
+        <![CDATA[id, user_name, real_name, nick_name, en_name, telephone, email, `password`, from_source, `status`, created_user_id, token, gmt_create, gmt_modified]]>
     </sql>
 
     <select id="getSimpleUserById" parameterType="java.lang.Long" resultMap="UserMap" >
@@ -63,6 +64,12 @@
         FROM `user`
         WHERE email = #{email}
     </select>
+    <select id="getUserByToken" parameterType="java.lang.String" resultMap="UserMap" >
+        SELECT
+        <include refid="ALL_COLUMNS" />
+        FROM `user`
+        WHERE token = #{token}
+    </select>
     <select id="getUserByIdCardNo" parameterType="java.lang.String" resultMap="UserMap" >
         SELECT
         <include refid="ALL_COLUMNS" />
@@ -87,6 +94,7 @@
         <if test="password != null">`password`,</if>
         <if test="fromSource != null">from_source,</if>
         <if test="createdUserId != null">created_user_id,</if>
+        <if test="token != null">token,</if>
         <if test="status != null">`status`,</if>
         gmt_create, gmt_modified)
         VALUES
@@ -100,6 +108,7 @@
         <if test="password != null">#{password},</if>
         <if test="fromSource != null">#{fromSource},</if>
         <if test="createdUserId != null">#{createdUserId},</if>
+        <if test="token != null">#{token},</if>
         <if test="status != null">#{status},</if>
         NOW(), NOW())
     </insert>
@@ -118,6 +127,7 @@
         <if test="status != null">status = #{status},</if>
         <if test="fromSource != null">from_source = #{fromSource},</if>
         <if test="createdUserId != null">created_user_id = #{createdUserId},</if>
+        <if test="token != null">token = #{token},</if>
         gmt_modified = now()
         WHERE
         id = #{id}

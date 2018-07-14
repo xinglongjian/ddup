@@ -9,6 +9,7 @@ import com.xingtan.account.service.UserService;
 import com.xingtan.common.entity.FromSource;
 import com.xingtan.common.entity.UserSexEnum;
 import com.xingtan.common.entity.UserStatus;
+import com.xingtan.common.utils.MD5Utils;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +64,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User getUserByToken(String token) {
+        return userMapper.getUserByToken(token);
+    }
+
+    @Override
     public User getUserByIdCardNo(String idCardNo) {
         return userMapper.getUserByIdCardNo(idCardNo);
     }
@@ -71,13 +77,14 @@ public class UserServiceImpl implements UserService {
     public User saveByWxUser(WeixinUser wxUser){
         try{
             User user = new User();
-            user.setUserName(userNamePrefix+userNameId.incrementAndGet());
+            user.setUserName(wxUser.getNickName());
             user.setNickName(wxUser.getNickName());
             user.setRealName(wxUser.getNickName());
             user.setEnName(StringUtils.EMPTY);
             user.setCreatedUserId(1L);
             user.setFromSource(FromSource.WEIXIN.name());
             user.setStatus(UserStatus.ENABLE.ordinal());
+            user.setToken(MD5Utils.md5(wxUser.getOpenId()));
             userMapper.insertUser(user);
 
             UserBaseData baseData = new UserBaseData();

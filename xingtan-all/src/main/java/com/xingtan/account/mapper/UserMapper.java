@@ -44,6 +44,13 @@ public interface UserMapper {
     User getUserByPhone(@Param("telephone") String telephone);
 
     /**
+     *
+     * @param token
+     * @return
+     */
+    User getUserByToken(@Param("token") String token);
+
+    /**
      * 通过email获取
      *
      * @param email
