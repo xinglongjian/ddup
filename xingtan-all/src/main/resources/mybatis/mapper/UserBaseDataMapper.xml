@@ -25,14 +25,12 @@
 
     <sql id="BASE_COLUMNS">
         <![CDATA[
-        id, user_id, sex, birthday, head_image, id_card_type,
-        id_card_no, country, province, city, district, address, introduce, weixin, qq, open_id, union_id
+        id, user_id, sex, birthday, head_image, id_card_type, id_card_no, country, province, city, district, address, introduce, weixin, qq, open_id, union_id
         ]]>
     </sql>
     <sql id="ALL_COLUMNS">
         <![CDATA[
-        id, user_id, sex, birthday, head_image, id_card_type,
-        id_card_no, country, province, city, district, address, introduce, weixin, qq, open_id, union_id, gmt_create, gmt_modified
+        id, user_id, sex, birthday, head_image, id_card_type, id_card_no, country, province, city, district, address, introduce, weixin, qq, open_id, union_id, gmt_create, gmt_modified
         ]]>
     </sql>
 

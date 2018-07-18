@@ -171,6 +171,7 @@ public class UserController {
                 "createdUserId:{}", imageFile, realName, nickName, enName, sex, birthday, createdUserId);
         try {
             User user = userService.saveByParent(nickName, realName, enName, createdUserId);
+            userId = user.getId();
             String fileName = String.format("%s.%s", user.getId(), ImageSuffix.JPG.getName());
             if (imageFile != null) {
                 HeadImageUtils.saveHeadImage(uploadPath, fileName, imageFile.getBytes());
@@ -192,10 +193,12 @@ public class UserController {
                     new StudentParentRelation(user.getId(), Long.parseLong(createdUserId), FamilyRelation.valueOf(relation));
             studentParentRelation.setAlias("");
             studentParentRelationService.insertRelation(studentParentRelation);
-            userId = user.getId();
+
             log.info("addUserByParent SUCCESS. userInfo:{}", user);
         } catch (Exception e) {
             log.error("addUserByParent FAIL, error:{}", e);
+            userService.deleteUser(userId);
+            userBaseDataService.deleteUserBaseData(userId);
             return new BaseResponse<Long>(HttpStatus.INTERNAL_SERVER_ERROR, e.getMessage(), null);
         }
         return new BaseResponse<Long>(HttpStatus.OK, userId);
